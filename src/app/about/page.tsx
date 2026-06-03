@@ -7,7 +7,7 @@ import Copy from "@/components/Copy/Copy";
 import Link from "next/link";
 import WhoWeAre from "@/components/sections/WhoWeAre/WhoWeAre";
 import ProcessCards from "@/components/ProcessCards/ProcessCards";
-// import Footer from "@/components/ui/Footer";
+import Footer from "@/components/ui/Footer";
 
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -174,7 +174,7 @@ const StudioPage = () => {
           </div>
         </section>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

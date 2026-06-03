@@ -81,7 +81,7 @@
 }
 
 .mission-intro-copy {
-  width: min(100%,980px);
+  width: min(100%, 980px);
   display: flex;
   flex-direction: column;
   gap: clamp(1.25rem, 2vw, 3rem);

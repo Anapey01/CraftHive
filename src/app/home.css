@@ -55,7 +55,6 @@
   align-items: flex-end;
 }
 .hero-header h1 {
-  font-family: var(--font-accent);
   text-transform: uppercase;
   font-size: clamp(2.5rem, 10vw, 4.0rem);
   font-weight: 700;
@@ -120,9 +119,6 @@
   text-align: center;
 }
 
-.featured-work-header h1{
- font-size: clamp(2.5rem, 8vw, 7rem);;
-}
 
 .featured-work .featured-work-header {
   width: 50%;
@@ -160,9 +156,6 @@
 .client-reviews-header-container .client-reviews-header {
   width: 50%;
 }
-.client-reviews-header h1{
-font-size: clamp(2.5rem, 8vw, 7rem);;
-}
 
 .client-reviews-header-container .client-reviews-header-content .arrow {
   width: 3rem;
@@ -186,6 +179,17 @@ font-size: clamp(2.5rem, 8vw, 7rem);;
     justify-content: center;
     gap: 2rem;
   }
+
+  h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    letter-spacing: -0.03rem;
+  }
+
+  h2 {
+    font-size: clamp(1.125rem, 4vw, 2rem);
+  }
+ 
+
 
   .featured-work .featured-work-header,
   .featured-work .featured-work-header-content,
