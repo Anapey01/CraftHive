@@ -3,7 +3,7 @@ import "./globals.css";
 import { Inter,Outfit } from "next/font/google";
 import ClientLayout from "@/client-layout";
 import { ViewTransitions } from "next-view-transitions";
-import CustomCursor from "@/components/CustomCursor";
+
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -28,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="grain">
       <body className={'${outfit.variable} ${inter.variable}'} >
-        <CustomCursor />
         <ViewTransitions>
         <ClientLayout>{children}</ClientLayout>
         </ViewTransitions>
