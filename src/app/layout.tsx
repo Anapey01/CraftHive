@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="grain">
-      <body className={'${outfit.variable} ${inter.variable}'} >
+      <body className={`${outfit.variable} ${inter.variable}`} suppressHydrationWarning>
         <ViewTransitions>
         <ClientLayout>{children}</ClientLayout>
         </ViewTransitions>

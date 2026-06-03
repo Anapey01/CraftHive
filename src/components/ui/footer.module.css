@@ -54,17 +54,17 @@
 }
 
 .main {
-  padding: 64px 60px;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.75rem);
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 48px;
+  gap: clamp(1.5rem, 4vw, 3rem);
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .brandName {
   font-family: "Outfit", sans-serif;
-  font-size: 26px;
+  font-size: clamp(1.2rem, 3vw, 1.625rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 4px;
@@ -77,13 +77,13 @@
 .tagline {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 13px;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   color: #888880;
   margin-bottom: 24px;
 }
 
 .aboutText {
-  font-size: 13px;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   color: #888880;
   line-height: 1.7;
   margin-bottom: 28px;
@@ -121,7 +121,7 @@
 }
 
 .colTitle {
-  font-size: 10px;
+  font-size: clamp(0.55rem, 1vw, 0.625rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -137,7 +137,7 @@
 }
 
 .linkList a {
-  font-size: 13px;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   color: #888880;
   text-decoration: none;
   transition: color 0.2s;
@@ -162,7 +162,7 @@
 }
 
 .hoursTagline {
-  font-size: 13px;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   font-style: italic;
   color: #888880;
   margin-bottom: 16px;
@@ -177,7 +177,7 @@
 .hRow {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   gap: 16px;
 }
 
@@ -195,7 +195,7 @@
   background: #c31b07;
   color: #fff;
   padding: 11px 22px;
-  font-size: 12px;
+  font-size: clamp(0.65rem, 1.25vw, 0.75rem);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -211,14 +211,14 @@
 }
 
 .address {
-  font-size: 13px;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   color: #888880;
   line-height: 1.8;
   margin-bottom: 16px;
 }
 
 .directionsLink {
-  font-size: 12px;
+  font-size: clamp(0.65rem, 1.25vw, 0.75rem);
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #c31b07;
@@ -234,7 +234,7 @@
   background: #0a0a0a;
   border: 1px solid rgba(204,17,17,0.18);
   border-radius: 3px;
-  font-size: 12px;
+  font-size: clamp(0.65rem, 1.25vw, 0.75rem);
   color: #CCCCCC;
   display: flex;
   align-items: flex-start;
@@ -271,7 +271,7 @@
 
 .base {
   background: #080807;
-  padding: 18px 60px;
+  padding: clamp(1rem, 2vw, 1.125rem) clamp(1.5rem, 5vw, 3.75rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -280,12 +280,12 @@
 }
 
 .copy {
-  font-size: 12px;
+  font-size: clamp(0.65rem, 1.25vw, 0.75rem);
   color: rgba(245, 240, 232, 0.28);
 }
 
 .made {
-  font-size: 12px;
+  font-size: clamp(0.65rem, 1.25vw, 0.75rem);
   color: rgba(245, 240, 232, 0.28);
 }
 
@@ -308,7 +308,6 @@
 @media (max-width: 900px) {
   .main {
     grid-template-columns: 1fr 1fr;
-    padding: 48px 24px;
   }
 
   .symbolBand {
@@ -316,7 +315,6 @@
   }
 
   .base {
-    padding: 18px 24px;
     flex-direction: column;
     text-align: center;
   }

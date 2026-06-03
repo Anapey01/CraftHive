@@ -16,11 +16,10 @@ export default function Home() {
       >
         {/* Content revealed after hero expands */}
         <div id="services" />
-       </ScrollExpandHero>
-
-      <Services />
-      <FAQ />
-      <Footer />
+        <Services />
+        <FAQ />
+        <Footer />
+      </ScrollExpandHero>
     </>
   );
 }

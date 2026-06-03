@@ -195,7 +195,7 @@ const ScrollExpandHero = ({
 
             {/* Content revealed after full expansion */}
             <motion.div
-              className="w-full"
+              className={`w-full ${showContent ? '' : 'h-0 overflow-hidden'}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: showContent ? 1 : 0 }}
               transition={{ duration: 0.8 }}

@@ -6,9 +6,9 @@ const EXPLORE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/gallery", label: "Portfolio" },
   { href: "/services#preview", label: "Frame Preview Tool" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/services#faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 

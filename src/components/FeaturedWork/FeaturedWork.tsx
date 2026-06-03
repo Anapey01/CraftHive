@@ -56,32 +56,28 @@ export default function FeaturedWork() {
     if (!root) return;
 
     const featuredWorkItems = Array.from(root.querySelectorAll<HTMLElement>(".featured-work-item"));
-    gsap.set(featuredWorkItems, { y: 1000 });
+    
+    gsap.set(featuredWorkItems, { 
+      y: 150, 
+      opacity: 0,
+      rotation: (index) => (index % 2 === 0 ? -15 : 15),
+      transformOrigin: "center center"
+    });
 
     const scrollTriggers: ScrollTrigger[] = [];
 
-    const rowElements = Array.from(root.querySelectorAll<HTMLDivElement>(".row"));
-    rowElements.forEach((row) => {
-      const rowItems = Array.from(row.querySelectorAll<HTMLElement>(".featured-work-item"));
-      rowItems.forEach((item, index) => {
-        const isLeftProjectItem = index === 0;
-        gsap.set(item, {
-          rotation: isLeftProjectItem ? -60 : 60,
-          transformOrigin: "center center",
-        });
-      });
-
+    featuredWorkItems.forEach((item) => {
       scrollTriggers.push(
         ScrollTrigger.create({
-          trigger: row,
-          start: "top 70%",
+          trigger: item,
+          start: "top 85%",
           onEnter: () => {
-            gsap.to(rowItems, {
+            gsap.to(item, {
               y: 0,
+              opacity: 1,
               rotation: 0,
               duration: 1,
               ease: "power4.out",
-              stagger: 0.25,
             });
           },
         })
@@ -110,8 +106,8 @@ export default function FeaturedWork() {
     <div className="featured-work-list" ref={featuredWorkContainerRef}>
       {projectRows.map((row, rowIndex) => (
         <div className="row" key={`featured-work-row-${rowIndex}`}>
-          {row.map((project) => (
-            <FeaturedWorkItem project={project} key={project.route} />
+          {row.map((project, index) => (
+            <FeaturedWorkItem project={project} key={`${project.route}-${rowIndex}-${index}`} />
           ))}
         </div>
       ))}

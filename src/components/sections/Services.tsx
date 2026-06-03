@@ -130,6 +130,20 @@ export default function ServicesPage() {
   const [artType, setArtType] = useState("Artwork on Paper");
   const [savedFrame, setSavedFrame] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const [containerWidth, setContainerWidth] = useState(420);
+
+  useEffect(() => {
+    let lastWidth = window.innerWidth;
+    const handleResize = () => {
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        setContainerWidth(Math.min(420, window.innerWidth - 96));
+      }
+    };
+    setContainerWidth(Math.min(420, window.innerWidth - 96));
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -222,7 +236,7 @@ export default function ServicesPage() {
   // Calculate preview size while maintaining aspect ratio, and ensuring it fits within max dimensions
 
   const previewSize = useMemo(() => {
-    const maxWidth = 420;
+    const maxWidth = containerWidth;
     const maxHeight = 520;
 
     const ratio = width / height;
