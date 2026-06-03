@@ -5,6 +5,7 @@ import "./studio.css";
 
 import Copy from "@/components/Copy/Copy";
 import Link from "next/link";
+import Button from "@/components/Button/Button";
 import WhoWeAre from "@/components/sections/WhoWeAre/WhoWeAre";
 import ProcessCards from "@/components/ProcessCards/ProcessCards";
 import Footer from "@/components/ui/Footer";
@@ -111,18 +112,25 @@ const StudioPage = () => {
         </section>
 
         <section className="studio-header">
-          <div className="studio-header-copy">
-            <Copy>
-              <h2>
-                CraftHive is a craft and art store specialising in 
-                bespoke Shadow Box artworks, custom picture framing, 
-                laser engraving and cutting, indoor and outdoor signage,
-                 personalised gifts, memory boxes, designer mirrors, and handcrafted home decor. 
-                 Every product is crafted with intention,
-                using sustainable and responsibly sourced materials,
-                 rooted in a tradition of quality and cultural pride
-              </h2>
-            </Copy>
+          <div className="studio-header-col-sm">
+            <p className="sm caps" style={{ color: "var(--secondary)" }}>
+              (About Us)
+            </p>
+          </div>
+          <div className="studio-header-col-lg">
+            <div className="studio-header-copy">
+              <Copy>
+                <h2>
+                  CraftHive is a craft and art store specialising in bespoke
+                  Shadow Box artworks, custom picture framing, laser engraving
+                  and cutting, indoor and outdoor signage, personalised gifts,
+                  memory boxes, designer mirrors, and handcrafted home decor.
+                  Every product is crafted with intention, using sustainable and
+                  responsibly sourced materials, rooted in a tradition of
+                  quality and cultural pride.
+                </h2>
+              </Copy>
+            </div>
           </div>
         </section>
 
@@ -147,9 +155,9 @@ const StudioPage = () => {
               </Copy>
 
               <div className="mission-link">
-                <Link href="/gallery" className="button button-dark">
+                <Button href="/gallery" dark={true}>
                   View Work
-                </Link>
+                </Button>
               </div>
             </div>
           </div>
