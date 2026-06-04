@@ -3,16 +3,22 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
-  padding: 2rem;
-  color: #e3e3db;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem);
+  color: #1a1614;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 50;
   pointer-events: none;
 }
 
 nav > * {
   pointer-events: auto;
+}
+
+nav .nav-desktop-links,
+nav .nav-desktop-actions {
+  display: none;
 }
 
 .logo{
@@ -266,6 +272,76 @@ nav .close-label {
   .menu-overlay .menu-link a {
     font-size: 4rem;
     letter-spacing: -0.05rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav .nav-desktop-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    pointer-events: auto;
+  }
+  
+  nav .nav-desktop-links a {
+    text-decoration: none;
+    color: #1a1614;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  nav .nav-desktop-links a:hover {
+    color: #cc0000;
+  }
+
+  nav .nav-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+  }
+
+  nav .nav-logo a {
+    width: auto;
+  }
+
+  nav .nav-logo img {
+    height: clamp(2rem, 4vw, 3.5rem);
+    width: auto;
+    object-fit: contain;
+  }
+  
+  nav .nav-desktop-actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: auto;
+  }
+  
+  nav .nav-desktop-actions .contact-btn {
+    background-color: #cc0000;
+    color: #ffffff;
+    padding: 0.6rem 2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  nav .nav-desktop-actions .contact-btn:hover {
+    background-color: #a30000;
+    transform: translateY(-2px);
+  }
+
+  nav .nav-toggle {
+    display: none !important;
   }
 }
 

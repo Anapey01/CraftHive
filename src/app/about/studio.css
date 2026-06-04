@@ -102,45 +102,67 @@
 }
 /* Mission link styling  */
 
-.recognition {
+/* Tapered Mood Section Layout */
+.tapered-section {
   position: relative;
   width: 100%;
   height: auto;
-  padding-block: clamp(6rem, 10vw, 8rem);
+  padding: clamp(6rem, 10vw, 10rem) 1.5rem;
   background-color: var(--background);
   color: var(--foreground);
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.recognition-copy {
-  width: min(90vw, 840px);
-  margin: 0 auto; 
+.tapered-content {
+  width: 100%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  background-color: var(--background);
-  color: var(--foreground);
-  padding: clamp(2rem, 5vw, 3rem) clamp(2rem, 4vw, 3rem);
-  border-left: 6px solid var(--foreground);
-  border-radius: 0;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
-.recognition-copy p {
-  gap: clamp(0.5rem, 1vw, 1.5rem);
-  font-size: clamp(0.875rem, 1vw, 1.25rem);
-  color: var(--secondary);
+.tapered-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(3rem, 6vw, 4rem);
 }
 
-.recognition-copy h2 {
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin: 0;
-  font-size: clamp(1.5rem, 2.5vw, 3rem);
+.tapered-subtitle {
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
 }
+
+.tapered-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.tapered-line {
+  width: 1px;
+  height: 100px;
+  background-color: var(--foreground);
+  margin-top: 1.5rem;
+  opacity: 0.5;
+}
+
+.tapered-body p {
+  font-family: var(--font-accent);
+  font-size: clamp(1.125rem, 2vw, 1.4rem);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+
 
 
 .char {
@@ -160,7 +182,7 @@
 
   .studio-header-copy,
   .mission-intro-copy,
-  .recognition-copy {
+  .tapered-content {
     width: 100%;
   }
 

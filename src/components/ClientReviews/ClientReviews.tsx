@@ -30,21 +30,21 @@ const ClientReviews = () => {
 
       let mm = gsap.matchMedia(containerRef);
 
-      mm.add("(max-width: 767px)", () => {
+      mm.add("(max-width: 1023px)", () => {
         const reviewCards = document.querySelectorAll<HTMLElement>(".review-card");
         const scrollTriggerInstances: ScrollTrigger[] = [];
 
         gsap.delayedCall(0.1, () => {
           reviewCards.forEach((card, index) => {
+            // Pin all cards except the very last one
             if (index < reviewCards.length - 1) {
               const trigger = ScrollTrigger.create({
                 trigger: card,
-                start: "top top",
-                endTrigger: reviewCards[reviewCards.length - 1],
-                end: "top top",
+                start: "top 15%", // Pin exactly under the header text
+                endTrigger: ".client-reviews-stacked",
+                end: "bottom bottom",
                 pin: true,
                 pinSpacing: false,
-                scrub: 1,
               });
               scrollTriggerInstances.push(trigger);
             }

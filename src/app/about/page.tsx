@@ -165,19 +165,43 @@ const StudioPage = () => {
 
         <ProcessCards />
 
-        <section className="recognition">
-          <div className="recognition-copy">
+        <section className="tapered-section">
+          <div className="tapered-content">
             <Copy>
-              <p className="sm caps">(Recognition)</p>
-              <br />
-              <h2 className="our-work">
-                Our work is valued by homeowners, businesses, collectors, 
-                and art enthusiasts who appreciate quality craftsmanship 
-                and attention to detail. From bespoke framing and shadow box artworks 
-                to handcrafted décor and cultural artefacts, every piece is thoughtfully 
-                created to preserve memories, celebrate heritage,
-                and inspire meaningful connections for generations to come.
-              </h2>
+              <div className="tapered-header">
+                <p className="tapered-subtitle">THE</p>
+                <h2 className="tapered-title">RECOGNITION</h2>
+                <div className="tapered-line"></div>
+              </div>
+              <div className="tapered-body">
+                {/* Desktop Pyramid Shape (Max 65 chars to prevent wrapping on laptops) */}
+                <p className="desktop-tapered hidden md:block">
+                  Our work is valued by homeowners, businesses, collectors, and art <br />
+                  enthusiasts who appreciate quality craftsmanship and attention <br />
+                  to detail. From bespoke framing and shadow box artworks <br />
+                  to handcrafted décor and cultural artefacts, every <br />
+                  piece is thoughtfully created to preserve <br />
+                  memories, celebrate heritage, and inspire <br />
+                  meaningful connections for generations <br />
+                  to come.
+                </p>
+
+                {/* Mobile Pyramid Shape */}
+                <p className="mobile-tapered block md:hidden">
+                  Our work is valued by homeowners, businesses, <br />
+                  collectors, and art enthusiasts who appreciate <br />
+                  quality craftsmanship and attention to detail. <br />
+                  From bespoke framing and shadow box <br />
+                  artworks to handcrafted décor and <br />
+                  cultural artefacts, every piece is <br />
+                  thoughtfully created to preserve <br />
+                  memories, celebrate heritage, <br />
+                  and inspire meaningful <br />
+                  connections for <br />
+                  generations <br />
+                  to come.
+                </p>
+              </div>
             </Copy>
           </div>
         </section>

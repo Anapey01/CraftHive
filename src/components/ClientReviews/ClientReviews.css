@@ -57,13 +57,13 @@
 .marquee-card-client-company { opacity: 0.6; }
 
 
-/* MOBILE STACKED CARDS */
 .client-reviews-stacked {
   position: relative;
   z-index: 10;
   width: 100%;
   min-height: 100%;
   background-color: #ffffff;
+  padding-bottom: 50vh; /* Extra padding so the final card can scroll all the way up and stack */
 }
 
 .client-reviews-stacked .review-card {
