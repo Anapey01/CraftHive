@@ -1,135 +1,82 @@
-.client-reviews {
+.client-reviews-marquee {
   position: relative;
   width: 100%;
-  min-height: 100%;
-  background-color: #fff;
-}
-
-.client-reviews .review-card {
-  position: relative;
-  width: 100%;
-  min-height: 100svh;
-  height: auto;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.client-reviews .review-card-container {
-  position: relative;
-  width: min(60%, 900px);
-  min-height: 50svh;
-  height: auto;
-  display: flex;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: 1rem;
-  will-change: transform;
+  background-color: #e3e3db;
+  padding: 0 0 clamp(4rem, 8vw, 8rem) 0;
   overflow: hidden;
+  display: flex;
 }
 
-.client-reviews .review-card-content-wrapper {
-  width: 100%;
-  min-height: 100%;
+.marquee-track {
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 0 1rem;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate exactly half of the total track width to loop seamlessly */
+    transform: translateX(calc(-50% - clamp(1.5rem, 3vw, 2.5rem) / 2));
+  }
+}
+
+.marquee-card {
+  width: clamp(300px, 40vw, 450px);
+  min-height: clamp(350px, 40vh, 450px);
+  border-radius: 1rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  text-align: center;
+  gap: 2rem;
+  flex-shrink: 0;
+  text-align: left;
+  transition: transform 0.3s ease;
 }
 
-.client-reviews .review-card-content {
-  width: 100%;
-  overflow-wrap: break-word;
-  word-break: normal;
+.marquee-card:hover {
+  transform: translateY(-10px);
 }
 
-.client-reviews h3.review-card-text {
-  font-size: clamp(1.6rem, 4vw, 3rem);
-  line-height: 1.05;
-  letter-spacing: 0;
-  max-width: 100%;
-  overflow-wrap: break-word;
+.marquee-card-text {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.01rem;
 }
 
-.client-reviews p.sm.review-card-client-company {
-  color: var(--base-100);
-  opacity: 0.4;
-  overflow-wrap: break-word;
+.marquee-card-client-info {
+  margin-top: auto;
 }
 
-.client-reviews #review-card-1 {
-  background-color: #ccccc4;
+.marquee-card-client {
+  font-weight: 700;
 }
 
-.client-reviews #review-card-2 {
-  background-color: #ff3d33;
-  color: #1a1614;
+.marquee-card-client-company {
+  opacity: 0.6;
 }
 
-.client-reviews #review-card-3 {
-  background-color: #a92f78;
-  color: #e3e3db;
-}
-
-.client-reviews #review-card-4 {
-  background-color: #8c7e77;
-}
-
-.client-reviews #review-card-5 {
-  background-color: #ccccc4;
-}
-
-.client-reviews #review-card-6 {
-  background-color: #1a1614;
-  color: #e3e3db;
-}
-
-.client-reviews #review-card-1 p.sm.review-card-client-company,
-.client-reviews #review-card-4 p.sm.review-card-client-company,
-.client-reviews #review-card-5 p.sm.review-card-client-company {
-  color: var(--base-400);
-}
-
-@media (max-width: 1200px) {
-  .client-reviews .review-card-container {
-    width: 75%;
-  }
-}
+/* Original Card Colors */
+.card-color-1 { background-color: #ccccc4; color: #1a1614; }
+.card-color-2 { background-color: #ff3d33; color: #1a1614; }
+.card-color-3 { background-color: #a92f78; color: #e3e3db; }
+.card-color-4 { background-color: #8c7e77; color: #1a1614; }
+.card-color-5 { background-color: #ccccc4; color: #1a1614; }
+.card-color-6 { background-color: #1a1614; color: #e3e3db; }
 
 @media (max-width: 768px) {
-  .client-reviews .review-card {
-    min-height: auto;
-    padding: 1.25rem;
-  }
-
-  .client-reviews .review-card-container {
-    width: 100%;
-    min-height: auto;
-    padding: 1.25rem;
-  }
-
-  .client-reviews .review-card-content-wrapper {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .client-reviews h3.review-card-text {
-    font-size: clamp(1.4rem, 8vw, 2rem);
-    line-height: 1.15;
-  }
-}
-
-@media (max-width: 480px) {
-  .client-reviews .review-card {
-    padding: 1rem;
-  }
-
-  .client-reviews .review-card-container {
-    border-radius: 0.85rem;
-  }
-
-  .client-reviews h3.review-card-text {
-    font-size: 1.35rem;
+  .marquee-track {
+    animation-duration: 35s;
   }
 }
