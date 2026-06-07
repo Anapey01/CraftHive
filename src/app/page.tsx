@@ -97,6 +97,7 @@ const Page = () => {
         </div>
       </section>
       <Showreel />
+      <BrandTicker />
 
       <section className="featured-work">
         <div className="container">
@@ -130,15 +131,14 @@ const Page = () => {
             <div className="client-reviews-header-content">
               <div className="client-reviews-header">
                 <Copy animateOnScroll={true} delay={0.25}>
-                  <h1>People Approved</h1>
+                  <h1>What our clients say</h1>
                 </Copy>
               </div>
 
               <div className="client-reviews-header-copy">
                 <Copy animateOnScroll={true} delay={0.25}>
                   <p className="lg">
-                    Unfiltered thoughts from the people who survived our creative
-                    process. Or at least that’s what they told us.
+                    Hear from those who have experienced our unique craftsmanship.
                   </p>
                 </Copy>
               </div>
@@ -149,7 +149,6 @@ const Page = () => {
         <ClientReviews />
       </div>
 
-      <BrandTicker />
       <CTACard />
       </div>
 

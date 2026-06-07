@@ -27,14 +27,14 @@
   font-family: 'Outfit', sans-serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: #1a1614;
+  color: #ffffff;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .cta-card-copy {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: rgba(26, 22, 20, 0.85);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
   line-height: 1.6;
 }

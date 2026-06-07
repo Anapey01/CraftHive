@@ -266,7 +266,7 @@ nav .close-label {
 
   .menu-overlay .menu-links-wrapper {
     flex-direction: column;
-    gap: 0;
+    gap: 1rem;
     top: 0;
     left: 0;
     width: 100%;
@@ -282,7 +282,7 @@ nav .close-label {
   }
 
   .menu-overlay .menu-link a {
-    font-size: 4rem;
+    font-size: 3.25rem;
     letter-spacing: -0.05rem;
     text-align: right;
   }

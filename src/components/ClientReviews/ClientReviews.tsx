@@ -2,111 +2,42 @@
 
 import "./ClientReviews.css";
 import { clientReviewsData } from "./clientReviewsData";
-import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
-
-type ClientReviewItem = {
-  review: string;
-  clientName: string;
-  clientCompany: string;
-};
+const StarRating = () => (
+  <div className="review-stars">
+    {[1, 2, 3, 4, 5].map((star) => (
+      <svg key={star} width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+      </svg>
+    ))}
+  </div>
+);
 
 const ClientReviews = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const cardContainers = document.querySelectorAll<HTMLElement>(
-        ".review-card-container"
-      );
-      cardContainers.forEach((cardContainer, index) => {
-        const rotation = index % 2 === 0 ? 3 : -3;
-        gsap.set(cardContainer, { rotation: rotation });
-      });
-
-      let mm = gsap.matchMedia(containerRef);
-
-      mm.add("(max-width: 1023px)", () => {
-        const reviewCards = document.querySelectorAll<HTMLElement>(".review-card");
-        const scrollTriggerInstances: ScrollTrigger[] = [];
-
-        gsap.delayedCall(0.1, () => {
-          reviewCards.forEach((card, index) => {
-            // Pin all cards except the very last one
-            if (index < reviewCards.length - 1) {
-              const trigger = ScrollTrigger.create({
-                trigger: card,
-                start: "top 15%", // Pin exactly under the header text
-                endTrigger: ".client-reviews-stacked",
-                end: "bottom bottom",
-                pin: true,
-                pinSpacing: false,
-              });
-              scrollTriggerInstances.push(trigger);
-            }
-          });
-        });
-
-        return () => {
-          scrollTriggerInstances.forEach((trigger) => trigger.kill());
-        };
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <div ref={containerRef}>
-      {/* DESKTOP MARQUEE (Hidden on mobile) */}
-      <div className="client-reviews-marquee hidden md:flex">
-        <div className="marquee-track">
-          {[...clientReviewsData, ...clientReviewsData].map(
-            (item: ClientReviewItem, index: number) => (
-              <div
-                className={`marquee-card card-color-${(index % 6) + 1}`}
-                key={`marquee-${index}`}
-              >
-                <div className="marquee-card-content">
-                  <h3 className="marquee-card-text lg">"{item.review}"</h3>
-                  <div className="marquee-card-client-info">
-                    <p className="marquee-card-client cap">{item.clientName}</p>
-                    <p className="marquee-card-client-company sm">
-                      {item.clientCompany}
-                    </p>
-                  </div>
+    <div className="client-reviews-wrapper">
+      <div className="container">
+        <div className="reviews-grid">
+          {clientReviewsData.map((item, index) => (
+            <div className="static-review-card" key={`review-${index}`}>
+              <StarRating />
+              <p className="review-text">{item.review}</p>
+              <div className="review-author">
+                <div className="review-avatar">
+                  {item.avatar ? (
+                    <img src={item.avatar} alt={item.clientName} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                  ) : (
+                    <div className="avatar-placeholder"></div>
+                  )}
                 </div>
-              </div>
-            )
-          )}
-        </div>
-      </div>
-
-      {/* MOBILE STACKED CARDS (Hidden on desktop) */}
-      <div className="client-reviews-stacked md:hidden">
-        {(clientReviewsData as ClientReviewItem[]).map((item, index) => (
-          <div className="review-card" key={`stacked-${index}`}>
-            <div
-              className="review-card-container"
-              id={`review-card-${index + 1}`}
-            >
-              <div className="review-card-content">
-                <div className="review-card-content-wrapper">
-                  <h3 className="review-card-text lg">"{item.review}"</h3>
-                  <div className="review-card-client-info">
-                    <p className="review-card-client cap">{item.clientName}</p>
-                    <p className="review-card-client-company sm">
-                      {item.clientCompany}
-                    </p>
-                  </div>
+                <div className="review-author-info">
+                  <p className="review-client-name">{item.clientName}</p>
+                  <p className="review-client-role">{item.clientCompany}</p>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -128,3 +128,17 @@
   /* Description remains hidden on mobile until the user taps/interacts with the item */
 }
 
+/* Ensure images fit nicely on desktop without clipping */
+@media (min-width: 1024px) {
+  .featured-work-carousel-wrapper {
+    padding-bottom: 0;
+  }
+  .featured-work-list {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .featured-work-item {
+    height: clamp(250px, 45vh, 450px);
+  }
+}
+
