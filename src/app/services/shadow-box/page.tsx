@@ -1,10 +1,8 @@
-import React from 'react';
-
-export default function ShadowBox() {
+export default function ShadowBoxPage() {
   return (
-    <main>
-      <h1>Custom Framing</h1>
-      <p>Welcome to the custom framing service page.</p>
+    <main className="container mx-auto py-20 px-6">
+      <h1>Shadow Box</h1>
+      <p>Content coming soon...</p>
     </main>
   );
 }

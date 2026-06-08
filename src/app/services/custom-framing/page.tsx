@@ -1,10 +1,8 @@
-import React from 'react';
-
 export default function CustomFramingPage() {
   return (
-    <main>
+    <main className="container mx-auto py-20 px-6">
       <h1>Custom Framing</h1>
-      <p>Welcome to the custom framing service page.</p>
+      <p>Content coming soon...</p>
     </main>
   );
 }

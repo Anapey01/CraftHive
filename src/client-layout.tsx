@@ -74,7 +74,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <ReactLenis root options={scrollSettings}>
-      <Menu pageRef={pageRef} />
+      <Menu />
 
       <div className="page" ref={pageRef}>
         {children}
