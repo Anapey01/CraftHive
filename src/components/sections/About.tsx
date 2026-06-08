@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -13,7 +13,7 @@ export default function About() {
   return (
     <section id="about" className="relative py-32 md:py-48 px-6 md:px-16 overflow-hidden">
       {/* Decorative line */}
-      <div className="absolute left-6 md:left-16 top-0 w-px h-full bg-gradient-to-b from-transparent via-gold/20 to-transparent" />
+      <div className="absolute left-6 md:left-16 top-0 w-px h-full bg-gradient-to-b from-transparent via-[#c31b07]/20 to-transparent" />
 
       <div ref={ref} className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
         <motion.div
@@ -21,10 +21,10 @@ export default function About() {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: [0.25, 0.1, 0, 1] }}
         >
-          <p className="text-gold font-body text-xs tracking-[0.25em] uppercase mb-6">
+          <p className="text-[#c31b07] font-body text-xs tracking-[0.25em] uppercase mb-6">
             About the Studio
           </p>
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-ivory leading-[0.9] mb-8">
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-[#f4efe3] leading-[0.9] mb-8">
             Part atelier.
             <br />
             <em>Part memory</em>
@@ -33,10 +33,10 @@ export default function About() {
             <br />
             house.
           </h2>
-          <p className="font-body text-ivory-dim text-lg leading-relaxed mb-6">
+          <p className="font-body text-[#f4efe3]/70 text-lg leading-relaxed mb-6">
             We curate artworks, craft custom frames, restore visual treasures, and help every piece find its most powerful presence. Every measurement, mount, finish, and shadow is treated like part of the artwork itself.
           </p>
-          <p className="font-body text-ivory-dim text-lg leading-relaxed">
+          <p className="font-body text-[#f4efe3]/70 text-lg leading-relaxed">
             Founded on the belief that framing is the last mile of art—the act that transforms a piece into a statement—we bring museum-level craft to private collectors, interior designers, and anyone who believes their walls deserve better.
           </p>
 
@@ -47,8 +47,8 @@ export default function About() {
               ['12', 'Frame Collections'],
             ].map(([n, l]) => (
               <div key={l}>
-                <p className="font-display text-4xl text-gold">{n}</p>
-                <p className="font-body text-xs text-ivory-dim tracking-widest uppercase mt-1">{l}</p>
+                <p className="font-display text-4xl text-[#c31b07]">{n}</p>
+                <p className="font-body text-xs text-[#f4efe3]/70 tracking-widest uppercase mt-1">{l}</p>
               </div>
             ))}
           </div>

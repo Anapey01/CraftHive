@@ -2,44 +2,45 @@
   position: relative;
   width: 100%;
   height: 100svh;
-  background-color: #000;
+  background-color: var(--base-100);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding: 0;
 }
 
 .showreel .showreel-container {
   position: relative;
   width: 100%;
   height: 100%;
-  transform: scale(0.75);
-  border-radius: 2rem;
-  overflow: hidden;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
 }
 
 .showreel .showreel-container video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: block;
+  object-fit: contain; /* NEVER crop the video */
 }
 
 .showreel .volume-icon {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 6.5rem;
-  height: 6.5rem;
+  bottom: 2rem;
+  right: 2rem;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: 3.5rem;
+  height: 3.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ecca8b;
   border-radius: 100%;
   cursor: pointer;
-}
-.showreel .volume-icon svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  fill: #000;
 }

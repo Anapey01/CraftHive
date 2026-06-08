@@ -488,6 +488,19 @@ const Menu = ({ pageRef }: MenuProps) => {
   return (
     <>
       <nav>
+        {/* Desktop Links (Left) */}
+        <div className="nav-desktop-links">
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <div className="nav-dropdown" style={{display: "flex", alignItems: "center", gap: "0.25rem", cursor: "pointer"}}>
+            <Link href="/services">Services</Link>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Logo (Center Desktop, Left Mobile) */}
         <div className="nav-logo">
           <a
             href="/"
@@ -504,6 +517,12 @@ const Menu = ({ pageRef }: MenuProps) => {
           </a>
         </div>
 
+        {/* Desktop Actions (Right) */}
+        <div className="nav-desktop-actions">
+          <Link href="/contact" className="contact-btn">Contact</Link>
+        </div>
+
+        {/* Mobile Toggle (Right Mobile) */}
         <div className="nav-toggle" ref={navToggleRef} onClick={toggleMenu}>
           <div className="nav-toggle-wrapper">
             <p ref={openLabelRef} className="open-label">

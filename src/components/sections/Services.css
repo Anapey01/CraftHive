@@ -73,11 +73,10 @@
 
 
 .service-hero-title {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2.5rem, 8vw, 8rem);
   line-height: 0.95;
   letter-spacing: -0.06em;
   font-weight: 700;
-  white-space: nowrap;
   margin-bottom: 1.5rem;
 }
 
@@ -537,7 +536,12 @@
   }
 
   .frame-tool-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .frame-preview-panel,
+  .frame-controls {
+    min-width: 0;
   }
 
   .frame-controls {

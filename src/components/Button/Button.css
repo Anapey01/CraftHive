@@ -1,9 +1,13 @@
 .anime-link {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
   position: relative;
   cursor: pointer;
+  background-color: #cc0000;
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+  width: max-content;
 }
 
 .anime-link-label {
@@ -25,11 +29,11 @@
 }
 
 a.link-dark {
-  color: #1a1a1a;
+  color: #ffffff;
 }
 
 a.link-light {
-  color: #f14612;
+  color: #ffffff;
 }
 
 .anime-link.anime-link-dark .anime-link-icon {

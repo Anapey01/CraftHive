@@ -40,13 +40,13 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-4 py-6 text-left"
       >
-        <span className="font-display text-xl md:text-2xl text-ivory leading-snug">{q}</span>
+        <span className="font-display text-xl md:text-2xl text-[#f4efe3] leading-snug">{q}</span>
         <motion.div
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3 }}
           className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 mt-0.5"
         >
-          <Plus size={16} className="text-gold" />
+          <Plus size={16} className="text-[#c31b07]" />
         </motion.div>
       </button>
       <AnimatePresence>
@@ -58,7 +58,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.35, ease: [0.25, 0.1, 0, 1] }}
             className="overflow-hidden"
           >
-            <p className="font-body text-ivory-dim text-base leading-relaxed pb-6 max-w-2xl">{a}</p>
+            <p className="font-body text-[#f4efe3]/70 text-base leading-relaxed pb-6 max-w-2xl">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -79,18 +79,18 @@ export default function FAQ() {
           transition={{ duration: 0.9 }}
           className="md:sticky md:top-32 self-start"
         >
-          <p className="text-gold font-body text-xs tracking-[0.25em] uppercase mb-4">FAQ</p>
-          <h2 className="font-display text-5xl md:text-6xl text-ivory leading-[0.9]">
+          <p className="text-[#c31b07] font-body text-xs tracking-[0.25em] uppercase mb-4">FAQ</p>
+          <h2 className="font-display text-5xl md:text-6xl text-[#f4efe3] leading-[0.9]">
             Questions
             <br />
             <em>collectors ask</em>
           </h2>
-          <p className="font-body text-ivory-dim text-base leading-relaxed mt-6">
+          <p className="font-body text-[#f4efe3]/70 text-base leading-relaxed mt-6">
             Everything you need to know before framing your first piece with us.
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full border border-gold/30 text-gold font-body text-xs tracking-widest uppercase hover:bg-gold/10 transition-all duration-300"
+            className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full border border-[#c31b07]/30 text-[#c31b07] font-body text-xs tracking-widest uppercase hover:bg-[#c31b07]/10 transition-all duration-300"
           >
             Ask us directly →
           </a>

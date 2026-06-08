@@ -27,7 +27,7 @@
   aspect-ratio: 7/5;
   position: relative;
   width: calc(100vw - 3rem);
-  margin: 0 auto -25% auto;
+  margin: 0 auto -35.7% auto; /* 50% of height (where height is ~71.4% of width) accurately offsets the translateY(-50%) */
 }
 
 .studio-hero-img-wrapper {
@@ -38,31 +38,37 @@
 
 .studio-header {
   width: 100%;
-  padding: clamp(5rem 1.5rem 10vw 1.5rem) clamp(1rem, 4vw, 3rem);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 3rem);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.studio-header-col-sm {
+  flex: 1.5;
+  padding-top: 0.35rem; /* Optical alignment with the top of the h2 */
+}
+
+.studio-header-col-lg {
+  flex: 4;
 }
 
 .studio-header-copy {
-  margin-inline: auto;
-  width: min(100%, 1100px);
+  width: min(100%, 980px);
 }
 
-.studio-header-copy h2{
-  font-size: clamp(1.5rem, 2vw, 3rem);
+.studio-header-copy h2 {
+  font-size: clamp(1.5rem, 2.25vw, 3.5rem);
   line-height: 1.3;
-  letter-spacing: 0.02em;
-  font-weight: 600;
-  margin-inline: auto;
+  letter-spacing: -0.01em;
+  font-weight: 500;
 }
 
 .mission-intro {
   position: relative;
   width: 100vw;
-  height: 100svh;
-  padding: 1.5rem;
+  height: auto;
+  padding: clamp(6rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem);
   background-color: var(--foreground);
   color: var(--background);
   display: flex;
@@ -89,43 +95,74 @@
 
 .mission-link {
   margin-top: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 /* Mission link styling  */
 
-.recognition {
+/* Tapered Mood Section Layout */
+.tapered-section {
   position: relative;
   width: 100%;
-  height: 100svh;
-  padding-block: clamp(6rem, 10vw, 12rem);
+  height: auto;
+  padding: clamp(6rem, 10vw, 10rem) 1.5rem;
   background-color: var(--background);
   color: var(--foreground);
-  overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.tapered-content {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.recognition-copy {
-  width: min(90%, 900px);
-   margin: 0 auto; 
+.tapered-header {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(3rem, 6vw, 4rem);
 }
 
-.recognition-copy p {
-  gap: clamp(0.5rem, 1vw, 1.5rem);
-  font-size: clamp(0.875rem, 1vw, 1.25rem);
-  color: var(--secondary);
+.tapered-subtitle {
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
 }
 
-.recognition-copy h2 {
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-inline: auto;
-  font-size: clamp(1.5rem, 2vw, 3rem);
+.tapered-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
 }
+
+.tapered-line {
+  width: 1px;
+  height: 100px;
+  background-color: var(--foreground);
+  margin-top: 1.5rem;
+  opacity: 0.5;
+}
+
+.tapered-body p {
+  font-family: var(--font-accent);
+  font-size: clamp(1.125rem, 2vw, 1.4rem);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+
 
 
 .char {
@@ -145,16 +182,16 @@
 
   .studio-header-copy,
   .mission-intro-copy,
-  .recognition-copy {
+  .tapered-content {
     width: 100%;
   }
 
-  .mission-intro-col-sm {
+  .mission-intro-col-sm,
+  .studio-header-col-sm {
     display: none;
   }
 
   .mission-intro {
-    min-height: 100svh;
-    height: 100%;
+    height: auto;
   }
 }

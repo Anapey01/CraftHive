@@ -1,13 +1,8 @@
 "use client";
 
 import "./Showreel.css";
-import React, { useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import React, { useRef, useState, useEffect } from "react";
 import { LuVolumeX, LuVolume } from "react-icons/lu";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Showreel: React.FC = () => {
   const showreelSecRef = useRef<HTMLElement | null>(null);
@@ -28,71 +23,13 @@ const Showreel: React.FC = () => {
     }
   };
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
-      mm.add("(min-width: 1000px)", () => {
-        if (videoRef.current) {
-          videoRef.current.play().catch(() => {});
-        }
-
-        if (!showreelSecRef.current) {
-          return () => undefined;
-        }
-
-        const trigger = ScrollTrigger.create({
-          trigger: showreelSecRef.current,
-          start: "top top",
-          end: `${window.innerHeight * 2}px`,
-          pin: true,
-          pinSpacing: true,
-
-          onUpdate: (self) => {
-            const progress = self.progress;
-
-            const scaleValue = gsap.utils.mapRange(
-              0,
-              1,
-              0.75,
-              1,
-              progress
-            );
-
-            const borderRadiusValue =
-              progress <= 0.5
-                ? gsap.utils.mapRange(0, 0.5, 2, 0, progress)
-                : 0;
-
-            gsap.set(".showreel-container", {
-              scale: scaleValue,
-              borderRadius: `${borderRadiusValue}rem`,
-            });
-          },
-        });
-
-        const refreshHandler = () => ScrollTrigger.refresh();
-
-        window.addEventListener("resize", refreshHandler);
-        window.addEventListener("orientationchange", refreshHandler);
-
-        return () => {
-          trigger.kill();
-
-          window.removeEventListener("resize", refreshHandler);
-          window.removeEventListener(
-            "orientationchange",
-            refreshHandler
-          );
-        };
-      });
-
-      return () => {
-        mm.revert();
-      };
-    },
-    { scope: showreelSecRef }
-  );
+  // GSAP scroll-expand effect removed as per client feedback.
 
   return (
     <section className="showreel" ref={showreelSecRef}>

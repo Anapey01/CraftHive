@@ -86,9 +86,6 @@ const Button = ({
             <span>{children || linkLabel}</span>
           </p>
         </div>
-        <div className="anime-link-icon">
-          <IoMdArrowForward color={dark ? "#fff" : "#000"} />
-        </div>
       </div>
     </a>
   );
