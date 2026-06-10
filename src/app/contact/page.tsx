@@ -2,6 +2,8 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import Footer from '@/components/ui/Footer';
+
 import { Mail, Phone, MapPin, ArrowRight, Loader2, CheckCircle, XCircle } from 'lucide-react';
 import { sendContactEmail } from '@/lib/EmailAction';
 
@@ -228,6 +230,8 @@ export default function Contact() {
           </motion.form>
         </div>
       </div>
+       <Footer />
     </section>
+   
   );
 }
