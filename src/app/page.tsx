@@ -7,6 +7,7 @@ import Showreel from "@/components/Showreel/Showreel";
 import FeaturedWork from "@/components/FeaturedWork/FeaturedWork";
 import ClientReviews from "@/components/ClientReviews/ClientReviews";
 import BrandTicker from "@/components/BrandTicker/BrandTicker";
+import PrintAndFrame from "@/components/PrintAndFrame/PrintAndFrame";
 import CTACard from "@/components/CTACard/CTACard";
 import Footer from "@/components/ui/Footer";
 import Copy from "@/components/Copy/Copy"
@@ -116,6 +117,8 @@ const Page = () => {
 
         </div>
       </section>
+
+      <PrintAndFrame />
 
       <div className="reviews-curtain-wrapper">
         <section className="client-reviews-header-container">
