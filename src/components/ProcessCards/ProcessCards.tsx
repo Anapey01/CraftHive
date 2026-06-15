@@ -104,18 +104,7 @@ const ProcessCards: React.FC = () => {
             <div className="process-card-content-wrapper">
               <h1 className="process-card-header">{cardData.title}</h1>
 
-              {/* COMMENTED OUT PICTURES
-              <div className="process-card-img">
-                <img src={cardData.image} alt={cardData.title} />
-              </div>
-              */}
-
               <div className="process-card-copy">
-                {/* COMMENTED OUT ABOUT THE STATE
-                <div className="process-card-copy-title">
-                  <p className="caps">(About the state)</p>
-                </div>
-                */}
                 <div className="process-card-copy-description">
                   <p>{cardData.description}</p>
                 </div>

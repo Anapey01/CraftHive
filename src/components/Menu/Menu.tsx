@@ -67,31 +67,6 @@ export default function Navbar() {
             About
           </Link>
 
-          {/* COMMENTED OUT SERVICES DROPDOWN
-          <div className="dropdown">
-            <Link href="/services" className="nav-link dropdown-trigger">
-              Services
-              <span>+</span>
-            </Link>
-
-            <div className="dropdown-menu">
-              <Link href="/services">All Services</Link>
-
-              <Link href="/services/custom-framing">
-                Custom Framing
-              </Link>
-
-              <Link href="/services/shadow-box">
-                Shadow Box
-              </Link>
-
-              <Link href="/services/handicrafts">
-                Handicrafts
-              </Link>
-            </div>
-          </div>
-          */}
-
           <Link href="/services" className="nav-link">
             Services
           </Link>
@@ -118,14 +93,6 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT */}
-        {/* COMMENTED OUT PREVIOUS CONTACT BUTTON LOCATION
-        <div className="nav-actions">
-          <Link href="/contact" className="contact-btn">
-            Contact Us
-          </Link>
-        </div>
-        */}
-
         {/* MOBILE BUTTON */}
         <button
           className="mobile-toggle"
@@ -140,35 +107,6 @@ export default function Navbar() {
         <Link href="/">Home</Link>
 
         <Link href="/about">About</Link>
-
-        {/* COMMENTED OUT SERVICES DROPDOWN
-        <button
-          className="mobile-services-btn"
-          onClick={() => setServicesOpen(!servicesOpen)}
-        >
-          Services +
-        </button>
-
-        <div
-          className={`mobile-services ${
-            servicesOpen ? "open" : ""
-          }`}
-        >
-          <Link href="/services">All Services</Link>
-
-          <Link href="/services/custom-framing">
-            Custom Framing
-          </Link>
-
-          <Link href="/services/shadow-box">
-            Shadow Box
-          </Link>
-
-          <Link href="/services/handicrafts">
-            Handicrafts
-          </Link>
-        </div>
-        */}
 
         <Link href="/services" onClick={() => setMobileOpen(false)}>Services</Link>
 
