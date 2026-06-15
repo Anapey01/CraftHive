@@ -231,6 +231,16 @@ nav.scrolled .nav-logo img {
   gap: 0.25rem;
 }
 
+/* Invisible bridge so you don't lose hover when moving mouse down */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+}
+
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
@@ -316,27 +326,19 @@ nav.scrolled .nav-logo img {
 
   .mobile-menu {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100vh;
-
     background: #1a1614;
-
     display: flex;
     flex-direction: column;
-
-    padding: 7rem 2rem;
-
+    padding: 7rem 2rem 10rem 2rem; /* Added huge bottom padding so they can scroll past the last item */
     gap: 1.5rem;
-
     transform: translateX(100%);
-
     transition: transform 0.5s ease;
-
     z-index: 999;
+    overflow-y: auto; /* Allow scrolling if screen is too small! */
   }
 
   .mobile-menu.open {
@@ -375,7 +377,7 @@ nav.scrolled .nav-logo img {
   }
 
   .mobile-services.open {
-    max-height: 300px;
+    max-height: 500px; /* Increased from 300px so nothing gets cut off */
   }
 
   .mobile-services a {

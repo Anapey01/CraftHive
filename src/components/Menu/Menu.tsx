@@ -125,7 +125,6 @@ export default function Navbar() {
           Services
         </button>
         <div className={`mobile-services ${servicesOpen ? "open" : ""}`}>
-          <Link href="/services" onClick={() => setMobileOpen(false)}>All Services</Link>
           <Link href="/services#printing" onClick={() => setMobileOpen(false)}>Printing</Link>
           <Link href="/services#custom-framing" onClick={() => setMobileOpen(false)}>Custom Framing</Link>
           <Link href="/services#shadow-boxes" onClick={() => setMobileOpen(false)}>Shadow Boxes</Link>
