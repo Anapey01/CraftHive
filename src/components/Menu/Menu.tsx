@@ -69,7 +69,7 @@ export default function Navbar() {
 
           <div className="dropdown">
             <Link href="/services" className="nav-link dropdown-trigger">
-              Services <span>+</span>
+              Services
             </Link>
             <div className="dropdown-menu">
               <Link href="/services#printing">Printing</Link>
@@ -122,7 +122,7 @@ export default function Navbar() {
           className="mobile-services-btn" 
           onClick={() => setServicesOpen(!servicesOpen)}
         >
-          Services {servicesOpen ? "-" : "+"}
+          Services
         </button>
         <div className={`mobile-services ${servicesOpen ? "open" : ""}`}>
           <Link href="/services" onClick={() => setMobileOpen(false)}>All Services</Link>
