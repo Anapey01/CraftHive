@@ -32,59 +32,85 @@
 }
 
 .static-review-card {
-  flex: 0 0 85%; /* On mobile, take up 85% width to reveal the next card */
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 85%; 
   scroll-snap-align: center;
-  background: #ffffff;
-  border-radius: 0.75rem;
-  padding: 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #fcfcfc);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 1.25rem;
+  padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+/* Premium massive quote watermark in the background */
+.static-review-card::before {
+  content: '“';
+  position: absolute;
+  top: -3rem;
+  right: 1.5rem;
+  font-size: 15rem;
+  font-family: serif;
+  color: rgba(200, 162, 92, 0.05); /* Very faint gold */
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
 }
 
 @media (min-width: 768px) {
   .static-review-card {
-    flex: none; /* Revert flex when in CSS Grid on desktop */
+    flex: none; 
   }
 }
 
 .static-review-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
 }
 
 .review-stars {
   display: flex;
   gap: 0.25rem;
-  color: #1a1a1a; /* Dark solid stars */
+  color: #c8a25c; /* Premium gold accent */
   margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .review-text {
   font-family: "Inter", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #333333;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  font-style: italic; /* Looks more authentic for testimonials */
   flex-grow: 1;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .review-author {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .review-avatar {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #e5e5e5;
   flex-shrink: 0;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .review-avatar img {
@@ -102,20 +128,23 @@
 .review-author-info {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
 }
 
 .review-client-name {
   font-family: "Outfit", sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1a1614;
   margin: 0;
 }
 
 .review-client-role {
   font-family: "Inter", sans-serif;
-  font-size: 0.8rem;
-  color: #666666;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #c8a25c;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin: 0;
 }
