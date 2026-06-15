@@ -337,17 +337,28 @@ nav.scrolled .nav-logo img {
   .mobile-menu a,
   .mobile-services-btn {
     color: white;
-
     text-decoration: none;
-
-    font-size: 2rem;
-
+    font-size: 2.25rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
     background: none;
     border: none;
-
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     text-align: left;
-
     cursor: pointer;
+    padding-bottom: 1rem;
+    width: 100%;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .mobile-menu > a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-services-btn:hover {
+    color: #c8a25c;
+    transform: translateX(8px);
   }
 
   .mobile-services {
@@ -366,14 +377,19 @@ nav.scrolled .nav-logo img {
 
   .mobile-services a {
     font-size: 1.15rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     opacity: 0.6;
     padding: 0.5rem 0;
-    transition: opacity 0.3s ease, color 0.3s ease;
+    border-bottom: none; /* Reset divider for sub-items */
+    width: auto;
+    transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
   }
 
   .mobile-services a:hover {
     opacity: 1;
-    color: #cc0000;
+    color: #c8a25c;
+    transform: translateX(4px);
   }
 }
 
