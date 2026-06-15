@@ -73,9 +73,9 @@ export default function Navbar() {
             </Link>
             <div className="dropdown-menu">
               <Link href="/services#printing">Printing</Link>
-              <Link href="/services#custom-framing">Custom Framing</Link>
-              <Link href="/services#shadow-boxes">Shadow Boxes</Link>
-              <Link href="/services#adinkra">Adinkra Pieces</Link>
+              <Link href="/services/custom-framing">Custom Framing</Link>
+              <Link href="/services/shadow-box">Shadow Boxes</Link>
+              <Link href="/services/handicrafts">Adinkra Pieces</Link>
             </div>
           </div>
 
@@ -126,9 +126,9 @@ export default function Navbar() {
         </button>
         <div className={`mobile-services ${servicesOpen ? "open" : ""}`}>
           <Link href="/services#printing" onClick={() => setMobileOpen(false)}>Printing</Link>
-          <Link href="/services#custom-framing" onClick={() => setMobileOpen(false)}>Custom Framing</Link>
-          <Link href="/services#shadow-boxes" onClick={() => setMobileOpen(false)}>Shadow Boxes</Link>
-          <Link href="/services#adinkra" onClick={() => setMobileOpen(false)}>Adinkra Pieces</Link>
+          <Link href="/services/custom-framing" onClick={() => setMobileOpen(false)}>Custom Framing</Link>
+          <Link href="/services/shadow-box" onClick={() => setMobileOpen(false)}>Shadow Boxes</Link>
+          <Link href="/services/handicrafts" onClick={() => setMobileOpen(false)}>Adinkra Pieces</Link>
         </div>
 
         <Link href="/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
