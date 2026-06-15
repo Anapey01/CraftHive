@@ -148,6 +148,7 @@ export default function FeaturedWork() {
 
   return (
     <div className="featured-work-carousel-container">
+      {/* COMMENTED OUT MANUAL CONTROLS AS REQUESTED
       <div className="featured-work-controls">
         <button className="carousel-btn left" onClick={scrollLeft}>
           &#10094;
@@ -156,6 +157,7 @@ export default function FeaturedWork() {
           &#10095;
         </button>
       </div>
+      */}
 
       <div className="featured-work-carousel-wrapper">
         <div className="featured-work-list manual-scroll" ref={scrollContainerRef}>
