@@ -357,7 +357,7 @@ nav.scrolled .nav-logo img {
 
   .mobile-menu a:hover,
   .mobile-services-btn:hover {
-    color: #c8a25c;
+    color: #cc0000;
     transform: translateX(8px);
   }
 
@@ -388,7 +388,7 @@ nav.scrolled .nav-logo img {
 
   .mobile-services a:hover {
     opacity: 1;
-    color: #c8a25c;
+    color: #cc0000;
     transform: translateX(4px);
   }
 }
