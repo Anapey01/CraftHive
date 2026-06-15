@@ -351,19 +351,16 @@ nav.scrolled .nav-logo img {
   }
 
   .mobile-services {
-    max-height: 0;
-    overflow: hidden;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.5rem;
     padding-left: 1.5rem;
     margin-top: -0.5rem;
     border-left: 2px solid rgba(255, 255, 255, 0.1);
-    transition: max-height 0.4s ease;
   }
 
   .mobile-services.open {
-    max-height: 500px;
+    display: flex;
     margin-bottom: 1rem;
   }
 
