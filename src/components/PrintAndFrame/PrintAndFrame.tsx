@@ -6,17 +6,17 @@ const steps = [
   {
     id: 1,
     title: "Upload a photo from your phone or computer.",
-    img: "/featured-work/work-1.jpg",
+    img: "/process/step1.png",
   },
   {
     id: 2,
     title: "Choose a print size and frame options.",
-    img: "/featured-work/work-2.jpg",
+    img: "/process/step2.png",
   },
   {
     id: 3,
     title: "We'll print and frame your photo and ship it to your door.",
-    img: "/featured-work/work-3.jpg",
+    img: "/process/step3.png",
   },
 ];
 
@@ -38,9 +38,7 @@ const PrintAndFrame = () => {
               delay={0.3 + index * 0.15}
             >
               <div className="print-frame-step">
-                <div className="step-image-wrapper">
-                  <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
-                </div>
+                <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
                 <div className="step-number">{step.id}</div>
                 <p className="step-desc">{step.title}</p>
               </div>
