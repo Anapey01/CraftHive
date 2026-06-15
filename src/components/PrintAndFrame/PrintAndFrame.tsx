@@ -38,7 +38,9 @@ const PrintAndFrame = () => {
               delay={0.3 + index * 0.15}
             >
               <div className="print-frame-step">
-                <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
+                <div className="step-img-container">
+                  <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
+                </div>
                 <div className="step-number">{step.id}</div>
                 <p className="step-desc">{step.title}</p>
               </div>
