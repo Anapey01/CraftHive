@@ -67,9 +67,17 @@ export default function Navbar() {
             About
           </Link>
 
-          <Link href="/services" className="nav-link">
-            Services
-          </Link>
+          <div className="dropdown">
+            <Link href="/services" className="nav-link dropdown-trigger">
+              Services <span>+</span>
+            </Link>
+            <div className="dropdown-menu">
+              <Link href="/services#printing">Printing</Link>
+              <Link href="/services#custom-framing">Custom Framing</Link>
+              <Link href="/services#shadow-boxes">Shadow Boxes</Link>
+              <Link href="/services#adinkra">Adinkra Pieces</Link>
+            </div>
+          </div>
 
           <Link href="/gallery" className="nav-link">
             Gallery
@@ -110,7 +118,19 @@ export default function Navbar() {
 
         <Link href="/about" onClick={() => setMobileOpen(false)}>About</Link>
 
-        <Link href="/services" onClick={() => setMobileOpen(false)}>Services</Link>
+        <button 
+          className="mobile-services-btn" 
+          onClick={() => setServicesOpen(!servicesOpen)}
+        >
+          Services {servicesOpen ? "-" : "+"}
+        </button>
+        <div className={`mobile-services ${servicesOpen ? "open" : ""}`}>
+          <Link href="/services" onClick={() => setMobileOpen(false)}>All Services</Link>
+          <Link href="/services#printing" onClick={() => setMobileOpen(false)}>Printing</Link>
+          <Link href="/services#custom-framing" onClick={() => setMobileOpen(false)}>Custom Framing</Link>
+          <Link href="/services#shadow-boxes" onClick={() => setMobileOpen(false)}>Shadow Boxes</Link>
+          <Link href="/services#adinkra" onClick={() => setMobileOpen(false)}>Adinkra Pieces</Link>
+        </div>
 
         <Link href="/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
 
