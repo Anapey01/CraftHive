@@ -319,6 +319,7 @@ nav.scrolled .nav-logo img {
     left: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh; /* Fix for Safari bottom bar covering the content */
     background: #1a1614;
     display: flex;
     flex-direction: column;
@@ -403,10 +404,10 @@ nav.scrolled .nav-logo img {
       90deg,
       #c9a84c 0px, #c9a84c 24px,
       #b5541a 24px, #b5541a 48px,
-      #1a1614 48px, #1a1614 72px,
+      #0a0a0a 48px, #0a0a0a 72px,
       #2e6b3e 72px, #2e6b3e 96px,
       #cc1111 96px, #cc1111 120px,
-      #1a1614 120px, #1a1614 144px
+      #0a0a0a 120px, #0a0a0a 144px
     );
   }
 
