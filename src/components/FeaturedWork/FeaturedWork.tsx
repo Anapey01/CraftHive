@@ -1,14 +1,17 @@
 "use client";
 
 import "./FeaturedWork.css";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { projects } from "./project";
+import { useViewTransition } from "@/hooks/useViewTransition";
+
+/* COMMENTED OUT GSAP
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useViewTransition } from "@/hooks/useViewTransition";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
+*/
 
 type Project = {
   name: string;
@@ -40,9 +43,11 @@ function FeaturedWorkItem({ project }: FeaturedWorkItemProps) {
 }
 
 export default function FeaturedWork() {
-  const featuredWorkContainerRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const { navigateWithTransition } = useViewTransition();
 
+  /* COMMENTED OUT GSAP SCROLL TRIGGER LOGIC
+  const featuredWorkContainerRef = useRef<HTMLDivElement | null>(null);
   const carouselWrapperRef = useRef<HTMLDivElement | null>(null);
   
   useGSAP(() => {
@@ -76,8 +81,6 @@ export default function FeaturedWork() {
       invalidateOnRefresh: true,
     });
 
-
-    
     const handleClick = (event: MouseEvent) => {
       const anchor = event.currentTarget as HTMLAnchorElement;
       event.preventDefault();
@@ -96,13 +99,70 @@ export default function FeaturedWork() {
       tl.kill();
     };
   }, { scope: carouselWrapperRef, dependencies: [navigateWithTransition] });
+  */
+
+  useEffect(() => {
+    // Handle link clicks gracefully since we're using a normal scroll container now
+    const root = scrollContainerRef.current;
+    if (!root) return;
+
+    const handleClick = (event: MouseEvent) => {
+      const anchor = event.currentTarget as HTMLAnchorElement;
+      event.preventDefault();
+      const href = anchor.getAttribute("href");
+      if (href) {
+        navigateWithTransition(href);
+      }
+    };
+
+    const links = Array.from(root.querySelectorAll<HTMLAnchorElement>(".featured-work-item-link"));
+    links.forEach((link) => link.addEventListener("click", handleClick));
+
+    // Auto-scroll logic
+    const interval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+        // If reached the end, scroll back to start
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          // Scroll right by approximately one item width
+          scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+        }
+      }
+    }, 4000); // 4 seconds auto-scroll
+
+    return () => {
+      links.forEach((link) => link.removeEventListener("click", handleClick));
+      clearInterval(interval);
+    };
+  }, [navigateWithTransition]);
+
+  const scrollLeft = () => {
+    scrollContainerRef.current?.scrollBy({ left: -300, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    scrollContainerRef.current?.scrollBy({ left: 300, behavior: "smooth" });
+  };
 
   return (
-    <div className="featured-work-carousel-wrapper" ref={carouselWrapperRef}>
-      <div className="featured-work-list" ref={featuredWorkContainerRef}>
-        {projects.map((project, index) => (
-          <FeaturedWorkItem project={project as Project} key={`${project.route}-${index}`} />
-        ))}
+    <div className="featured-work-carousel-container">
+      <div className="featured-work-controls">
+        <button className="carousel-btn left" onClick={scrollLeft}>
+          &#10094;
+        </button>
+        <button className="carousel-btn right" onClick={scrollRight}>
+          &#10095;
+        </button>
+      </div>
+
+      <div className="featured-work-carousel-wrapper">
+        <div className="featured-work-list manual-scroll" ref={scrollContainerRef}>
+          {projects.map((project, index) => (
+            <FeaturedWorkItem project={project as Project} key={`${project.route}-${index}`} />
+          ))}
+        </div>
       </div>
     </div>
   );

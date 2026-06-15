@@ -151,6 +151,39 @@ nav.scrolled .nav-logo img {
   transform: translateY(-2px);
 }
 
+.contact-btn-small {
+  position: relative;
+  overflow: hidden;
+  background: #1a1614;
+  color: white;
+  padding: 0.6rem 1.2rem; /* Reduced size */
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.contact-btn-small::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #cc0000;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  z-index: -1;
+}
+
+.contact-btn-small:hover::before {
+  transform: translateY(0);
+}
+
+.contact-btn-small:hover {
+  transform: translateY(-2px);
+}
+
 .dropdown {
   position: relative;
 }
@@ -239,6 +272,14 @@ nav.scrolled .nav-logo img {
     align-items: center;
 
     padding: 1rem 1.5rem;
+    background: transparent;
+    transition: background 0.4s ease, height 0.4s ease, padding 0.4s ease;
+  }
+
+  /* Fix for invisible logo/exit button on mobile menu open */
+  nav.menu-open {
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   }
 
   nav.scrolled {

@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav ref={navRef}>
+      <nav ref={navRef} className={mobileOpen ? "menu-open" : ""}>
         {/* LEFT */}
         <div className="nav-links">
           <Link href="/" className="nav-link">
@@ -63,6 +63,7 @@ export default function Navbar() {
             About
           </Link>
 
+          {/* COMMENTED OUT SERVICES DROPDOWN
           <div className="dropdown">
             <Link href="/services" className="nav-link dropdown-trigger">
               Services
@@ -85,9 +86,18 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
+          */}
+
+          <Link href="/services" className="nav-link">
+            Services
+          </Link>
 
           <Link href="/gallery" className="nav-link">
             Gallery
+          </Link>
+
+          <Link href="/contact" className="contact-btn-small">
+            Contact Us
           </Link>
         </div>
 
@@ -104,11 +114,13 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT */}
+        {/* COMMENTED OUT PREVIOUS CONTACT BUTTON LOCATION
         <div className="nav-actions">
           <Link href="/contact" className="contact-btn">
             Contact Us
           </Link>
         </div>
+        */}
 
         {/* MOBILE BUTTON */}
         <button
