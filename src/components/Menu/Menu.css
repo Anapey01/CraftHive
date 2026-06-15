@@ -322,7 +322,7 @@ nav.scrolled .nav-logo img {
     background: #1a1614;
     display: flex;
     flex-direction: column;
-    padding: 7rem 2rem 10rem 2rem; /* Added huge bottom padding so they can scroll past the last item */
+    padding: 7rem 2rem 4rem 2rem; /* Reduced bottom padding */
     gap: 1.5rem;
     transform: translateX(100%);
     transition: transform 0.5s ease;
@@ -356,16 +356,16 @@ nav.scrolled .nav-logo img {
   }
 
   .mobile-menu-symbols {
-    position: absolute;
-    bottom: 12px; /* sits right on top of the kente strip */
-    left: 0;
-    width: 100%;
+    margin-top: 2.5rem; /* Pushes it just slightly below the links */
+    margin-left: -2rem; /* Pulls it out of the padding to span full width */
+    margin-right: -2rem;
+    width: calc(100% + 4rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(204,17,17,0.18);
     border-top: 1px solid rgba(204,17,17,0.18);
-    background: rgba(10, 10, 10, 0.4); /* slight dark tint to separate it from the menu */
+    background: rgba(10, 10, 10, 0.4);
     flex-shrink: 0;
   }
 
@@ -396,10 +396,9 @@ nav.scrolled .nav-logo img {
 
   .mobile-menu-kente {
     height: 12px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc(100% + 4rem);
     flex-shrink: 0;
     background: repeating-linear-gradient(
       90deg,
