@@ -260,10 +260,10 @@
   height: 12px;
   background: repeating-linear-gradient(
     90deg,
-    #c9a84c 0px, #c9a84c 24px,
+    #c9a84c 0px, #eded2c 24px,
     #b5541a 24px, #b5541a 48px,
     #0a0a0a 48px, #0a0a0a 72px,
-    #2e6b3e 72px, #2e6b3e 96px,
+    #52d638 72px, #21e255 96px,
     #cc1111 96px, #cc1111 120px,
     #0a0a0a 120px, #0a0a0a 144px
   );

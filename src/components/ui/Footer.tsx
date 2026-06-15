@@ -155,7 +155,7 @@ export default function Footer() {
           </p>
 
           <a
-            href="https://maps.google.com"
+            href="https://www.google.com/maps/place/Crafthive/@5.5395732,-0.3832679,17z/data=!3m1!4b1!4m6!3m5!1s0xfdfbb56f578abad:0x3e662f1dfded92fe!8m2!3d5.5395732!4d-0.3832679!16s%2Fg%2F11smzw2sgp!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.directionsLink}
