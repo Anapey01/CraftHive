@@ -7,14 +7,15 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+  /* Removed scroll-snap to prevent it from stubbornly snapping back ("getting stuck") */
   scrollbar-width: none;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding-bottom: 2rem; /* space for shadow */
+  padding: 1rem 1rem 3rem 1rem; /* Proper padding so shadows aren't cut off and swipe feels fluid */
 }
 
 .reviews-grid::-webkit-scrollbar {
@@ -35,7 +36,8 @@
   position: relative;
   overflow: hidden;
   flex: 0 0 85%; 
-  scroll-snap-align: center;
+  min-width: 280px; /* Ensure it never gets too squished */
+  /* scroll-snap-align removed for free scrolling */
   background: linear-gradient(145deg, #ffffff, #fcfcfc);
   border: 1px solid rgba(0,0,0,0.04);
   border-radius: 1.25rem;
