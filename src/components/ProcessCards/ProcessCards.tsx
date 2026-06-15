@@ -54,6 +54,8 @@ const ProcessCards: React.FC = () => {
     );
 
     processCards.forEach((card, index) => {
+      const img = card.querySelector<HTMLImageElement>(".process-card-img img");
+
       if (index < processCards.length - 1) {
         ScrollTrigger.create({
           trigger: card,
@@ -85,11 +87,38 @@ const ProcessCards: React.FC = () => {
           },
         });
       }
+
+      // Image slide up / drop down effect
+      if (img) {
+        // Start with the image pushed down out of frame
+        gsap.set(img, { y: "100%" });
+
+        // When the card enters the screen, the image slides up
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 75%",
+          onEnter: () => gsap.to(img, { y: "0%", duration: 1.2, ease: "power2.out" }),
+          onLeaveBack: () => gsap.to(img, { y: "100%", duration: 1.2, ease: "power2.out" }),
+        });
+
+        // When the card leaves (gets covered by the next card), the image drops down
+        if (index < processCards.length - 1) {
+          ScrollTrigger.create({
+            trigger: processCards[index + 1],
+            start: "top 75%",
+            onEnter: () => gsap.to(img, { y: "100%", duration: 1.2, ease: "power2.out" }),
+            onLeaveBack: () => gsap.to(img, { y: "0%", duration: 1.2, ease: "power2.out" }),
+          });
+        }
+      }
     });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf(processCards);
+      
+      const images = document.querySelectorAll(".process-card-img img");
+      gsap.killTweensOf(images);
     };
   }, []);
 
