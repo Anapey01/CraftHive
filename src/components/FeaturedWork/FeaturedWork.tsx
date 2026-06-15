@@ -44,7 +44,6 @@ export default function FeaturedWork() {
 
 
   useEffect(() => {
-    // Handle link clicks gracefully since we're using a normal scroll container now
     const root = scrollContainerRef.current;
     if (!root) return;
 
@@ -61,24 +60,18 @@ export default function FeaturedWork() {
     links.forEach((link) => link.addEventListener("click", handleClick));
 
     const items = Array.from(root.querySelectorAll(".featured-work-item"));
-    
-    // Cache the static positions of each item relative to the scroll container's content
-    // This entirely prevents layout thrashing during scroll!
-    const itemCenters = items.map(item => {
-      const el = item as HTMLElement;
-      return el.offsetLeft + el.clientWidth / 2;
-    });
 
     const handleScroll = () => {
       if (!root) return;
-      
-      // Calculate the center of the scroll container's current viewport
       const scrollCenter = root.scrollLeft + root.clientWidth / 2;
       
       let closestIdx = 0;
       let minDistance = Infinity;
 
-      itemCenters.forEach((center, idx) => {
+      // Dynamically calculate because widths change when active
+      items.forEach((item, idx) => {
+        const el = item as HTMLElement;
+        const center = el.offsetLeft + el.clientWidth / 2;
         const distance = Math.abs(center - scrollCenter);
         if (distance < minDistance) {
           minDistance = distance;
@@ -96,31 +89,33 @@ export default function FeaturedWork() {
     };
 
     root.addEventListener("scroll", handleScroll, { passive: true });
-    // Initialize active class
-    setTimeout(handleScroll, 100);
+    // Initialize active class and start at the first item
+    setTimeout(() => {
+      handleScroll();
+      if (items.length > 0) {
+        const firstEl = items[0] as HTMLElement;
+        root.scrollLeft = firstEl.offsetLeft - root.clientWidth / 2 + firstEl.clientWidth / 2;
+      }
+    }, 100);
 
     // Smooth Slideshow Auto-scroll logic
     const interval = setInterval(() => {
-      if (root) {
-        const { scrollLeft, scrollWidth, clientWidth } = root;
-        const firstItem = root.querySelector(".featured-work-item");
-        
-        if (firstItem) {
-          // Calculate the total width to move (item width + gap)
-          const style = window.getComputedStyle(firstItem);
-          const gap = parseFloat(window.getComputedStyle(root).gap) || 32;
-          const moveAmount = firstItem.clientWidth + gap;
-          
-          if (scrollLeft + clientWidth >= scrollWidth - 10) {
-            // Smoothly slide back to start over 1.5 seconds
-            gsap.to(root, { scrollLeft: 0, duration: 1.5, ease: "power2.inOut" });
-          } else {
-            // Smoothly slide to the next item
-            gsap.to(root, { scrollLeft: scrollLeft + moveAmount, duration: 1.5, ease: "power2.inOut" });
-          }
-        }
+      if (!root) return;
+      
+      // Find current active index
+      const activeIdx = items.findIndex(item => item.classList.contains("active"));
+      let nextIdx = activeIdx + 1;
+      
+      if (nextIdx >= items.length) {
+        nextIdx = 0; // loop back to start
       }
-    }, 4500); // Wait 4.5s between slides
+      
+      const nextEl = items[nextIdx] as HTMLElement;
+      if (nextEl) {
+        const targetScrollLeft = nextEl.offsetLeft - root.clientWidth / 2 + nextEl.clientWidth / 2;
+        gsap.to(root, { scrollLeft: targetScrollLeft, duration: 1.2, ease: "power2.inOut" });
+      }
+    }, 4500);
 
     return () => {
       links.forEach((link) => link.removeEventListener("click", handleClick));
