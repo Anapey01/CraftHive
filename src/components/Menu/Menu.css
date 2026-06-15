@@ -355,6 +355,45 @@ nav.scrolled .nav-logo img {
     border-bottom: none;
   }
 
+  .mobile-menu-symbols {
+    position: absolute;
+    bottom: 12px; /* sits right on top of the kente strip */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(204,17,17,0.18);
+    border-top: 1px solid rgba(204,17,17,0.18);
+    background: rgba(10, 10, 10, 0.4); /* slight dark tint to separate it from the menu */
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-symbol-cell {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-right: 1px solid rgba(204, 17, 17, 0.12);
+  }
+
+  .mobile-menu-symbol-cell:last-child {
+    border-right: none;
+  }
+
+  .mobile-menu-symbol-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu-symbol-cell:hover .mobile-menu-symbol-img {
+    opacity: 1;
+  }
+
   .mobile-menu-kente {
     height: 12px;
     width: 100%;

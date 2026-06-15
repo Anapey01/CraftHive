@@ -5,6 +5,15 @@ import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import "./Menu.css";
 
+const ADINKRA_SYMBOLS = [
+  { name: "Gye Nyame", src: "/adinkra/adinkra_1.png" },
+  { name: "Sankofa", src: "/adinkra/adinkra_2.png" },
+  { name: "Adinkrahene", src: "/adinkra/adinkra_6.png" },
+  { name: "Dwennimmen", src: "/adinkra/adinkra_4.png" },
+  { name: "Funtunfunefu", src: "/adinkra/adinkra_3.png" },
+  { name: "Nyame Dua", src: "/adinkra/adinkra_5.png" },
+];
+
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -134,6 +143,19 @@ export default function Navbar() {
         <Link href="/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
 
         <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact Us</Link>
+        <div className="mobile-menu-symbols">
+          {ADINKRA_SYMBOLS.map((sym) => (
+            <div className="mobile-menu-symbol-cell" key={sym.name}>
+              <Image
+                src={sym.src}
+                alt={sym.name}
+                width={24}
+                height={24}
+                className="mobile-menu-symbol-img"
+              />
+            </div>
+          ))}
+        </div>
         <div className="mobile-menu-kente" />
       </div>
     </>
