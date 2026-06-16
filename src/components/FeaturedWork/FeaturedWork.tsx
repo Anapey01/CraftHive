@@ -26,11 +26,6 @@ function FeaturedWorkItem({ project }: FeaturedWorkItemProps) {
       <a href={project.route} className="featured-work-item-link">
         <div className="featured-work-item-img-wrapper">
           <img src={project.img} alt={project.name} className="featured-work-img" />
-          <div className="featured-work-overlay"></div>
-          <div className="featured-work-item-copy">
-            <h3 className="featured-work-title">{project.name}</h3>
-            <p className="featured-work-desc">{project.description}</p>
-          </div>
         </div>
       </a>
     </div>

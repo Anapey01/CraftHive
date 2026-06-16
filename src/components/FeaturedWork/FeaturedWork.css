@@ -117,85 +117,17 @@
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.featured-work-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(26, 22, 20, 0.95) 0%, rgba(26, 22, 20, 0.4) 40%, transparent 100%);
-  opacity: 0.7;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.featured-work-item-copy {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 2rem 2rem 1rem 2rem; /* Reduced bottom padding from 2.5rem to 1rem to move text down */
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transform: translateY(1.5rem);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.featured-work-title {
-  font-family: "Outfit", sans-serif;
-  font-size: 1.25rem; /* Significantly reduced size */
-  font-weight: 800;
-  color: #e3e3db;
-  letter-spacing: -0.02em;
-  margin: 0;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-.featured-work-desc {
-  font-family: "Inter", sans-serif;
-  font-size: 0.85rem; /* Reduced size */
-  color: #ccccc4;
-  opacity: 0; /* Hidden by default until hovered */
-  transform: translateY(1rem);
-  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  margin: 0;
-  font-weight: 400;
-  line-height: 1.4;
-}
 
 /* Premium Hover Effects */
 @media (hover: hover) {
   .featured-work-item:hover .featured-work-img {
     transform: scale(1.05);
   }
-
-  .featured-work-item:hover .featured-work-overlay {
-    opacity: 0.95;
-  }
-
-  .featured-work-item:hover .featured-work-item-copy {
-    transform: translateY(0);
-  }
-
-  .featured-work-item:hover .featured-work-desc {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-/* Mobile defaults (always hidden until tapped/hovered to match desktop feel) */
+/* Mobile defaults */
 @media (max-width: 1023px) {
-  .featured-work-overlay {
-    opacity: 0.9;
-  }
-  .featured-work-item-copy {
-    transform: translateY(0);
-    padding: 2rem 1.5rem;
-  }
-  /* Description remains hidden on mobile until the user taps/interacts with the item */
+  /* Kept blank to maintain structure in case mobile overrides are needed later */
 }
 
 /* Ensure images fit nicely on desktop without clipping */
