@@ -73,11 +73,19 @@
   }
 
   .beautifully-frame-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .beautifully-frame-item:nth-child(3) {
+    grid-column: span 2;
   }
   
   .beautifully-frame-img-wrapper {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .beautifully-frame-item:nth-child(3) .beautifully-frame-img-wrapper {
+    aspect-ratio: 16 / 10;
   }
 }
