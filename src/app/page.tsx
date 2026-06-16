@@ -39,15 +39,17 @@ const Page = () => {
   }, []);
 
   useGSAP(() => {
-    // 1. Hero Curtain Effect: Hero pins, and the next section slides over it
+    // 1. Hero Curtain Effect: Removed as requested
+    /*
     ScrollTrigger.create({
       trigger: ".hero",
       start: "top top",
-      endTrigger: ".press-recognition", // Changed from .brand-ticker to match the actual class name
+      endTrigger: ".press-recognition",
       end: "bottom top", 
       pin: true,
       pinSpacing: false,
     });
+    */
 
     // 2. Video Curtain Effect: Commented out since Showreel is removed
     /*

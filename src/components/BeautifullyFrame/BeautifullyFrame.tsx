@@ -8,7 +8,7 @@ const BeautifullyFrame = () => {
       <div className="container">
         <Animates animateOnScroll={true} delay={0.15}>
           <h2 className="beautifully-frame-heading">
-            Transform your photos into gallery-ready art from the comfort of home
+            Gallery-quality custom framing, delivered.
           </h2>
         </Animates>
 
