@@ -135,7 +135,7 @@ h3 {
 
 .section-heading {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 5.5rem) !important;
+  font-size: clamp(2rem, 6vw, 4rem) !important;
   font-weight: 800 !important;
   color: #1a1614;
   margin: 0;
