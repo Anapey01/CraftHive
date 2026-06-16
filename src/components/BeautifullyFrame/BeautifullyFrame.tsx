@@ -1,22 +1,23 @@
 import React from "react";
 import "./BeautifullyFrame.css";
 import Animates from "@/components/Animates/Animate";
+import SplitText from "@/components/SplitText/SplitText";
 
 const BeautifullyFrame = () => {
   return (
     <section className="beautifully-frame-section">
       <div className="container">
-        <Animates animateOnScroll={true} delay={0.2}>
-          <div className="beautifully-frame-header">
-            <h2>Beautifully frame any photo or print without leaving the house</h2>
-          </div>
+        <Animates animateOnScroll={true} delay={0.15}>
+          <h2 className="beautifully-frame-heading">
+            <SplitText text="Transform your photos into gallery-ready art from the comfort of home" delay={40} />
+          </h2>
         </Animates>
 
         <div className="beautifully-frame-grid">
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.3}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-1.jpg" alt="Framed Adinkra symbols" className="beautifully-img" />
+                <img src="/featured-work/work-1.png" alt="Heart-shaped polaroids wall" className="beautifully-img" />
               </div>
             </Animates>
           </div>
@@ -24,7 +25,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.45}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-2.jpg" alt="Framed Kente cloth" className="beautifully-img" />
+                <img src="/featured-work/work-2.jpg" alt="Framed street painting" className="beautifully-img" />
               </div>
             </Animates>
           </div>
