@@ -1,74 +1,32 @@
 "use client";
 
-import { useRef, useState } from "react";
 import "./ClientReviews.css";
-import { clientReviewsData } from "./clientReviewsData";
+import Animates from "@/components/Animates/Animate";
 
-const StarRating = () => (
-  <div className="review-stars">
-    {[1, 2, 3, 4, 5].map((star) => (
-      <svg key={star} width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-      </svg>
-    ))}
-  </div>
+const TwitterIcon = () => (
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="#55acee" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 0 0 2.048-2.578 9.3 9.3 0 0 1-2.958 1.13 4.66 4.66 0 0 0-7.938 4.25 13.229 13.229 0 0 1-9.602-4.868 4.659 4.659 0 0 0 1.441 6.216 4.63 4.63 0 0 1-2.11-.583v.06a4.66 4.66 0 0 0 3.737 4.568 4.662 4.662 0 0 1-2.104.08 4.66 4.66 0 0 0 4.352 3.234 9.348 9.348 0 0 1-5.786 1.995 9.4 9.4 0 0 1-1.112-.065 13.175 13.175 0 0 0 7.14 2.093c8.57 0 13.255-7.1 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 0 0 2.323-2.41l-.002-.001z"/>
+  </svg>
 );
 
 const ClientReviews = () => {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [isDown, setIsDown] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!sliderRef.current) return;
-    setIsDown(true);
-    setStartX(e.pageX - sliderRef.current.offsetLeft);
-    setScrollLeft(sliderRef.current.scrollLeft);
-  };
-
-  const handleMouseLeave = () => setIsDown(false);
-  const handleMouseUp = () => setIsDown(false);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDown || !sliderRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    sliderRef.current.scrollLeft = scrollLeft - walk;
-  };
-
   return (
     <div className="client-reviews-wrapper">
       <div className="container">
-        <div 
-          className="reviews-grid"
-          ref={sliderRef}
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          style={{ cursor: isDown ? 'grabbing' : 'grab' }}
-        >
-          {clientReviewsData.map((item, index) => (
-            <div className="static-review-card" key={`review-${index}`}>
-              <StarRating />
-              <p className="review-text">{item.review}</p>
-              <div className="review-author">
-                <div className="review-avatar">
-                  {item.avatar ? (
-                    <img src={item.avatar} alt={item.clientName} onError={(e) => { e.currentTarget.style.display = 'none'; }} draggable="false" />
-                  ) : (
-                    <div className="avatar-placeholder"></div>
-                  )}
-                </div>
-                <div className="review-author-info">
-                  <p className="review-client-name">{item.clientName}</p>
-                  <p className="review-client-role">{item.clientCompany}</p>
-                </div>
-              </div>
+        <div className="simple-testimonial">
+          <Animates animateOnScroll={true} delay={0.2}>
+            <p className="simple-testimonial-quote">
+              "It's still not even close. @crafthive is still the absolute best / fastest / most affordable way to frame a thing. Seriously."
+            </p>
+          </Animates>
+          
+          <Animates animateOnScroll={true} delay={0.4}>
+            <div className="simple-testimonial-author">
+              <TwitterIcon />
+              <h3>@AlexisOhanian</h3>
+              <p>Founder of Reddit</p>
             </div>
-          ))}
+          </Animates>
         </div>
       </div>
     </div>
