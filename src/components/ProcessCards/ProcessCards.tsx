@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 type ProcessCardData = {
   index: string;
   title: string;
-  image: string;
+  
   description: string;
 };
 
@@ -20,28 +20,24 @@ const processCardsData: ProcessCardData[] = [
   {
     index: "01",
     title: "Craftmanship",
-    image: "/process/craftmanship.jpg",
     description:
       "Every piece is held to the highest standard of finish and durability — because work done well is work that lasts.",
   },
   {
     index: "02",
     title: "Creativity",
-    image: "/process/creativity.jpg",
     description:
       "No two commissions are the same. We bring fresh thinking to every project, always in service of the person it is made for.",
   },
   {
     index: "03",
     title: "Integrity",
-    image: "/process/integrity.jpg",
     description:
       "Honest about process. Clear on pricing. Committed to delivering exactly what we promise.",
   },
   {
     index: "04",
     title: "Preservation",
-    image: "/process/preservation.jpg",
     description:
       "Whether framing a photograph or crafting a Shadow Box, our goal is always to create something that endures well beyond the moment it was made.", 
   },
@@ -103,17 +99,13 @@ const ProcessCards: React.FC = () => {
             <h1>{cardData.index}</h1>
           </div>
           <div className="process-card-content">
+            
             <div className="process-card-content-wrapper">
               <h1 className="process-card-header">{cardData.title}</h1>
 
-              <div className="process-card-img">
-                <img src={cardData.image} alt={cardData.title} />
-              </div>
+    
 
               <div className="process-card-copy">
-                <div className="process-card-copy-title">
-                  <p className="caps">(About the state)</p>
-                </div>
                 <div className="process-card-copy-description">
                   <p>{cardData.description}</p>
                 </div>

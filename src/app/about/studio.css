@@ -126,6 +126,7 @@
 
 .tapered-header {
   display: flex;
+  font-family: "Outfit";
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -141,8 +142,9 @@
 
 .tapered-title {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+   letter-spacing: 0.07em; 
+  color: #c31b07;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -162,6 +164,15 @@
   font-weight: 400;
 }
 
+.process-label {
+  font-size: clamp(1.5rem, 2.25vw, 3.5rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1.5rem;
+
+}
 
 
 
@@ -185,6 +196,8 @@
   .tapered-content {
     width: 100%;
   }
+   
+  
 
   .mission-intro-col-sm,
   .studio-header-col-sm {
@@ -264,48 +277,80 @@
 
 .about-sustainability blockquote {
   margin-top: 3rem;
-
   font-size: clamp(1.4rem, 2vw, 2rem);
   font-weight: 600;
-
   color: white;
-
   max-width: 650px;
   margin-inline: auto;
 }
 
-/* =========================
-   CTA Section
-========================= */
+/* =========================CTA Section========================= */
+
+.interactive-grid {
+  position: absolute;
+  top: 0;
+  bottom: 0; /* fill CTA height */
+  width: 28vw;
+  pointer-events: none;
+  opacity: 0.85;
+
+  background-image:
+    linear-gradient(rgba(255, 45, 35, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 35, 0.18) 1px, transparent 1px);
+
+  background-size: 42px 42px;
+
+  mask-image: radial-gradient(circle, black 20%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle, black 20%, transparent 72%);
+
+  animation: gridFloat 12s ease-in-out infinite;
+}
+
+.grid-left {
+  left: 0;
+}
+
+.grid-right {
+  right: 0;
+}
+@keyframes gridFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-18px) scale(1.02);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+
 
 .about-cta {
-  background: #d62020;
-
-  color: white;
-
-  padding: 7rem 2rem;
+  position: relative;
+  padding: 8rem 1.5rem;
+  overflow: hidden; /* keeps grid inside */
 }
 
 .about-cta__content {
   max-width: 850px;
   margin: 0 auto;
-
   text-align: center;
 }
 
 .about-cta h2 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.05;
-
   margin-bottom: 1.5rem;
 }
 
 .about-cta p {
   max-width: 650px;
   margin: 0 auto 2.5rem;
-
-  color: rgba(255,255,255,0.92);
-
+  color: rgba(239, 238, 238, 0.783);
   line-height: 1.8;
 }
 
@@ -322,14 +367,13 @@
   border-radius: 999px;
 
   font-weight: 600;
-
   transition: all 0.3s ease;
 }
 
 .about-cta-btn:hover {
   transform: translateY(-4px);
 
-  background: #111;
+  background: #c31b07;
   color: white;
 }
 

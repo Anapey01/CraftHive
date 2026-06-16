@@ -51,6 +51,7 @@ export default function Contact() {
   }
 
   return (
+    <>
     <section id="contact" 
     className="relative min-h-screen bg-[#000] overflow-hidden px-6 py-16 md:py-20 md:px-16 border-t border-white/5">
 
@@ -61,8 +62,8 @@ export default function Contact() {
           transition={{ duration: 0.9 }}
           className="text-center mb-10 md:mb-14"
         >
-          <p className="text-[#cd1d0b] font-body text-xs tracking-[0.25em] uppercase mb-3">Contact</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#fff] leading-[0.95]">
+          <p className="text-[#cd1d0b] font-body text-sm tracking-[0.25em] pt-3 uppercase mt-4 mb-3">Contact</p>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#fff] leading-[0.95]">
             Start with an artwork.
             <br />
             <em>Leave with a statement.</em>
@@ -78,7 +79,7 @@ export default function Contact() {
             className="space-y-6"
           >
             <div>
-              <h3 className="font-display text-2xl text-[#ce1a06] mb-4">Visit the Studio</h3>
+              <h3 className="font-serif text-2xl text-[#ce1a06] mb-4">Visit the Studio</h3>
               <p className="font-body text-[#cdcec6] leading-relaxed">
                 Our studio is open by appointment. We invite you to bring your artwork in person for a hands-on consultation.
               </p>
@@ -119,7 +120,7 @@ export default function Contact() {
             className="bg-white/[0.03] border border-white/[0.07] rounded-3xl p-8"
             encType="multipart/form-data"
           >
-            <h3 className="font-display text-2xl text-[#cd1d0b] mb-5">
+            <h3 className="font-serif text-2xl text-[#cd1d0b] mb-5">
               Send an Enquiry
             </h3>
 
@@ -148,7 +149,7 @@ export default function Contact() {
                 name="name"
                 required
                 disabled={isSubmitting}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40 transition-colors disabled:opacity-50"
                 placeholder="Full Name *"
               />
 
@@ -161,7 +162,7 @@ export default function Contact() {
                 name="phone"
                 required
                 disabled={isSubmitting}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors disabled:opacity-50"
                 placeholder="Phone Number *"
               />
 
@@ -174,7 +175,7 @@ export default function Contact() {
                 name="email"
                 required
                 disabled={isSubmitting}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors disabled:opacity-50"
                 placeholder="Email Address *"
               />
 
@@ -188,7 +189,7 @@ export default function Contact() {
                   name="attachment"
                   accept="image/*,.pdf,.doc,.docx"
                   disabled={isSubmitting}
-                  className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 font-body text-ivory-dim text-sm focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#cd1d0b]/20 file:text-[#cd1d0b] hover:file:bg-[#cd1d0b]/30 cursor-pointer"
+                  className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 font-body text-ivory-dim text-sm focus:outline-none focus:border-[#c31b07]/40 transition-colors disabled:opacity-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#cd1d0b]/20 file:text-[#cd1d0b] hover:file:bg-[#cd1d0b]/30 cursor-pointer"
                 />
               </div>
 
@@ -201,14 +202,14 @@ export default function Contact() {
                 required
                 disabled={isSubmitting}
                 rows={5}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-gold/40 transition-colors min-h-[150px] resize-none disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors min-h-[150px] resize-none disabled:opacity-50"
                 placeholder="Tell us about your artwork, framing requirements, restoration project, or any enquiry you have... *"
               />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#671b12] text-white font-body text-sm tracking-widest uppercase font-semibold hover:bg-[#170604]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#c31b07]/90  text-white font-body text-sm tracking-widest uppercase font-semibold hover:bg-[#671b12] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -229,9 +230,10 @@ export default function Contact() {
             </p>
           </motion.form>
         </div>
-      </div>
-       <Footer />
+      </div> 
     </section>
+      <Footer />
+    </>
    
   );
 }

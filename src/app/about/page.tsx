@@ -114,7 +114,7 @@ const StudioPage = () => {
 
         <section className="studio-header">
           <div className="studio-header-col-sm">
-            <p className="sm caps" style={{ color: "var(--secondary)" }}>
+            <p className="smcaps text-[#c31b07]">
               (About Us)
             </p>
           </div>
@@ -123,8 +123,11 @@ const StudioPage = () => {
               <Copy>
                 <h2>
                   Born from a love of heritage and skilled hands, 
-                  CraftHive is a craft and art store where every piece is made with intention — from bespoke Shadow Boxes rooted in Adinkra symbolism, 
-                  to custom framing, laser engraving, personalised gifts, and handcrafted home decor. Quality materials. Cultural pride. Built to last.
+                  CraftHive is a craft and art store where every piece is made with intention — 
+                  from bespoke Shadow Boxes rooted in Adinkra symbolism, 
+                  to custom framing, laser engraving, personalised gifts, 
+                  and handcrafted home decor. Quality materials. Cultural pride.
+                  Built to last.
                 </h2>
               </Copy>
             </div>
@@ -156,7 +159,10 @@ const StudioPage = () => {
           </div>
         </section>
 
+        <div>
+          <h1 className="process-label">OUR VALUES</h1>
         <ProcessCards />
+        </div>
 
         <section className="tapered-section">
           <div className="tapered-content">
@@ -169,8 +175,9 @@ const StudioPage = () => {
               <div className="tapered-body">
                 {/* Desktop Pyramid Shape (Max 65 chars to prevent wrapping on laptops) */}
                 <p className="desktop-tapered hidden md:block">
-                  Our work is trusted by homeowners, businesses, collectors, and designers who know that quality craftsmanship is never accidental. Every piece we create is a quiet declaration that some things are worth doing beautifully — and keeping forever.
-
+                  Our work is trusted by homeowners, businesses, collectors, 
+                  and designers who know that quality craftsmanship is never accidental. 
+                  Every piece we create is a quiet declaration that some things are worth doing beautifully — and keeping forever.
                 </p>
 
                 {/* Mobile Pyramid Shape */}
@@ -230,23 +237,19 @@ const StudioPage = () => {
 
 {/* CTA Section */}
 <section className="about-cta">
+   <div className="interactive-grid grid-left"></div>
+    <div className="interactive-grid grid-right"></div>
   <div className="about-cta__content">
-    <span className="about-section-label">
-      Let's Create
-    </span>
-
+    <span className="about-section-label">Let's Create</span>
     <h2>Have something special in mind?</h2>
-
-    <p>
-      Whether it's a commission, a custom gift,
+    <p> Whether it's a commission, a custom gift,
       or simply an idea you haven't seen anywhere else —
       we'd love to hear it. Bring it to us and let's
       make something worth keeping.
     </p>
-
-    <a href="/contact" className="about-cta-btn">
+    <Link href="/contact" className="about-cta-btn">
       Get in Touch
-    </a>
+    </Link>
   </div>
 </section>
       </div>
