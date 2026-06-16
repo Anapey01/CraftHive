@@ -53,7 +53,7 @@ const PrintAndFrame = () => {
       <div className="container">
         <Animates animateOnScroll={true} delay={0.2}>
           <div className="print-frame-header">
-            <h2>Print and Frame Your Photos in Seconds</h2>
+            <h2 className="section-heading">Print and Frame Your Photos in Seconds</h2>
           </div>
         </Animates>
 

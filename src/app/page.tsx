@@ -103,11 +103,9 @@ const Page = () => {
           <div className="featured-work-header-content">
             <div className="featured-work-header">
               <Animates animateOnScroll={true} delay={0.25}>
-                <h1>From Our Studio</h1>
+                <h1 className="section-heading">From Our Studio</h1>
               </Animates>
             </div>
-
-
 
             <div className="featured-work-header-copy">
               <Copy animateOnScroll={true} delay={0.25}>
@@ -132,7 +130,7 @@ const Page = () => {
             <div className="client-reviews-header-content">
               <div className="client-reviews-header">
                 <Copy animateOnScroll={true} delay={0.25}>
-                  <h1>What Our Clients Say</h1>
+                  <h1 className="section-heading">What Our Clients Say</h1>
                 </Copy>
               </div>
 
