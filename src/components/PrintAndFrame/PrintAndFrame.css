@@ -39,6 +39,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+  mix-blend-mode: multiply; /* Applied to parent to fix iOS Safari bug */
 }
 
 .step-img {
@@ -46,7 +47,7 @@
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  mix-blend-mode: darken; 
+  filter: contrast(1.15) brightness(1.08); /* Applied to child to blow out grey backgrounds */
 }
 
 .step-number {
