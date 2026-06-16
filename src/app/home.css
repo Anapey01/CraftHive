@@ -188,7 +188,8 @@
 @media (max-width: 1000px) {
   .hero {
     height: auto;
-    min-height: 100vh; /* Changed from 100svh to completely cover the screen */
+    min-height: auto;
+    padding-bottom: 2rem;
   }
 
   .hero .container .hero-content-main,
