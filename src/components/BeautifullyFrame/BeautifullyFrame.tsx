@@ -1,7 +1,6 @@
 import React from "react";
 import "./BeautifullyFrame.css";
 import Animates from "@/components/Animates/Animate";
-import SplitText from "@/components/SplitText/SplitText";
 
 const BeautifullyFrame = () => {
   return (
@@ -9,7 +8,7 @@ const BeautifullyFrame = () => {
       <div className="container">
         <Animates animateOnScroll={true} delay={0.15}>
           <h2 className="beautifully-frame-heading">
-            <SplitText text="Transform your photos into gallery-ready art from the comfort of home" delay={40} />
+            Transform your photos into gallery-ready art from the comfort of home
           </h2>
         </Animates>
 
