@@ -42,7 +42,7 @@
 }
 
 .step-img {
-  height: 250px;
+  height: 320px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -129,7 +129,7 @@
   }
 
   .step-img {
-    height: 180px;
+    height: 220px;
   }
   
   .step-desc {
