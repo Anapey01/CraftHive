@@ -132,8 +132,6 @@ export default function FeaturedWork() {
 
     container.addEventListener("mouseenter", setHovered);
     container.addEventListener("mouseleave", setUnhovered);
-    container.addEventListener("focusin", setHovered);
-    container.addEventListener("focusout", setUnhovered);
     container.addEventListener("touchstart", setTouchHovered, { passive: true });
     container.addEventListener("touchend", setTouchUnhovered, { passive: true });
 
@@ -156,8 +154,6 @@ export default function FeaturedWork() {
       root.removeEventListener("scroll", handleScroll);
       container.removeEventListener("mouseenter", setHovered);
       container.removeEventListener("mouseleave", setUnhovered);
-      container.removeEventListener("focusin", setHovered);
-      container.removeEventListener("focusout", setUnhovered);
       container.removeEventListener("touchstart", setTouchHovered);
       container.removeEventListener("touchend", setTouchUnhovered);
       clearInterval(interval);

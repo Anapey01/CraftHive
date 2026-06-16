@@ -15,19 +15,19 @@ export const projects: FeaturedProject[] = [
   {
     name: "Chrome Saint",
     description: "A reflective figure sculpted in synthetic light.",
-    img: "/featured-work/carousel_4.jpg",
+    img: "/featured-work/carousel_4.JPG",
     route: "/sample-project",
   },
   {
     name: "Gunmetal Dream",
     description: "Tension, style, and a hint of cinematic noir.",
-    img: "/featured-work/carousel_2.png",
+    img: "/featured-work/carousel_2.PNG",
     route: "/sample-project",
   },
   {
     name: "Stoneface",
     description: "Fragments of memory cast in mineral form.",
-    img: "/featured-work/carousel_3.jpg",
+    img: "/featured-work/carousel_3.JPG",
     route: "/sample-project",
   },
   {
