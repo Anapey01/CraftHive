@@ -38,23 +38,25 @@ const Page = () => {
   }, []);
 
   useGSAP(() => {
-    // 1. Hero Curtain Effect: Hero pins, and the Video slides over it
+    // 1. Hero Curtain Effect: Hero pins, and the next section slides over it
     ScrollTrigger.create({
       trigger: ".hero",
       start: "top top",
-      endTrigger: ".showreel",
-      end: "bottom top", // Unpins exactly when the Video finishes scrolling up
+      endTrigger: ".brand-ticker", // Changed from .showreel to .brand-ticker
+      end: "bottom top", 
       pin: true,
       pinSpacing: false,
     });
 
-    // 2. Video Curtain Effect: Video pins, and the Featured Work slides over it
+    // 2. Video Curtain Effect: Commented out since Showreel is removed
+    /*
     ScrollTrigger.create({
       trigger: ".showreel",
       start: "top top",
       pin: true,
       pinSpacing: false,
     });
+    */
   }, { scope: theaterWrapperRef });
 
   return (
@@ -90,7 +92,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <Showreel />
+      {/* <Showreel /> */}
       <BrandTicker />
 
       <section className="featured-work">
