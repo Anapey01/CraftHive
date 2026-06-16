@@ -30,21 +30,33 @@
 
 .beautifully-frame-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
 }
 
 .beautifully-frame-item {
+  position: relative;
   width: 100%;
 }
 
+.beautifully-frame-item.portrait .beautifully-frame-img-wrapper {
+  aspect-ratio: 3 / 4;
+}
+
+.beautifully-frame-item.landscape {
+  grid-column: span 2;
+}
+
+.beautifully-frame-item.landscape .beautifully-frame-img-wrapper {
+  aspect-ratio: 21 / 9; /* Wide cinematic ratio for the landscape frame */
+}
+
 .beautifully-frame-img-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4; /* Aspect ratio mimicking the screenshot */
   overflow: hidden;
-  background-color: #f0f0f0; /* Light gray placeholder background */
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  width: 100%;
 }
 
 .beautifully-img {

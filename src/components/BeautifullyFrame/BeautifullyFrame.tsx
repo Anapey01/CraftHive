@@ -13,26 +13,26 @@ const BeautifullyFrame = () => {
         </Animates>
 
         <div className="beautifully-frame-grid">
-          <div className="beautifully-frame-item">
+          <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.3}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-1.jpg" alt="Beautifully framed photo 1" className="beautifully-img" />
+                <img src="/featured-work/work-1.jpg" alt="Beautifully framed polaroids" className="beautifully-img" />
               </div>
             </Animates>
           </div>
           
-          <div className="beautifully-frame-item">
+          <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.45}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-2.jpg" alt="Beautifully framed photo 2" className="beautifully-img" />
+                <img src="/featured-work/work-2.jpg" alt="Beautifully framed painting" className="beautifully-img" />
               </div>
             </Animates>
           </div>
           
-          <div className="beautifully-frame-item">
+          <div className="beautifully-frame-item landscape">
             <Animates animateOnScroll={true} delay={0.6}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-3.jpg" alt="Beautifully framed photo 3" className="beautifully-img" />
+                <img src="/featured-work/work-3.jpg" alt="Beautifully framed Adinkra symbols" className="beautifully-img" />
               </div>
             </Animates>
           </div>
