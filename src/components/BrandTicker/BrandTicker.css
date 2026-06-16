@@ -3,7 +3,7 @@
   z-index: 10;
   width: 100%;
   background-color: #ffffff;
-  padding: 0 0 clamp(4rem, 8vw, 8rem) 0;
+  padding: 3rem 0 clamp(4rem, 8vw, 8rem) 0;
   overflow: hidden;
 }
 
