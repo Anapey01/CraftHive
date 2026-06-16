@@ -150,18 +150,16 @@ const Page = () => {
         <ClientReviews />
       </div>
 
-      <section className="gallery-wall-section" style={{ padding: '0 0 6rem 0', backgroundColor: '#f4f4f4' }}>
-        <div className="container">
-          <Animates animateOnScroll={true} delay={0.2}>
-            <div style={{ width: '100%', overflow: 'hidden', borderRadius: '1rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
-              <img 
-                src="/gallery-wall.jpg" 
-                alt="A beautiful collection of framed artwork from CraftHive" 
-                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} 
-              />
-            </div>
-          </Animates>
-        </div>
+      <section className="gallery-wall-section" style={{ backgroundColor: '#f4f4f4', padding: 0 }}>
+        <Animates animateOnScroll={true} delay={0.2}>
+          <div style={{ width: '100%', overflow: 'hidden' }}>
+            <img 
+              src="/gallery-wall.jpg" 
+              alt="A beautiful collection of framed artwork from CraftHive" 
+              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} 
+            />
+          </div>
+        </Animates>
       </section>
 
       <CTACard />
