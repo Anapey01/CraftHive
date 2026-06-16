@@ -46,7 +46,8 @@
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply; /* ensures any residual white perfectly blends in */
+  mix-blend-mode: multiply; 
+  filter: contrast(1.15) brightness(1.08); /* Blows out the off-white background to pure white so multiply makes it invisible */
 }
 
 .step-number {
