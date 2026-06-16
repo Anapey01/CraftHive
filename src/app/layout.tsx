@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter,Outfit } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import ClientLayout from "@/client-layout";
 import { ViewTransitions } from "next-view-transitions";
-
 
 const inter = Inter({ 
   subsets: ["latin"], 
   variable: "--font-inter"
- });
+});
+
 const outfit = Outfit({ 
   subsets: ["latin"],
-   variable: "--font-outfit"
-   });
+  variable: "--font-outfit"
+});
 
 export const metadata: Metadata = {
   title: "CraftHive — Framing, Crafts & Art Studio",
@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className="grain" data-scroll-behavior="smooth">
       <body className={`${outfit.variable} ${inter.variable}`} suppressHydrationWarning>
         <ViewTransitions>
-        <ClientLayout>{children}</ClientLayout>
+          <ClientLayout>{children}</ClientLayout>
         </ViewTransitions>
       </body>
     </html>
