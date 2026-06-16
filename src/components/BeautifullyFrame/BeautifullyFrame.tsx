@@ -13,29 +13,29 @@ const BeautifullyFrame = () => {
         </Animates>
 
         <div className="beautifully-frame-grid">
-          <Animates animateOnScroll={true} delay={0.3}>
-            <div className="beautifully-frame-item">
+          <div className="beautifully-frame-item">
+            <Animates animateOnScroll={true} delay={0.3}>
               <div className="beautifully-frame-img-wrapper">
                 <img src="/featured-work/work-1.jpg" alt="Beautifully framed photo 1" className="beautifully-img" />
               </div>
-            </div>
-          </Animates>
+            </Animates>
+          </div>
           
-          <Animates animateOnScroll={true} delay={0.45}>
-            <div className="beautifully-frame-item">
+          <div className="beautifully-frame-item">
+            <Animates animateOnScroll={true} delay={0.45}>
               <div className="beautifully-frame-img-wrapper">
                 <img src="/featured-work/work-2.jpg" alt="Beautifully framed photo 2" className="beautifully-img" />
               </div>
-            </div>
-          </Animates>
+            </Animates>
+          </div>
           
-          <Animates animateOnScroll={true} delay={0.6}>
-            <div className="beautifully-frame-item">
+          <div className="beautifully-frame-item">
+            <Animates animateOnScroll={true} delay={0.6}>
               <div className="beautifully-frame-img-wrapper">
                 <img src="/featured-work/work-3.jpg" alt="Beautifully framed photo 3" className="beautifully-img" />
               </div>
-            </div>
-          </Animates>
+            </Animates>
+          </div>
         </div>
       </div>
     </section>
