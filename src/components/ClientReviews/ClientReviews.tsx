@@ -23,8 +23,8 @@ const ClientReviews = () => {
           <Animates animateOnScroll={true} delay={0.4}>
             <div className="simple-testimonial-author">
               <TwitterIcon />
-              <h3>@AlexisOhanian</h3>
-              <p>Founder of Reddit</p>
+              <h3>@dave.sthetics</h3>
+              <p>Founder at Dave Studios</p>
             </div>
           </Animates>
         </div>
