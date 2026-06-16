@@ -43,7 +43,7 @@ const Page = () => {
     ScrollTrigger.create({
       trigger: ".hero",
       start: "top top",
-      endTrigger: ".brand-ticker", // Changed from .showreel to .brand-ticker
+      endTrigger: ".press-recognition", // Changed from .brand-ticker to match the actual class name
       end: "bottom top", 
       pin: true,
       pinSpacing: false,
