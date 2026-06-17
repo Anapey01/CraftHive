@@ -47,8 +47,6 @@
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply; /* Blends perfectly against the container's white background */
-  filter: contrast(1.15) brightness(1.08); /* Blows out grey backgrounds */
 }
 
 .step-number {
