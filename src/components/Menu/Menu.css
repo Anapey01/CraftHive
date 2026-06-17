@@ -344,7 +344,7 @@ nav.scrolled .nav-logo img {
   .mobile-services-btn {
     color: white;
     text-decoration: none;
-    font-size: 2.15rem; /* Good size for readability */
+    font-size: 1.75rem; /* Decreased size */
     font-family: "Outfit", sans-serif;
     font-weight: 500;
     background: none;
