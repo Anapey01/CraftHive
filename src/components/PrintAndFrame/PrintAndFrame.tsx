@@ -17,11 +17,13 @@ const steps = [
     id: 2,
     title: "Choose a print size and frame options.",
     img: "/process/step2.png",
+    needsBlend: true,
   },
   {
     id: 3,
     title: "We'll print and frame your photo and ship it to your door.",
     img: "/process/step3.jpg",
+    needsBlend: true,
   },
 ];
 
@@ -43,7 +45,8 @@ const PrintAndFrame = () => {
           trigger: ".print-frame-grid",
           start: "top 85%",
           once: true,
-        }
+        },
+        clearProps: "all"
       }
     );
   }, { scope: containerRef });
@@ -61,7 +64,11 @@ const PrintAndFrame = () => {
           {steps.map((step) => (
             <div className="print-frame-step" key={step.id}>
               <div className="step-img-container">
-                <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
+                <img 
+                  src={step.img} 
+                  alt={`Step ${step.id}`} 
+                  className={`step-img ${step.needsBlend ? 'needs-blend' : ''}`} 
+                />
               </div>
               <div className="step-number">{step.id}</div>
               <p className="step-desc">{step.title}</p>
