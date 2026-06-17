@@ -112,13 +112,8 @@
   cursor: default;
 }
 
-.press-logo-placeholder:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
 .press-logo-placeholder.has-image {
-  opacity: 0.5; /* Slightly higher base opacity for images so they are legible */
+  opacity: 1; /* Fully visible */
 }
 
 .press-logo-placeholder.has-image:hover {
@@ -126,13 +121,40 @@
 }
 
 .press-logo-img {
-  max-height: 48px; /* Good size for most publisher logos */
+  max-height: 90px; /* Increased size as requested */
+  max-width: 260px; /* Increased size as requested */
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.4s ease;
+  mix-blend-mode: multiply; /* MAGICAL TRICK: Makes white background perfectly transparent while preserving all anti-aliasing! */
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.press-logo-placeholder:hover .press-logo-img {
-  filter: grayscale(0%);
+.press-logo-placeholder:hover {
+  opacity: 1;
+  transform: scale(1.1) !important;
+  z-index: 2;
+}
+
+/* Artistic staggered layout */
+.press-logo-placeholder:nth-child(odd) {
+  transform: translateY(-15px);
+}
+
+.press-logo-placeholder:nth-child(even) {
+  transform: translateY(25px);
+}
+
+.press-logo-placeholder:nth-child(3n) {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .press-logo-img {
+    max-height: 55px; /* Bigger on mobile too */
+    max-width: 150px;
+  }
+  .press-logos-row {
+    gap: 3rem;
+    padding-bottom: 2rem; /* Add padding for the stagger */
+  }
 }

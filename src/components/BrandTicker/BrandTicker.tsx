@@ -2,9 +2,9 @@ import "./BrandTicker.css";
 
 const pressLogos = [
   { type: "image", src: "/logos/art-africa.png", alt: "Art Africa" },
-  { type: "text", content: "MONOCLE" },
-  { type: "text", content: "KINFOLK" },
-  { type: "text", content: "ELLE DECOR" },
+  { type: "image", src: "/logos/heritage-ghana.png", alt: "The House of Heritage Ghana" },
+  { type: "image", src: "/logos/designexpress.png", alt: "DesignExpress interiors" },
+  { type: "image", src: "/logos/african-urban.png", alt: "African Urban Village" },
   { type: "text", content: "GQ" },
   { type: "text", content: "ARCHITECTURAL DIGEST" },
 ];
