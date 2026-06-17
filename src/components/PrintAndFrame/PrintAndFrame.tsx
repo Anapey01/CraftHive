@@ -43,8 +43,7 @@ const PrintAndFrame = () => {
           trigger: ".print-frame-grid",
           start: "top 85%",
           once: true,
-        },
-        clearProps: "all"
+        }
       }
     );
   }, { scope: containerRef });
