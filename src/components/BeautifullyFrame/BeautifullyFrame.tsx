@@ -9,7 +9,7 @@ const BeautifullyFrame = () => {
         <div className="beautifully-frame-header">
           <Animates animateOnScroll={true} delay={0.15}>
             <h1 className="section-heading">
-              Gallery-quality custom framing, delivered.
+              CRAFTED TO BE SEEN
             </h1>
           </Animates>
         </div>
