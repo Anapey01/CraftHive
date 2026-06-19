@@ -39,59 +39,42 @@ const CAROUSEL_IMAGES = [
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const titleBgRef = useRef<HTMLDivElement>(null);
-  const focalFrameRef = useRef<HTMLDivElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
+  const wallTextRef = useRef<HTMLDivElement>(null);
+  const frameRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // 1. SplitText animation for background heading
-    const h1Bg = titleBgRef.current;
-    let split: SplitText | null = null;
-    if (h1Bg) {
-      split = new SplitText(h1Bg, { type: "chars", charsClass: "char++" });
-      split.chars.forEach((char) => {
-        const wrapper = document.createElement("span");
-        wrapper.className = "char-mask";
-        wrapper.style.overflow = "hidden";
-        wrapper.style.display = "inline-block";
-        char.parentNode?.insertBefore(wrapper, char);
-        wrapper.appendChild(char);
-      });
-      gsap.set(split.chars, { y: "100%" });
-      gsap.to(split.chars, {
-        y: "0%",
-        duration: 1.2,
-        stagger: 0.1,
-        delay: 0.2,
-        ease: "power4.out",
-      });
-    }
+    // 1. Initial fade-in/mount animations
+    // Fade in vinyl wall text
+    gsap.fromTo(
+      wallTextRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: 0.2 }
+    );
 
-    // 2. Focal Frame Clip Path and Slide Up Reveal
-    if (focalFrameRef.current) {
-      gsap.set(focalFrameRef.current, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-        y: 120,
-        opacity: 0,
-        scale: 0.95
-      });
-      gsap.to(focalFrameRef.current, {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.6,
-        delay: 0.6,
-        ease: "power4.out"
-      });
-    }
+    // Hang the frames: slide down onto hooks
+    frameRefs.current.forEach((frame, i) => {
+      if (!frame) return;
+      gsap.fromTo(
+        frame,
+        { opacity: 0, y: -60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.5,
+          delay: 0.4 + i * 0.2,
+          ease: "power4.out"
+        }
+      );
+    });
 
-    // 3. Scroll Parallax and Catalogue reveals
+    // 2. Parallax scroll zoom (simulating walking closer to the wall)
     const ctx = gsap.context(() => {
-      // Background title parallax
-      gsap.to(titleBgRef.current, {
-        y: -100,
+      // Wall text fades out and moves up
+      gsap.to(wallTextRef.current, {
+        y: -120,
+        opacity: 0,
         ease: "none",
         scrollTrigger: {
           trigger: heroRef.current,
@@ -101,206 +84,194 @@ const Hero = () => {
         }
       });
 
-      // Focal frame parallax
-      gsap.to(focalFrameRef.current, {
-        y: 40,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
+      // Frames move and zoom at staggered speeds
+      frameRefs.current.forEach((frame, i) => {
+        if (!frame) return;
+        const speeds = [-140, -60, -180, -90]; // Staggered vertical parallax
+        const scaleBoost = [1.06, 1.03, 1.08, 1.04]; // Staggered zoom parallax
+        gsap.to(frame, {
+          y: speeds[i],
+          scale: scaleBoost[i],
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
       });
-
-      // Stagger reveal exhibition grid items on scroll
-      const gridItems = gridRef.current?.querySelectorAll(".cf-exhibit-card");
-      if (gridItems && gridItems.length > 0) {
-        gsap.fromTo(
-          gridItems,
-          { y: 80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: "top 80%"
-            }
-          }
-        );
-      }
-
-      // Editorial intro fade-in
-      if (introRef.current) {
-        gsap.fromTo(
-          introRef.current,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: introRef.current,
-              start: "top 85%"
-            }
-          }
-        );
-      }
     }, heroRef);
 
     return () => {
-      split?.revert();
       ctx.revert();
     };
   }, []);
 
+  // Spotlight mouse follow on the wall
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = focalFrameRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const normX = x / (rect.width / 2);
-    const normY = y / (rect.height / 2);
+    const hero = heroRef.current;
+    const spotlight = spotlightRef.current;
+    if (!hero || !spotlight) return;
+    
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    gsap.to(card, {
-      rotateY: normX * 8,
-      rotateX: -normY * 8,
-      transformPerspective: 1200,
-      ease: "power2.out",
-      duration: 0.5
+    gsap.to(spotlight, {
+      left: x,
+      top: y,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+
+    // Also tilt individual frames when hovered
+    frameRefs.current.forEach((frame) => {
+      if (!frame) return;
+      const frameRect = frame.getBoundingClientRect();
+      const mx = e.clientX - frameRect.left;
+      const my = e.clientY - frameRect.top;
+      
+      if (mx >= 0 && mx <= frameRect.width && my >= 0 && my <= frameRect.height) {
+        const normX = (mx - frameRect.width / 2) / (frameRect.width / 2);
+        const normY = (my - frameRect.height / 2) / (frameRect.height / 2);
+        
+        gsap.to(frame, {
+          rotateY: normX * 8,
+          rotateX: -normY * 8,
+          transformPerspective: 1200,
+          z: 30, // Lift off the wall in 3D
+          boxShadow: "0 30px 60px rgba(0,0,0,0.18), 0 10px 20px rgba(0,0,0,0.12)",
+          ease: "power2.out",
+          duration: 0.4
+        });
+      } else {
+        // Reset if mouse is outside
+        gsap.to(frame, {
+          rotateY: 0,
+          rotateX: 0,
+          z: 0,
+          boxShadow: "0 15px 35px rgba(0, 0, 0, 0.08)",
+          ease: "power2.out",
+          duration: 0.5
+        });
+      }
     });
   };
 
   const handleMouseLeave = () => {
-    const card = focalFrameRef.current;
-    if (!card) return;
-    gsap.to(card, {
-      rotateY: 0,
-      rotateX: 0,
-      ease: "power2.out",
-      duration: 0.8
+    // Reset all frames
+    frameRefs.current.forEach((frame) => {
+      if (!frame) return;
+      gsap.to(frame, {
+        rotateY: 0,
+        rotateX: 0,
+        z: 0,
+        boxShadow: "0 15px 35px rgba(0, 0, 0, 0.08)",
+        ease: "power2.out",
+        duration: 0.6
+      });
     });
   };
 
   return (
-    <section className="cf-hero-museum" ref={heroRef}>
-      {/* 1. Header Section with Focal Frame and Title */}
-      <div className="cf-hero-header-wrap">
-        <h1 className="cf-hero-museum-title" ref={titleBgRef}>
-          FRAMED
-        </h1>
+    <section 
+      className="cf-gallery-wall-hero" 
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Spotlight follower overlay */}
+      <div className="cf-gallery-spotlight" ref={spotlightRef} />
 
-        <div 
-          className="cf-hero-focal-frame-container"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="cf-hero-focal-frame" ref={focalFrameRef}>
-            <div className="cf-frame-moulding-custom frame-walnut">
-              <div className="cf-frame-mat-custom">
-                <img 
-                  src="/services/framing-hero-2.jpg" 
-                  alt="Masterpiece Custom Shadow Box" 
-                  className="cf-frame-img-custom"
-                />
-              </div>
-            </div>
-            
-            <div className="cf-museum-tag">
-              <span className="cf-tag-exhibit">EXHIBIT NO. 3052</span>
-              <span className="cf-tag-title">Custom Shadow Box</span>
-              <span className="cf-tag-spec">Moulding: Roasted Walnut &bull; Mat: Warm Cotton</span>
-            </div>
+      <div className="cf-gallery-wall-layout">
+        
+        {/* Curatorial Text (Vinyl lettering on the wall) */}
+        <div className="cf-vinyl-signage" ref={wallTextRef}>
+          <span className="cf-vinyl-eyebrow">EXHIBITION / WALL 04</span>
+          <h1 className="cf-vinyl-title">HERITAGE PRESERVED</h1>
+          <div className="cf-vinyl-curator-note">
+            <span className="note-label">Curator's Note:</span>
+            <p>
+              An installation of four custom-framed archival works, showcasing hand-milled roasted walnut, gold gilt leaf, and natural white oak. Designed to preserve three-dimensional cultural artifacts and fine art canvases for generations.
+            </p>
           </div>
-        </div>
-      </div>
-
-      {/* 2. Editorial Description Strip */}
-      <div className="cf-hero-intro" ref={introRef}>
-        <div className="cf-intro-label">
-          <span>(01 / Philosophy)</span>
-        </div>
-        <div className="cf-intro-content">
-          <h2>
-            Some pieces deserve more than storage—they demand to be seen. 
-            We handcraft museum-grade frames designed with perfect proportion, 
-            authentic materials, and archival preservation to capture your story forever.
-          </h2>
-          <div className="cf-intro-actions">
-            <a href="#preview" className="cf-btn-luxury">
-              Interactive Studio
+          <div className="cf-vinyl-actions">
+            <a href="#preview" className="cf-vinyl-btn cf-vinyl-btn-red">
+              Enter Studio
             </a>
-            <a href="/contact" className="cf-btn-luxury-outline">
+            <a href="/contact" className="cf-vinyl-btn cf-vinyl-btn-outline">
               Contact Workshop
             </a>
           </div>
         </div>
-      </div>
 
-      {/* 3. Three-Column Exhibition Catalogue Grid */}
-      <div className="cf-exhibition-grid-container">
-        <div className="cf-exhibition-grid-header">
-          <span>(02 / Selection)</span>
-          <h3>Exhibition Catalogue</h3>
-        </div>
+        {/* The Hung Frames (Asymmetrical Gallery Composition) */}
         
-        <div className="cf-exhibition-grid" ref={gridRef}>
-          {/* Card 1: Vibrant Market Painting */}
-          <div className="cf-exhibit-card">
-            <div className="cf-exhibit-frame-wrap frame-gold-gilt">
-              <div className="cf-exhibit-mat-wrap">
-                <img 
-                  src="/services/framing-hero-4.jpg" 
-                  alt="Framed Market Scene Painting" 
-                />
-              </div>
-            </div>
-            <div className="cf-exhibit-label-card">
-              <h4>Fine Art Framing</h4>
-              <p>Ornate Gold moulding with archival acid-free matting for canvas paintings.</p>
-              <span className="cf-exhibit-specs">EXHIBIT NO. 3074 &bull; Gold Gilt Frame</span>
+        {/* Frame 1: Museum Shadow Box (Walnut) */}
+        <div 
+          className="cf-hung-frame frame-walnut-shadowbox"
+          ref={el => { frameRefs.current[0] = el }}
+        >
+          <div className="cf-wood-moulding moulding-walnut">
+            <div className="cf-matboard">
+              <img src="/services/framing-hero-2.jpg" alt="Exhibit 01: Shadow Box" />
             </div>
           </div>
-
-          {/* Card 2: Bronze Sculptures */}
-          <div className="cf-exhibit-card">
-            <div className="cf-exhibit-frame-wrap frame-natural-oak">
-              <div className="cf-exhibit-mat-wrap">
-                <img 
-                  src="/services/framing-hero-1.jpg" 
-                  alt="African Bronze Sculptures display" 
-                />
-              </div>
-            </div>
-            <div className="cf-exhibit-label-card">
-              <h4>Three-Dimensional Objects</h4>
-              <p>Natural oak shadowbox showcases displaying artifacts with structural depth.</p>
-              <span className="cf-exhibit-specs">EXHIBIT NO. 3046 &bull; Natural Oak Frame</span>
-            </div>
-          </div>
-
-          {/* Card 3: Gallery Wall */}
-          <div className="cf-exhibit-card">
-            <div className="cf-exhibit-frame-wrap frame-white-oak">
-              <div className="cf-exhibit-mat-wrap">
-                <img 
-                  src="/services/framing-hero-3.jpg" 
-                  alt="Custom Living Room Gallery Wall" 
-                />
-              </div>
-            </div>
-            <div className="cf-exhibit-label-card">
-              <h4>Gallery Wall Collections</h4>
-              <p>Chalky white oak frame sets curated to hang together in modern interiors.</p>
-              <span className="cf-exhibit-specs">EXHIBIT NO. 3016 &bull; White Walnut Frame</span>
-            </div>
+          <div className="cf-wall-label">
+            <span className="label-index">01</span>
+            <span className="label-text">Museum Shadow Box &mdash; Roasted Walnut</span>
           </div>
         </div>
+
+        {/* Frame 2: Market Painting (Gold Gilt) */}
+        <div 
+          className="cf-hung-frame frame-gold-painting"
+          ref={el => { frameRefs.current[1] = el }}
+        >
+          <div className="cf-wood-moulding moulding-gold">
+            <div className="cf-matboard">
+              <img src="/services/framing-hero-4.jpg" alt="Exhibit 02: Market Scene" />
+            </div>
+          </div>
+          <div className="cf-wall-label">
+            <span className="label-index">02</span>
+            <span className="label-text">Ornate Gold &mdash; Fine Art Canvas</span>
+          </div>
+        </div>
+
+        {/* Frame 3: Living Room Gallery (White Oak) */}
+        <div 
+          className="cf-hung-frame frame-white-gallery"
+          ref={el => { frameRefs.current[2] = el }}
+        >
+          <div className="cf-wood-moulding moulding-white-oak">
+            <div className="cf-matboard">
+              <img src="/services/framing-hero-3.jpg" alt="Exhibit 03: Home Gallery" />
+            </div>
+          </div>
+          <div className="cf-wall-label">
+            <span className="label-index">03</span>
+            <span className="label-text">White Oak Set &mdash; Custom Living Room Gallery</span>
+          </div>
+        </div>
+
+        {/* Frame 4: Bronze Sculptures (Natural Oak) */}
+        <div 
+          className="cf-hung-frame frame-natural-sculptures"
+          ref={el => { frameRefs.current[3] = el }}
+        >
+          <div className="cf-wood-moulding moulding-natural-oak">
+            <div className="cf-matboard">
+              <img src="/services/framing-hero-1.jpg" alt="Exhibit 04: Sculptures Setup" />
+            </div>
+          </div>
+          <div className="cf-wall-label">
+            <span className="label-index">04</span>
+            <span className="label-text">Natural Oak &mdash; 3D Object Showcase</span>
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -30,71 +30,193 @@
 
 
 
-/* ── Museum Exhibition Hero ── */
-.cf-hero-museum {
+/* ── Interactive Gallery Wall Installation Hero ── */
+.cf-gallery-wall-hero {
   position: relative;
   width: 100%;
-  background-color: #fbfaf8; /* Soft gallery plaster canvas */
+  min-height: 100vh;
+  padding-top: calc(var(--nav-h) + 2rem);
+  padding-bottom: 6rem;
+  background-color: #edece8; /* Textured plaster museum wall */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: calc(var(--nav-h) + 2rem);
-  padding-bottom: 8rem;
-}
-
-.cf-hero-header-wrap {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 85vh;
-  margin-bottom: 6rem;
+  box-sizing: border-box;
 }
 
-.cf-hero-museum-title {
+/* Spotlight follower circle */
+.cf-gallery-spotlight {
   position: absolute;
-  top: 40%;
-  left: 50%;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle 450px at center, rgba(255, 253, 245, 0.75) 0%, transparent 100%);
   transform: translate(-50%, -50%);
-  font-family: var(--fd); /* Cormorant Garamond */
-  font-size: clamp(8rem, 28vw, 32rem);
-  font-weight: 700;
-  color: #1a1614;
-  opacity: 0.035; /* Extremely subtle massive background text */
-  white-space: nowrap;
   pointer-events: none;
   z-index: 1;
-  letter-spacing: -0.02em;
-  user-select: none;
-  line-height: 0.8;
+  mix-blend-mode: soft-light;
+  left: 50%;
+  top: 50%;
+  will-change: left, top;
 }
 
-.cf-hero-focal-frame-container {
+.cf-gallery-wall-layout {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 900px;
-  padding: 0 2rem;
+  max-width: 1440px;
+  height: 900px; /* Precise height for asymmetrical hanging */
+  margin: 0 auto;
+  padding: 0 4rem;
+  box-sizing: border-box;
+}
+
+/* Curatorial Signage (Vinyl lettering on the wall) */
+.cf-vinyl-signage {
+  position: absolute;
+  top: 15%;
+  left: 4%;
+  width: 380px;
+  z-index: 10;
   display: flex;
-  justify-content: center;
-  perspective: 1200px;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.cf-hero-focal-frame {
-  width: 100%;
-  max-width: 650px;
-  aspect-ratio: 4 / 3;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.16);
+.cf-vinyl-eyebrow {
+  font-family: var(--fb);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #c31b07;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.cf-vinyl-title {
+  font-family: var(--fd);
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-weight: 500;
+  line-height: 1.05;
+  color: #1a1614;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.cf-vinyl-curator-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.08);
+  padding-left: 1.25rem;
+}
+
+.cf-vinyl-curator-note .note-label {
+  font-family: var(--fb);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+}
+
+.cf-vinyl-curator-note p {
+  font-family: var(--fb);
+  font-size: 0.98rem;
+  color: #4a4744;
+  line-height: 1.7;
+}
+
+.cf-vinyl-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.cf-vinyl-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  font-family: var(--fb);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.cf-vinyl-btn-red {
+  background: var(--red);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(227, 34, 28, 0.15);
+}
+.cf-vinyl-btn-red:hover {
+  background: #1a1614;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cf-vinyl-btn-outline {
+  border: 1.5px solid #1a1614;
+  color: #1a1614;
+}
+.cf-vinyl-btn-outline:hover {
+  background: #1a1614;
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Individual Hung Frames */
+.cf-hung-frame {
+  position: absolute;
   transform-style: preserve-3d;
-  will-change: transform, clip-path, opacity;
-  position: relative;
+  will-change: transform, scale, box-shadow, opacity;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: #fbfbfa;
+  box-sizing: border-box;
 }
 
-/* Specific custom frames mouldings */
-.cf-frame-moulding-custom {
+/* Frame Placements */
+.frame-walnut-shadowbox {
+  top: 18%;
+  left: 36%;
+  width: 32%;
+  aspect-ratio: 4 / 3;
+  z-index: 5;
+}
+
+.frame-gold-painting {
+  top: 5%;
+  right: 4%;
+  width: 22%;
+  aspect-ratio: 1 / 1;
+  z-index: 4;
+}
+
+.frame-white-gallery {
+  bottom: 8%;
+  left: 28%;
+  width: 25%;
+  aspect-ratio: 4 / 3;
+  z-index: 6;
+}
+
+.frame-natural-sculptures {
+  bottom: 8%;
+  right: 10%;
+  width: 22%;
+  aspect-ratio: 3 / 4;
+  z-index: 7;
+}
+
+/* Wood Mouldings */
+.cf-wood-moulding {
   border-style: solid;
   width: 100%;
   height: 100%;
@@ -103,45 +225,45 @@
 }
 
 /* Walnut Shadowbox styling */
-.frame-walnut {
-  border-width: 24px;
+.moulding-walnut {
+  border-width: 20px;
   border-color: #271f1b; /* Rich dark walnut wood */
   box-shadow: 
-    0 15px 35px rgba(0,0,0,0.18),
+    0 15px 30px rgba(0,0,0,0.18),
     inset 0 0 15px rgba(0,0,0,0.6);
 }
 
 /* White Oak Frame styling */
-.frame-white-oak {
-  border-width: 14px;
+.moulding-white-oak {
+  border-width: 12px;
   border-color: #e6e3dc; /* Modern chalky off-white wood */
   box-shadow: 
-    0 12px 28px rgba(0,0,0,0.12),
+    0 12px 24px rgba(0,0,0,0.12),
     inset 0 0 8px rgba(0,0,0,0.15);
 }
 
 /* Gold Gilt Frame styling */
-.frame-gold-gilt {
-  border-width: 18px;
+.moulding-gold {
+  border-width: 16px;
   border-color: #c9a054; /* Gold leaf/warm metallic tone */
   box-shadow: 
-    0 16px 38px rgba(0,0,0,0.22),
+    0 16px 32px rgba(0,0,0,0.22),
     inset 0 0 12px rgba(0,0,0,0.4);
 }
 
 /* Natural Oak Frame styling */
-.frame-natural-oak {
-  border-width: 16px;
+.moulding-natural-oak {
+  border-width: 14px;
   border-color: #ba9d7e; /* Honey oak tone */
   box-shadow: 
-    0 14px 30px rgba(0,0,0,0.14),
+    0 14px 28px rgba(0,0,0,0.14),
     inset 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* Frame Mat (Breathing Space) */
-.cf-frame-mat-custom {
-  background-color: #fbfaf6; /* Soft natural paper white */
-  padding: 7%;
+/* Matboard */
+.cf-matboard {
+  background-color: #fbfaf6; /* Soft cotton paper white */
+  padding: 6.5%;
   width: 100%;
   height: 100%;
   display: flex;
@@ -151,310 +273,134 @@
   box-sizing: border-box;
 }
 
-.cf-frame-img-custom {
+.cf-matboard img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Shadow cast onto image by the frame border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
-/* Museum Tag next to focal frame */
-.cf-museum-tag {
+/* Exhibit Label under frame */
+.cf-wall-label {
   position: absolute;
-  bottom: -2.5rem;
-  right: -2rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 0.8rem 1.2rem;
-  border-left: 2.5px solid #c31b07;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  bottom: -2.6rem;
+  left: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  z-index: 5;
   pointer-events: none;
   text-align: left;
 }
 
-.cf-tag-exhibit {
+.label-index {
   font-family: var(--fb);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
   color: #c31b07;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
 }
 
-.cf-tag-title {
-  font-family: var(--fd);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1a1614;
-}
-
-.cf-tag-spec {
+.label-text {
   font-family: var(--fb);
   font-size: 0.65rem;
   color: #666;
   letter-spacing: 0.02em;
 }
 
-/* 2. Editorial Description Strip */
-.cf-hero-intro {
-  width: 100%;
-  max-width: 1200px;
-  padding: 6rem 3rem;
-  border-top: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  gap: 3rem;
-  align-items: start;
-  text-align: left;
-  box-sizing: border-box;
+/* Responsive Scaling & Layout Collapse */
+@media (max-width: 1200px) {
+  .cf-gallery-wall-layout {
+    height: 800px;
+    padding: 0 2rem;
+  }
+  
+  .cf-vinyl-signage {
+    width: 320px;
+    top: 10%;
+  }
+  
+  .frame-walnut-shadowbox { width: 34%; left: 34%; }
+  .frame-gold-painting { width: 25%; }
+  .frame-white-gallery { width: 28%; left: 26%; }
+  .frame-natural-sculptures { width: 24%; }
 }
 
-.cf-intro-label {
-  font-family: var(--fb);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #c31b07;
-  padding-top: 0.5rem;
-}
-
-.cf-intro-content h2 {
-  font-family: var(--fd);
-  font-size: clamp(1.8rem, 3.2vw, 3rem);
-  font-weight: 400;
-  line-height: 1.35;
-  color: #1c1816;
-  margin-bottom: 3.5rem;
-  letter-spacing: -0.01em;
-}
-
-.cf-intro-actions {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.cf-btn-luxury {
-  display: inline-flex;
-  align-items: center;
-  padding: 1.1rem 2.5rem;
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--fb);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.cf-btn-luxury:hover {
-  background: var(--red);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(227, 34, 28, 0.18);
-}
-
-.cf-btn-luxury-outline {
-  display: inline-flex;
-  align-items: center;
-  padding: 1.1rem 2.5rem;
-  border: 1.5px solid var(--black);
-  color: var(--black);
-  font-family: var(--fb);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.cf-btn-luxury-outline:hover {
-  background: var(--black);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
-/* 3. Three-Column Exhibition Catalogue Grid */
-.cf-exhibition-grid-container {
-  width: 100%;
-  max-width: 1200px;
-  padding: 6rem 3rem 4rem;
-  border-top: 1px solid var(--border);
-  box-sizing: border-box;
-}
-
-.cf-exhibition-grid-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 4.5rem;
-}
-
-.cf-exhibition-grid-header span {
-  font-family: var(--fb);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #c31b07;
-}
-
-.cf-exhibition-grid-header h3 {
-  font-family: var(--fd);
-  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
-  font-weight: 500;
-  color: #1a1614;
-  letter-spacing: -0.01em;
-}
-
-.cf-exhibition-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3.5rem;
-  box-sizing: border-box;
-}
-
-.cf-exhibit-card {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  will-change: transform, opacity;
-}
-
-.cf-exhibit-frame-wrap {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  margin-bottom: 2rem;
-  box-sizing: border-box;
-}
-
-.cf-exhibit-mat-wrap {
-  background-color: #fbfaf6;
-  padding: 6%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.cf-exhibit-mat-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cf-exhibit-card:hover .cf-exhibit-mat-wrap img {
-  transform: scale(1.05);
-}
-
-.cf-exhibit-label-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.cf-exhibit-label-card h4 {
-  font-family: var(--fd);
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: #1c1816;
-}
-
-.cf-exhibit-label-card p {
-  font-family: var(--fb);
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.cf-exhibit-specs {
-  font-family: var(--fb);
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: #c31b07;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-top: 0.25rem;
-}
-
-.char-mask {
-  overflow: hidden;
-  display: inline-block;
-}
-
-.char {
-  display: inline-block;
-}
-
-/* ── Responsive Styling ── */
 @media (max-width: 1024px) {
-  .cf-hero-intro {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 4rem 2rem;
+  .cf-gallery-wall-hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 4rem);
+    padding-bottom: 6rem;
   }
   
-  .cf-exhibition-grid-container {
-    padding: 4rem 2rem;
+  .cf-gallery-wall-layout {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: static;
+    padding: 0 2rem;
   }
   
-  .cf-exhibition-grid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-  
-  .cf-exhibit-frame-wrap {
-    aspect-ratio: 4 / 3 !important;
-  }
-  
-  .cf-hero-focal-frame-container {
-    max-width: 580px;
-  }
-}
-
-@media (max-width: 768px) {
-  .cf-hero-museum {
-    padding-bottom: 4rem;
-  }
-  
-  .cf-hero-header-wrap {
-    min-height: 60vh;
-    margin-bottom: 3rem;
-  }
-  
-  .cf-hero-museum-title {
-    display: none; /* Hide huge background title on mobile for clean layout */
-  }
-  
-  .cf-museum-tag {
-    right: 0;
-    bottom: -3.5rem;
-    left: 0;
-    border-left: none;
-    border-top: 2.5px solid #c31b07;
+  .cf-vinyl-signage {
+    position: static;
+    width: 100%;
+    max-width: 650px;
+    align-items: center;
     text-align: center;
+    margin-bottom: 5rem;
+  }
+  
+  .cf-vinyl-curator-note {
+    border-left: none;
+    border-top: 1.5px solid rgba(0, 0, 0, 0.08);
+    padding-left: 0;
+    padding-top: 1.5rem;
     align-items: center;
   }
   
-  .cf-intro-content h2 {
-    font-size: 1.6rem;
-    margin-bottom: 2.5rem;
+  .cf-vinyl-curator-note p {
+    max-width: 500px;
   }
   
-  .cf-intro-actions {
+  .cf-vinyl-actions {
+    justify-content: center;
+  }
+  
+  .cf-hung-frame {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 580px !important;
+    aspect-ratio: 4 / 3 !important;
+    margin-bottom: 6.5rem;
+  }
+  
+  .frame-natural-sculptures {
+    aspect-ratio: 3 / 4 !important;
+    margin-bottom: 3.5rem;
+  }
+  
+  .cf-gallery-spotlight {
+    display: none; /* Spotlight not needed on touch screens/tablet columns */
+  }
+}
+
+@media (max-width: 640px) {
+  .cf-vinyl-signage h1 {
+    font-size: 2.8rem;
+  }
+  
+  .cf-vinyl-actions {
     flex-direction: column;
+    width: 100%;
     gap: 1rem;
   }
   
-  .cf-btn-luxury, .cf-btn-luxury-outline {
+  .cf-vinyl-btn {
     width: 100%;
     justify-content: center;
   }
