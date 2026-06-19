@@ -290,12 +290,12 @@
 /* ── Editorial Header Copy ── */
 .cf-header {
   width: 100%;
-  padding: clamp(6rem, 10vw, 12rem) clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(5rem, 8vw, 10rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
   display: flex;
   align-items: flex-start;
   gap: clamp(2rem, 5vw, 4rem);
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #ffffff; /* Same clean light background as wrapper */
+  color: var(--black); /* Dark contrast text */
   box-sizing: border-box;
 }
 
@@ -331,7 +331,7 @@
   letter-spacing: -0.01em;
   font-weight: 500;
   margin: 0;
-  color: var(--foreground);
+  color: var(--black); /* Dark contrast text */
 }
 
 .cf-header-actions {
@@ -513,7 +513,7 @@
     gap: 1rem;
   }
   
-  .cf-header-actions .btn {
+  .cf-header-actions .cf-btn {
     width: 100%;
     justify-content: center;
     text-align: center;

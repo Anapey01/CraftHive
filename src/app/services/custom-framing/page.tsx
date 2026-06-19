@@ -202,10 +202,10 @@ const HeroHeader = () => {
             into generational masterworks.
           </h2>
           <div className="cf-header-actions">
-            <a href="#preview" className="btn btn-red">
+            <a href="#preview" className="cf-btn cf-btn-red">
               Enter Studio
             </a>
-            <a href="/contact" className="btn btn-outline">
+            <a href="/contact" className="cf-btn cf-btn-outline">
               Contact Workshop
             </a>
           </div>
@@ -241,9 +241,9 @@ const Feature = ({
   imgSrc,
   imgAlt,
 }: FeatureProps) => (
-  <section className={`feature ${flip ? "flip" : ""}`}>
+  <section className={`cf-feature ${flip ? "flip" : ""}`}>
     <div
-      className={`feature__img ${
+      className={`cf-feature__img ${
         flip ? "reveal-right" : "reveal-left"
       }`}
     >
@@ -251,7 +251,7 @@ const Feature = ({
     </div>
 
     <div
-      className={`feature__copy ${
+      className={`cf-feature__copy ${
         flip ? "reveal-left" : "reveal-right"
       }`}
     >
@@ -274,8 +274,8 @@ const Feature = ({
           <a
             key={action.label}
             href="#"
-            className={`btn btn-sm ${
-              action.outline ? "btn-outline" : "btn-red"
+            className={`cf-btn cf-btn-sm ${
+              action.outline ? "cf-btn-outline" : "cf-btn-red"
             }`}
           >
             {action.label}
