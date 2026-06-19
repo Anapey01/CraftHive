@@ -56,7 +56,7 @@ const PrintAndFrame = () => {
       <div className="container">
         <Animates animateOnScroll={true} delay={0.2}>
           <div className="print-frame-header">
-            <h2 className="section-heading">What To Do Next?</h2>
+            <h2 className="section-heading">WHAT TO DO NEXT?</h2>
           </div>
         </Animates>
 
