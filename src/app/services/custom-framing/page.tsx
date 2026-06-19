@@ -195,8 +195,7 @@ const HeroHeader = () => {
       <div className="cf-header-col-lg">
         <div className="cf-header-copy">
           <h2>
-            Bespoke architectural frames, handcrafted with archival precision 
-            to transform your memories into generational masterworks.
+            Thoughtfully handcrafted frames, made to showcase and preserve the moments that matter most.
           </h2>
           <div className="cf-header-actions">
             <a href="#preview" className="cf-btn cf-btn-red">
