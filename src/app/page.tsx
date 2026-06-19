@@ -102,7 +102,7 @@ const Page = () => {
           <div className="featured-work-header-content">
             <div className="featured-work-header">
               <Animates animateOnScroll={true} delay={0.25}>
-                <h1 className="section-heading">From Our Studio</h1>
+                <h1 className="section-heading">FROM OUR STUDIO</h1>
               </Animates>
             </div>
 
