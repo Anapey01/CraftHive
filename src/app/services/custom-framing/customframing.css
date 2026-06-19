@@ -30,413 +30,261 @@
 
 
 
-/* ── Interactive Gallery Wall Installation Hero ── */
-.cf-gallery-wall-hero {
+/* ── Bespoke Editorial Hero (About Page Style) ── */
+.cf-hero {
   position: relative;
-  width: 100%;
-  min-height: 100vh;
-  padding-top: calc(var(--nav-h) + 2rem);
-  padding-bottom: 6rem;
-  background-color: #edece8; /* Textured plaster museum wall */
-  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
-  overflow: hidden;
+  width: 100vw;
+  padding: 1.6rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  overflow: hidden;
+  background-color: var(--background);
   box-sizing: border-box;
 }
 
-/* Spotlight follower circle */
-.cf-gallery-spotlight {
-  position: absolute;
-  width: 900px;
-  height: 900px;
-  background: radial-gradient(circle 450px at center, rgba(255, 253, 245, 0.75) 0%, transparent 100%);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: soft-light;
-  left: 50%;
-  top: 50%;
-  will-change: left, top;
-}
-
-.cf-gallery-wall-layout {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1440px;
-  height: 900px; /* Precise height for asymmetrical hanging */
-  margin: 0 auto;
-  padding: 0 4rem;
-  box-sizing: border-box;
-}
-
-/* Plaster-texture overlay details for a tactile museum feel */
-.cf-plaster-texture-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 0),
-    linear-gradient(to right, rgba(0,0,0,0.003) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.003) 1px, transparent 1px);
-  background-size: 24px 24px, 120px 120px, 120px 120px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ── Massive Background H1 Typography ── */
-.cf-gallery-title-massive {
-  position: absolute;
-  top: 18%;
-  left: 4%;
-  width: 92%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  line-height: 0.85;
-  pointer-events: none;
-  z-index: 3;
-  margin: 0;
-  padding: 0;
-}
-
-.cf-title-row {
-  display: block;
+.cf-hero-title {
   font-family: var(--fd);
-  white-space: nowrap;
-}
-
-.cf-title-row-1 {
-  font-size: 13vw;
+  font-size: 50vw;
   font-weight: 700;
-  color: #1c1a17; /* Dark charcoal */
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-}
-
-.cf-title-row-2 {
-  font-size: 14vw;
-  font-weight: 400;
-  font-style: italic;
-  color: #c31b07; /* Warm red accent */
-  letter-spacing: -0.02em;
-  text-align: right;
-  padding-right: 8%;
-  margin-top: -1.5vw;
-}
-
-/* Character Slide Up Masking */
-.cf-char-mask {
-  vertical-align: bottom;
-}
-
-.cf-char {
-  display: inline-block;
+  line-height: 0.8;
+  color: #1c1a17; /* Same high contrast charcoal as About page */
+  letter-spacing: -0.05em;
+  transform: translateY(-2rem);
+  margin: 0;
+  text-align: center;
   will-change: transform;
 }
 
-/* ── Minimal monospaced Curator's Note Column ── */
-.cf-curator-note-block {
-  position: absolute;
-  top: 12%;
-  left: 4%;
-  width: 320px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.cf-curator-eyebrow {
-  font-family: var(--fb);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: #c31b07;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-}
-
-.cf-curator-description {
-  font-family: var(--fb);
-  font-size: 0.95rem;
-  color: #4a4744;
-  line-height: 1.65;
-  margin-bottom: 2.2rem;
-  border-left: 2px solid rgba(195, 27, 7, 0.25);
-  padding-left: 1.25rem;
-}
-
-.cf-curator-actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.cf-curator-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.8rem 1.6rem;
-  font-family: var(--fb);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-}
-
-.cf-curator-btn-red {
-  background: var(--red);
-  color: var(--white);
-  box-shadow: 0 4px 12px rgba(227, 34, 28, 0.15);
-}
-.cf-curator-btn-red:hover {
-  background: #1c1a17;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.cf-curator-btn-outline {
-  border: 1.5px solid #1c1a17;
-  color: #1c1a17;
-}
-.cf-curator-btn-outline:hover {
-  background: #1c1a17;
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
-/* Individual Hung Frames */
-.cf-hung-frame {
-  position: absolute;
-  transform-style: preserve-3d;
-  will-change: transform, scale, box-shadow, opacity;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  background: #fbfbfa;
-  box-sizing: border-box;
-}
-
-/* Frame Placements */
-.frame-walnut-shadowbox {
-  top: 18%;
-  left: 36%;
-  width: 32%;
-  aspect-ratio: 4 / 3;
+.cf-hero-img {
+  aspect-ratio: 7/5;
+  position: relative;
+  width: calc(100vw - 3rem);
+  margin: 0 auto -35.7% auto; /* Exact offset as About page */
   z-index: 5;
 }
 
-.frame-gold-painting {
-  top: 5%;
-  right: 4%;
-  width: 22%;
-  aspect-ratio: 1 / 1;
-  z-index: 4;
-}
-
-.frame-white-gallery {
-  bottom: 8%;
-  left: 28%;
-  width: 25%;
-  aspect-ratio: 4 / 3;
-  z-index: 6;
-}
-
-.frame-natural-sculptures {
-  bottom: 8%;
-  right: 10%;
-  width: 22%;
-  aspect-ratio: 3 / 4;
-  z-index: 7;
-}
-
-/* Wood Mouldings */
-.cf-wood-moulding {
-  border-style: solid;
+.cf-hero-img-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
+  transform: translateY(-50%);
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-sizing: border-box;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.16);
 }
 
-/* Walnut Shadowbox styling */
-.moulding-walnut {
-  border-width: 20px;
-  border-color: #271f1b; /* Rich dark walnut wood */
-  box-shadow: 
-    0 15px 30px rgba(0,0,0,0.18),
-    inset 0 0 15px rgba(0,0,0,0.6);
-}
-
-/* White Oak Frame styling */
-.moulding-white-oak {
-  border-width: 12px;
-  border-color: #e6e3dc; /* Modern chalky off-white wood */
-  box-shadow: 
-    0 12px 24px rgba(0,0,0,0.12),
-    inset 0 0 8px rgba(0,0,0,0.15);
-}
-
-/* Gold Gilt Frame styling */
-.moulding-gold {
-  border-width: 16px;
-  border-color: #c9a054; /* Gold leaf/warm metallic tone */
-  box-shadow: 
-    0 16px 32px rgba(0,0,0,0.22),
-    inset 0 0 12px rgba(0,0,0,0.4);
-}
-
-/* Natural Oak Frame styling */
-.moulding-natural-oak {
-  border-width: 14px;
-  border-color: #ba9d7e; /* Honey oak tone */
-  box-shadow: 
-    0 14px 28px rgba(0,0,0,0.14),
-    inset 0 0 10px rgba(0,0,0,0.3);
-}
-
-/* Matboard */
-.cf-matboard {
-  background-color: #fbfaf6; /* Soft cotton paper white */
-  padding: 6.5%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.cf-matboard img {
+.cf-hero-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Editorial Header Copy ── */
+.cf-header {
+  width: 100%;
+  padding: clamp(6rem, 10vw, 12rem) clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(2rem, 5vw, 4rem);
+  background-color: var(--background);
+  color: var(--foreground);
+  box-sizing: border-box;
+}
+
+.cf-header-col-sm {
+  flex: 1.5;
+  padding-top: 0.35rem;
+}
+
+.cf-header-col-lg {
+  flex: 4;
+}
+
+.cf-header-label {
+  font-family: var(--fb);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c31b07;
+}
+
+.cf-header-copy {
+  width: min(100%, 980px);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.cf-header-copy h2 {
+  font-family: var(--fd);
+  font-size: clamp(1.5rem, 2.25vw, 3.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.cf-header-actions {
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* ── Asymmetrical Showcase Section (Crazier & Human-Driven) ── */
+.cf-showcase-section {
+  position: relative;
+  width: 100%;
+  padding: 8rem clamp(1.5rem, 4vw, 3rem);
+  background-color: #edece8; /* Textured plaster color for contrast */
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cf-showcase-bg-title {
+  position: absolute;
+  top: 10%;
+  font-family: var(--fd);
+  font-size: 18vw;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.05);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cf-showcase-grid {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  height: 850px; /* Canvas height for asymmetrical layout */
+  margin-top: 4rem;
+  z-index: 2;
+}
+
+.cf-showcase-frame {
+  position: absolute;
+  background: #fbfbfa;
+  box-shadow: 0 20px 45px rgba(14,14,12,0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.cf-showcase-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* Exhibit Label under frame */
-.cf-wall-label {
+/* Walnut Shadow Box - Left high */
+.cf-showcase-walnut {
+  top: 5%;
+  left: 5%;
+  width: 32%;
+  aspect-ratio: 4/3;
+  border: 18px solid #271f1b; /* Real walnut border */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18), inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Ornate Gold Gilt - Right middle */
+.cf-showcase-gold {
+  top: 25%;
+  right: 5%;
+  width: 26%;
+  aspect-ratio: 1/1;
+  border: 15px solid #c9a054; /* Gold leaf border */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.22), inset 0 0 8px rgba(0,0,0,0.3);
+}
+
+/* Natural Honey Oak - Center bottom */
+.cf-showcase-oak {
+  bottom: 5%;
+  left: 32%;
+  width: 25%;
+  aspect-ratio: 3/4;
+  border: 14px solid #ba9d7e; /* Honey oak border */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15), inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+/* White Oak - Mid left */
+.cf-showcase-white-oak {
+  top: 48%;
+  left: 8%;
+  width: 22%;
+  aspect-ratio: 4/5;
+  border: 14px solid #e6e3dc; /* Off-white chalky oak border */
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12), inset 0 0 8px rgba(0,0,0,0.15);
+}
+
+.cf-showcase-label {
   position: absolute;
-  bottom: -2.6rem;
-  left: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  pointer-events: none;
-  text-align: left;
-}
-
-.label-index {
-  font-family: var(--fb);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #c31b07;
-  letter-spacing: 0.1em;
-}
-
-.label-text {
-  font-family: var(--fb);
-  font-size: 0.65rem;
+  bottom: -2.2rem;
+  left: 0;
+  font-family: monospace;
+  font-size: 0.7rem;
   color: #666;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-/* Responsive Scaling & Layout Collapse */
-@media (max-width: 1200px) {
-  .cf-gallery-wall-layout {
-    height: 800px;
-    padding: 0 2rem;
-  }
-  
-  .cf-curator-note-block {
-    width: 280px;
-    top: 10%;
-  }
-  
-  .cf-gallery-title-massive {
-    top: 22%;
-  }
-
-  .cf-title-row-1 { font-size: 14vw; }
-  .cf-title-row-2 { font-size: 15vw; }
-  
-  .frame-walnut-shadowbox { width: 34%; left: 34%; }
-  .frame-gold-painting { width: 25%; }
-  .frame-white-gallery { width: 28%; left: 26%; }
-  .frame-natural-sculptures { width: 24%; }
+/* Hover effects */
+.cf-showcase-frame:hover {
+  transform: scale(1.03) translateY(-10px);
+  box-shadow: 0 35px 70px rgba(14,14,12,0.25);
+  z-index: 10;
 }
 
-@media (max-width: 1024px) {
-  .cf-gallery-wall-hero {
-    min-height: auto;
-    padding-top: calc(var(--nav-h) + 4rem);
-    padding-bottom: 6rem;
+/* Media Query Adaptations */
+@media (max-width: 1000px) {
+  .cf-hero {
+    padding: 7.5rem 1.5rem 0 1.5rem;
   }
   
-  .cf-gallery-wall-layout {
+  .cf-hero-img {
+    aspect-ratio: auto;
+    height: 500px;
+    width: 100%;
+    margin-bottom: -250px;
+  }
+  
+  .cf-hero-img-wrapper {
+    transform: translateY(-50%);
+    border-radius: 1rem;
+  }
+
+  .cf-header {
+    flex-direction: column;
+    padding-top: clamp(18rem, 25vw, 22rem);
+  }
+
+  .cf-header-col-sm {
+    display: none;
+  }
+  
+  .cf-header-copy {
+    width: 100%;
+  }
+
+  .cf-showcase-section {
+    padding: 6rem 1.5rem;
+  }
+
+  .cf-showcase-grid {
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: static;
-    padding: 0 2rem;
-  }
-  
-  .cf-gallery-title-massive {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    margin-bottom: 3rem;
-    line-height: 0.9;
-  }
-  
-  .cf-title-row-1 {
-    font-size: 12vw;
-    text-align: center;
-  }
-  
-  .cf-title-row-2 {
-    font-size: 13vw;
-    text-align: center;
-    padding-right: 0;
-    margin-top: 0;
+    gap: 5rem;
+    margin-top: 2rem;
   }
 
-  .cf-curator-note-block {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    max-width: 650px;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-  
-  .cf-curator-description {
-    border-left: none;
-    border-top: 1.5px solid rgba(195, 27, 7, 0.25);
-    padding-left: 0;
-    padding-top: 1.5rem;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .cf-curator-actions {
-    justify-content: center;
-  }
-  
-  .cf-hung-frame {
+  .cf-showcase-frame {
     position: relative !important;
     top: auto !important;
     bottom: auto !important;
@@ -444,37 +292,24 @@
     right: auto !important;
     width: 100% !important;
     max-width: 580px !important;
-    aspect-ratio: 4 / 3 !important;
-    margin-bottom: 6.5rem;
   }
-  
-  .frame-natural-sculptures {
-    aspect-ratio: 3 / 4 !important;
-    margin-bottom: 3.5rem;
-  }
-  
-  .cf-gallery-spotlight {
-    display: none; /* Spotlight not needed on touch screens/tablet columns */
+
+  .cf-showcase-frame:hover {
+    transform: none;
   }
 }
 
 @media (max-width: 640px) {
-  .cf-gallery-title-massive {
-    margin-bottom: 2rem;
-  }
-
-  .cf-title-row-1 { font-size: 14vw; }
-  .cf-title-row-2 { font-size: 15vw; }
-  
-  .cf-curator-actions {
+  .cf-header-actions {
     flex-direction: column;
     width: 100%;
     gap: 1rem;
   }
   
-  .cf-curator-btn {
+  .cf-header-actions .btn {
     width: 100%;
     justify-content: center;
+    text-align: center;
   }
 }
 
@@ -712,3 +547,13 @@
 .custom-framing-wrapper ul { list-style: none; }
 .custom-framing-wrapper h1, .custom-framing-wrapper h2, .custom-framing-wrapper h3 { font-family: var(--fd); user-select: auto; }
 .custom-framing-wrapper p, .custom-framing-wrapper a { font-family: var(--fb); user-select: auto; line-height: normal; font-size: inherit; }
+
+.char {
+  display: inline-block;
+  letter-spacing: 0;
+}
+
+.char-mask {
+  overflow: hidden;
+  display: inline-block;
+}
