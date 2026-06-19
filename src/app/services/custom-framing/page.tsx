@@ -188,24 +188,18 @@ const Showcase = () => {
 
 const HeroHeader = () => {
   return (
-    <section className="cf-header">
-      <div className="cf-header-col-sm">
-        <p className="cf-header-label">(Custom Framing)</p>
-      </div>
-      <div className="cf-header-col-lg">
-        <div className="cf-header-copy">
-          <h2>
-            Thoughtfully handcrafted frames, made to showcase and preserve the moments that matter most.
-          </h2>
-          <div className="cf-header-actions">
-            <a href="#preview" className="cf-btn cf-btn-red">
-              Enter Studio
-            </a>
-            <a href="/contact" className="cf-btn cf-btn-outline">
-              Contact Workshop
-            </a>
-          </div>
-        </div>
+    <section className="cf-header-centered">
+      <p className="cf-header-label">(Custom Framing)</p>
+      <h2 className="cf-header-title-centered">
+        Thoughtfully handcrafted frames, made to showcase and preserve the moments that matter most.
+      </h2>
+      <div className="cf-header-actions-centered">
+        <a href="#preview" className="cf-btn cf-btn-red">
+          Enter Studio
+        </a>
+        <a href="/contact" className="cf-btn cf-btn-outline">
+          Contact Workshop
+        </a>
       </div>
     </section>
   );
