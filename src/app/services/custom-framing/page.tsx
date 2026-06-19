@@ -147,7 +147,7 @@ const Hero = () => {
               <div className="cf-frame-moulding" ref={mouldingRef}>
                 <div className="cf-frame-mat">
                   <img 
-                    src="/services/custom-framing-hero.jpg" 
+                    src="/services/textile-artwork.jpg" 
                     alt="Framed textile display" 
                     className="cf-frame-image" 
                     ref={imageRef} 
@@ -451,8 +451,8 @@ export default function CustomFramingPage() {
           { label: "Consult", outline: true },
           { label: "View", outline: true },
         ]}
-        imgSrc="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=900&q=80"
-        imgAlt="Framed portrait"
+        imgSrc="/services/custom-framing-hero.jpg"
+        imgAlt="Artisanal shelf displaying pottery and framed textile"
       />
 
       <Feature
