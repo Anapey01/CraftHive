@@ -1,12 +1,10 @@
 import "./BrandTicker.css";
 
 const pressLogos = [
-  { type: "image", src: "/logos/art-africa.png", alt: "Art Africa" },
-  { type: "image", src: "/logos/heritage-ghana.png", alt: "The House of Heritage Ghana" },
-  { type: "image", src: "/logos/designexpress.png", alt: "DesignExpress interiors" },
-  { type: "image", src: "/logos/african-urban.png", alt: "African Urban Village" },
-  { type: "text", content: "GQ" },
-  { type: "text", content: "ARCHITECTURAL DIGEST" },
+  { src: "/logos/art-africa.png", alt: "Art Africa" },
+  { src: "/logos/heritage-ghana.png", alt: "The House of Heritage Ghana" },
+  { src: "/logos/designexpress.png", alt: "DesignExpress interiors" },
+  { src: "/logos/african-urban.png", alt: "African Urban Village" },
 ];
 
 export default function BrandTicker() {
@@ -27,12 +25,8 @@ export default function BrandTicker() {
             <p className="also-loved-heading">Also Featured In</p>
             <div className="press-logos-row">
               {pressLogos.map((logo, i) => (
-                <div className={`press-logo-placeholder ${logo.type === 'image' ? 'has-image' : ''}`} key={i}>
-                  {logo.type === "image" ? (
-                    <img src={logo.src} alt={logo.alt} className="press-logo-img" />
-                  ) : (
-                    logo.content
-                  )}
+                <div className="press-logo-placeholder has-image" key={i}>
+                  <img src={logo.src} alt={logo.alt} className="press-logo-img" />
                 </div>
               ))}
             </div>

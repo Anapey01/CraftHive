@@ -130,17 +130,28 @@ export default function FeaturedWork() {
     container.addEventListener("touchstart", setTouchHovered, { passive: true });
     container.addEventListener("touchend", setTouchUnhovered, { passive: true });
 
+    let direction = 1; // 1 for forward, -1 for backward
+
     const interval = setInterval(() => {
       if (!root || isHovered) return;
       
       const activeIdx = items.findIndex(item => item.classList.contains("active"));
-      let nextIdx = activeIdx + 1;
-      if (nextIdx >= items.length) nextIdx = 0;
+      let nextIdx = activeIdx + direction;
       
-      const nextEl = items[nextIdx] as HTMLElement;
-      if (nextEl) {
-        const targetScrollLeft = nextEl.offsetLeft - root.clientWidth / 2 + nextEl.clientWidth / 2;
-        gsap.to(root, { scrollLeft: targetScrollLeft, duration: 1.2, ease: "power2.inOut" });
+      if (nextIdx >= items.length) {
+        direction = -1;
+        nextIdx = activeIdx - 1;
+      } else if (nextIdx < 0) {
+        direction = 1;
+        nextIdx = activeIdx + 1;
+      }
+      
+      if (nextIdx >= 0 && nextIdx < items.length) {
+        const nextEl = items[nextIdx] as HTMLElement;
+        if (nextEl) {
+          const targetScrollLeft = nextEl.offsetLeft - root.clientWidth / 2 + nextEl.clientWidth / 2;
+          gsap.to(root, { scrollLeft: targetScrollLeft, duration: 1.2, ease: "power2.inOut" });
+        }
       }
     }, 4500);
 
