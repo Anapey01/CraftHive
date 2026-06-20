@@ -563,22 +563,6 @@ export default function CustomFramingPage() {
       <Hero />
       <HeroHeader />
 
-      <Feature
-        label="Craft"
-        title="Frame every memory with precision and care"
-        body="We specialise in transforming treasured items into beautifully preserved masterpieces."
-        list={[
-          "Pictures and Paintings",
-          "Documents and Certificates",
-          "Jerseys and Memorabilia",
-        ]}
-        actions={[
-          { label: "Consult", outline: true },
-          { label: "View", outline: true },
-        ]}
-        imgSrc="/services/textile-artwork.jpg"
-        imgAlt="Close-up of a custom-framed textured textile artwork with raw wood moulding"
-      />
 
       <Feature
         flip
