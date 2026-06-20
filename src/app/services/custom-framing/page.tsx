@@ -210,6 +210,79 @@ const HeroHeader = () => {
 
 
 
+const HangingFrame = ({ src, alt, frameClass, containerClass }: {
+  src: string;
+  alt: string;
+  frameClass: string;
+  containerClass: string;
+}) => {
+  const frameRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    const rect = frame.getBoundingClientRect();
+    const fx = rect.left + rect.width / 2;
+    const fy = rect.top + rect.height / 2;
+    const dx = e.clientX - fx;
+    const dy = e.clientY - fy;
+
+    const angleX = -dy * 0.04;
+    const angleY = dx * 0.04;
+
+    gsap.to(frame, {
+      rotateX: Math.max(-8, Math.min(8, angleX)),
+      rotateY: Math.max(-8, Math.min(8, angleY)),
+      transformPerspective: 1000,
+      z: 20,
+      boxShadow: `${-dx * 0.06}px ${-dy * 0.06 + 25}px 50px rgba(0,0,0,0.18)`,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
+  const handleMouseLeave = () => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    
+    const baseRotation = frameClass.includes("frame-white-oak-mitered") ? -1.5 : 0;
+    const baseShadow = frameClass.includes("frame-white-oak-mitered")
+      ? "0 25px 50px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06), inset 0 0 8px rgba(0,0,0,0.15)"
+      : "0 30px 60px rgba(0,0,0,0.16), 0 12px 24px rgba(0,0,0,0.08), inset 0 0 12px rgba(0,0,0,0.5)";
+
+    gsap.to(frame, {
+      rotateX: 0,
+      rotateY: baseRotation,
+      z: 0,
+      boxShadow: baseShadow,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  };
+
+  return (
+    <div className={`cf-hanging-frame-container ${containerClass}`}>
+      <div className="cf-peg-hanger">
+        <div className="cf-peg" />
+        <div className="cf-wire" />
+      </div>
+      <div 
+        ref={frameRef} 
+        className={`cf-hanging-wire-frame ${frameClass}`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="cf-frame-mat">
+          <div className="cf-frame-inner">
+            <div className="cf-frame-glaze" />
+            <img src={src} alt={alt} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const CuratorialSpread = () => {
   return (
     <section className="cf-catalog-spread">
@@ -220,20 +293,12 @@ const CuratorialSpread = () => {
       <div className="cf-spread-section section-archival">
         <div className="cf-vertical-watermark watermark-left">ARCHIVAL</div>
         
-        {/* The Hanging Frame */}
-        <div className="cf-hanging-frame-container container-right">
-          <div className="cf-peg-hanger">
-            <div className="cf-peg" />
-            <div className="cf-wire" />
-          </div>
-          <div className="cf-hanging-wire-frame frame-walnut-shadowbox">
-            <div className="cf-frame-mat">
-              <div className="cf-frame-inner">
-                <img src={curatorialArchival.src} alt="Archival shadow box display" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <HangingFrame
+          src={curatorialArchival.src}
+          alt="Archival shadow box display"
+          frameClass="frame-walnut-shadowbox"
+          containerClass="container-right"
+        />
 
         {/* Floating linen placard card */}
         <div className="cf-placard-card placard-left reveal-left">
@@ -254,20 +319,12 @@ const CuratorialSpread = () => {
       <div className="cf-spread-section section-workshop">
         <div className="cf-vertical-watermark watermark-right">WORKSHOP</div>
 
-        {/* The Hanging Frame */}
-        <div className="cf-hanging-frame-container container-left">
-          <div className="cf-peg-hanger">
-            <div className="cf-peg" />
-            <div className="cf-wire" />
-          </div>
-          <div className="cf-hanging-wire-frame frame-white-oak-mitered">
-            <div className="cf-frame-mat">
-              <div className="cf-frame-inner">
-                <img src={curatorialWorkshop.src} alt="Miter joint timber frame" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <HangingFrame
+          src={curatorialWorkshop.src}
+          alt="Miter joint timber frame"
+          frameClass="frame-white-oak-mitered"
+          containerClass="container-left"
+        />
 
         {/* Floating linen placard card */}
         <div className="cf-placard-card placard-right reveal-right">
