@@ -565,16 +565,36 @@ export default function CustomFramingPage() {
 
 
       <Feature
-        flip
-        label="Quality"
-        title="Crafting frames that stand the test of time"
-        body="We use premium materials and expert craftsmanship."
-        actions={[
-          { label: "Details", outline: true },
-          { label: "Materials", outline: true },
+        label="Archival Science"
+        title="Preserving the stories that shape us"
+        body="Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved."
+        list={[
+          "Museum-grade UV protective glazing",
+          "100% cotton rag acid-free matboards",
+          "Reversible archival mounting hinges",
         ]}
-        imgSrc="https://images.unsplash.com/photo-1560343787-e9432cc50c2d?w=900&q=80"
-        imgAlt="Frame materials"
+        actions={[
+          { label: "Consult Workshop", outline: true },
+        ]}
+        imgSrc="/services/framing-hero-2.jpg"
+        imgAlt="Precision-framed shadow box holding delicate artifacts"
+      />
+
+      <Feature
+        flip
+        label="The Workshop"
+        title="The architecture of solid timber"
+        body="We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents warping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision."
+        list={[
+          "Solid walnut, white oak, and maple",
+          "Splined corner joints for lifetime stability",
+          "Hand-rubbed oil and gold leaf finishes",
+        ]}
+        actions={[
+          { label: "View Profiles", outline: true },
+        ]}
+        imgSrc="/services/framing-hero-3.jpg"
+        imgAlt="White oak frame set showing clean mitered corner joints"
       />
 
       <WorkCarousel />
