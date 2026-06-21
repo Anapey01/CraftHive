@@ -576,12 +576,16 @@
 
 .cf-spread-desc {
   font-family: var(--fb);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   line-height: 1.6;
   color: #555552;
   margin: 0;
   max-width: 600px;
   font-weight: 300;
+}
+.custom-framing-wrapper p.cf-spread-desc {
+  font-size: 1.35rem;
+  line-height: 1.6;
 }
 
 /* Staggered grid exhibition canvas */
@@ -822,18 +826,22 @@
 
 .cf-editorial-body {
   font-family: var(--fb);
-  font-size: 1.2rem;
-  line-height: 1.65;
+  font-size: 1.25rem;
+  line-height: 1.6;
   color: #555552;
   margin: 0 0 1.5rem 0;
   font-weight: 300;
+}
+.custom-framing-wrapper p.cf-editorial-body {
+  font-size: 1.25rem;
+  line-height: 1.6;
 }
 
 .cf-editorial-quote {
   font-family: var(--fd);
   font-style: italic;
-  font-size: 1.35rem;
-  line-height: 1.5;
+  font-size: 1.45rem;
+  line-height: 1.6;
   color: #8c8b86;
   border-left: 2px solid rgba(195, 27, 7, 0.2);
   padding-left: 1.25rem;
