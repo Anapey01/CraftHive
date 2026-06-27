@@ -217,9 +217,9 @@ export default function TextReveal() {
   return (
     <div
       ref={containerRef}
-      className="container"
+      className="handicraft-text-reveal-wrapper"
     >
-      <section className="hero">
+      <section className="handicraft-reveal-hero">
         <div className="about-copy">
           <div className="copy-block">
             <p>
