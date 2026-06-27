@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./ClientReviews.css";
 import gsap from "gsap";
 
@@ -29,7 +29,7 @@ const ClientReviews = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const testimonialRef = useRef<HTMLDivElement>(null);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (!testimonialRef.current) return;
     gsap.to(testimonialRef.current, {
       opacity: 0,
@@ -43,9 +43,9 @@ const ClientReviews = () => {
         );
       }
     });
-  };
+  }, []);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (!testimonialRef.current) return;
     gsap.to(testimonialRef.current, {
       opacity: 0,
@@ -59,10 +59,10 @@ const ClientReviews = () => {
         );
       }
     });
-  };
+  }, []);
 
-  const handleDotClick = (idx: number) => {
-    if (idx === currentIdx || !testimonialRef.current) return;
+  const handleDotClick = useCallback((idx: number) => {
+    if (!testimonialRef.current) return;
     gsap.to(testimonialRef.current, {
       opacity: 0,
       y: -15,
@@ -75,7 +75,15 @@ const ClientReviews = () => {
         );
       }
     });
-  };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleNext();
+    }, 6000); // Autoplay slide transition every 6 seconds
+
+    return () => clearTimeout(timer);
+  }, [currentIdx, handleNext]);
 
   return (
     <div className="client-reviews-wrapper">
@@ -110,7 +118,9 @@ const ClientReviews = () => {
             <button
               key={idx}
               className={`indicator-dot ${idx === currentIdx ? "active" : ""}`}
-              onClick={() => handleDotClick(idx)}
+              onClick={() => {
+                if (idx !== currentIdx) handleDotClick(idx);
+              }}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
