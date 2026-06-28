@@ -130,20 +130,15 @@ export default function FeaturedWork() {
     container.addEventListener("touchstart", setTouchHovered, { passive: true });
     container.addEventListener("touchend", setTouchUnhovered, { passive: true });
 
-    let direction = 1; // 1 for forward, -1 for backward
-
     const interval = setInterval(() => {
       if (!root || isHovered) return;
       
       const activeIdx = items.findIndex(item => item.classList.contains("active"));
-      let nextIdx = activeIdx + direction;
+      let nextIdx = activeIdx + 1;
       
+      // Loop back to the first image in a 360 degree fashion
       if (nextIdx >= items.length) {
-        direction = -1;
-        nextIdx = activeIdx - 1;
-      } else if (nextIdx < 0) {
-        direction = 1;
-        nextIdx = activeIdx + 1;
+        nextIdx = 0;
       }
       
       if (nextIdx >= 0 && nextIdx < items.length) {
