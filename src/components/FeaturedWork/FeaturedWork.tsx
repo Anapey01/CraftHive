@@ -5,7 +5,7 @@ import { useRef, useEffect } from "react";
 import { projects } from "./project";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import gsap from "gsap";
-
+import Image from "next/image";
 
 
 type Project = {
@@ -25,7 +25,7 @@ function FeaturedWorkItem({ project }: FeaturedWorkItemProps) {
     <div className="featured-work-item">
       <a href={project.route} className="featured-work-item-link">
         <div className="featured-work-item-img-wrapper">
-          <img src={project.img} alt={project.name} className="featured-work-img" />
+          <Image src={project.img} alt={project.name} fill className="featured-work-img" />
         </div>
       </a>
     </div>
@@ -36,6 +36,7 @@ export default function FeaturedWork() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { navigateWithTransition } = useViewTransition();
+  const infiniteProjects = [...projects, ...projects, ...projects];
 
   const scrollToIdx = (idxOffset: number) => {
     const root = scrollContainerRef.current;
@@ -43,11 +44,23 @@ export default function FeaturedWork() {
     const items = Array.from(root.querySelectorAll(".featured-work-item"));
     if (items.length === 0) return;
     
-    const activeIdx = items.findIndex(item => item.classList.contains("active"));
-    let targetIdx = activeIdx + idxOffset;
+    let currentActiveIdx = items.findIndex(item => item.classList.contains("active"));
+    if (currentActiveIdx === -1) currentActiveIdx = projects.length;
     
-    if (targetIdx < 0) targetIdx = items.length - 1;
-    if (targetIdx >= items.length) targetIdx = 0;
+    const singleSetLength = projects.length;
+
+    // Infinite loop snap
+    if (currentActiveIdx >= singleSetLength * 2) {
+      currentActiveIdx -= singleSetLength;
+      const snapEl = items[currentActiveIdx] as HTMLElement;
+      root.scrollLeft = snapEl.offsetLeft - root.clientWidth / 2 + snapEl.clientWidth / 2;
+    } else if (currentActiveIdx < singleSetLength) {
+      currentActiveIdx += singleSetLength;
+      const snapEl = items[currentActiveIdx] as HTMLElement;
+      root.scrollLeft = snapEl.offsetLeft - root.clientWidth / 2 + snapEl.clientWidth / 2;
+    }
+
+    let targetIdx = currentActiveIdx + idxOffset;
 
     const targetEl = items[targetIdx] as HTMLElement;
     if (targetEl) {
@@ -55,7 +68,6 @@ export default function FeaturedWork() {
       gsap.to(root, { scrollLeft: targetScrollLeft, duration: 1.2, ease: "power2.inOut" });
     }
   };
-
   useEffect(() => {
     const root = scrollContainerRef.current;
     const container = containerRef.current;
@@ -106,8 +118,9 @@ export default function FeaturedWork() {
     setTimeout(() => {
       handleScroll();
       if (items.length > 0) {
-        const firstEl = items[0] as HTMLElement;
-        root.scrollLeft = firstEl.offsetLeft - root.clientWidth / 2 + firstEl.clientWidth / 2;
+        const startIdx = projects.length;
+        const firstEl = items[startIdx] as HTMLElement;
+        if(firstEl) root.scrollLeft = firstEl.offsetLeft - root.clientWidth / 2 + firstEl.clientWidth / 2;
       }
     }, 100);
 
@@ -130,29 +143,9 @@ export default function FeaturedWork() {
     container.addEventListener("touchstart", setTouchHovered, { passive: true });
     container.addEventListener("touchend", setTouchUnhovered, { passive: true });
 
-    let direction = 1; // 1 for forward, -1 for backward
-
     const interval = setInterval(() => {
       if (!root || isHovered) return;
-      
-      const activeIdx = items.findIndex(item => item.classList.contains("active"));
-      let nextIdx = activeIdx + direction;
-      
-      if (nextIdx >= items.length) {
-        direction = -1;
-        nextIdx = activeIdx - 1;
-      } else if (nextIdx < 0) {
-        direction = 1;
-        nextIdx = activeIdx + 1;
-      }
-      
-      if (nextIdx >= 0 && nextIdx < items.length) {
-        const nextEl = items[nextIdx] as HTMLElement;
-        if (nextEl) {
-          const targetScrollLeft = nextEl.offsetLeft - root.clientWidth / 2 + nextEl.clientWidth / 2;
-          gsap.to(root, { scrollLeft: targetScrollLeft, duration: 1.2, ease: "power2.inOut" });
-        }
-      }
+      scrollToIdx(1);
     }, 4500);
 
     return () => {
@@ -189,8 +182,8 @@ export default function FeaturedWork() {
 
       <div className="featured-work-carousel-wrapper">
         <div className="featured-work-list manual-scroll" ref={scrollContainerRef}>
-          {projects.map((project, index) => (
-            <FeaturedWorkItem project={project as Project} key={`${project.route}-${index}`} />
+          {infiniteProjects.map((project, index) => (
+            <FeaturedWorkItem project={project as Project} key={`infinite-${index}`} />
           ))}
         </div>
       </div>

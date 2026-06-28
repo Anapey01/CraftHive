@@ -19,12 +19,6 @@ export const projects: FeaturedProject[] = [
     route: "/sample-project",
   },
   {
-    name: "Gunmetal Dream",
-    description: "Tension, style, and a hint of cinematic noir.",
-    img: "/featured-work/carousel_2.PNG",
-    route: "/sample-project",
-  },
-  {
     name: "Stoneface",
     description: "Fragments of memory cast in mineral form.",
     img: "/featured-work/carousel_3.JPG",

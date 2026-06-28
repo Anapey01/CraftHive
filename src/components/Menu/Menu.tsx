@@ -22,7 +22,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const lenis = useLenis();
 
-  const isDarkTheme = pathname === "/about" || pathname === "/contact";
+  const isDarkTheme = pathname === "/about" || pathname === "/contact" || pathname === "/services/custom-framing";
 
   useEffect(() => {
     gsap.from(".nav-link", {

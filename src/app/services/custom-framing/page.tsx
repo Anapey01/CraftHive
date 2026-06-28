@@ -1,529 +1,265 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CategorySelector } from "./CategorySelector";
 
 import "./customframing.css";
 
 import FramePreview from "@/components/FramePreview/FramePreview";
 import Footer from "@/components/ui/Footer";
-
-import curatorialArchival from "./curatorial-archival.jpg";
-import curatorialWorkshop from "./curatorial-workshop.jpg";
+import Image from "next/image";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-const CAROUSEL_IMAGES = [
-  {
-    src: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=75",
-    alt: "Framed football jersey",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=600&q=75",
-    alt: "Framed landscape painting",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1607532941433-304659e8198a?w=600&q=75",
-    alt: "Framed certificate",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1577720580479-7d839d829c73?w=600&q=75",
-    alt: "Ornate framed portrait",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&q=75",
-    alt: "Modern minimalist frame",
-  },
-];
-
-
-type ProfileKey = "walnut" | "gold" | "whiteOak" | "honeyOak";
-
-const PROFILES = {
-  walnut: {
-    name: "Roasted Walnut",
-    image: "/services/framing-hero-2.jpg",
-    mouldingSpec: '2.0" Roasted Walnut wood profile',
-    matSpec: '2.5" Double Bevel Silk Matboard',
-    glazingSpec: "Museum Acrylic with 99% UV protection",
-    className: "moulding-walnut",
-    desc: "A rich dark brown timber profile finished with organic wax, highlighting deep growth rings.",
-  },
-  gold: {
-    name: "Ornate Gold Gilt",
-    image: "/services/framing-hero-4.jpg",
-    mouldingSpec: '1.8" Hand-Applied Gold Leaf Gilt',
-    matSpec: '2.0" Warm Cotton Beveled Matboard',
-    glazingSpec: "Anti-Reflective Museum Glazing",
-    className: "moulding-gold",
-    desc: "Bespoke gold leafing with subtle hand-burnished distressing to give classical warmth.",
-  },
-  whiteOak: {
-    name: "Chalky White Oak",
-    image: "/services/framing-hero-3.jpg",
-    mouldingSpec: '1.5" Chalky White Oak profile',
-    matSpec: '3.0" Minimal Off-White Matboard',
-    glazingSpec: "Museum Glare-Free Acrylic",
-    className: "moulding-white-oak",
-    desc: "A modern, chalky-rubbed white finish showing off-white oak grain texture underneath.",
-  },
-  honeyOak: {
-    name: "Natural Honey Oak",
-    image: "/services/framing-hero-1.jpg",
-    mouldingSpec: '1.4" Natural Honey Oak timber',
-    matSpec: '2.5" Chalk White Matboard',
-    glazingSpec: "Optium Museum Glazing",
-    className: "moulding-honey-oak",
-    desc: "Natural honey oak timber preserved under transparent matte lacquer for a clean, raw look.",
-  },
-};
-
-const Hero = () => {
-  const [selectedKey, setSelectedKey] = useState<ProfileKey>("walnut");
-  const frameRef = useRef<HTMLDivElement>(null);
-
-  const selected = PROFILES[selectedKey];
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    const rect = frame.getBoundingClientRect();
-    const fx = rect.left + rect.width / 2;
-    const fy = rect.top + rect.height / 2;
-    const dx = e.clientX - fx;
-    const dy = e.clientY - fy;
-
-    const angleX = -dy * 0.05;
-    const angleY = dx * 0.05;
-
-    gsap.to(frame, {
-      rotateX: Math.max(-10, Math.min(10, angleX)),
-      rotateY: Math.max(-10, Math.min(10, angleY)),
-      transformPerspective: 1200,
-      z: 35,
-      boxShadow: `${-dx * 0.08}px ${-dy * 0.08 + 25}px 45px rgba(0,0,0,0.22)`,
-      duration: 0.35,
-      ease: "power2.out"
-    });
-  };
-
-  const handleMouseLeave = () => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    gsap.to(frame, {
-      rotateX: 0,
-      rotateY: 0,
-      z: 0,
-      boxShadow: "0 20px 50px rgba(0,0,0,0.15)",
-      duration: 0.5,
-      ease: "power2.out"
-    });
-  };
-
-  return (
-    <section className="cf-workbench-hero" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <div className="cf-workbench-grid-bg" />
-      <h1 className="cf-workbench-bg-title caps">WORKSHOP</h1>
-
-      <div className="cf-workbench-area">
-        <div className="cf-workbench-interactive-container">
-          
-          {/* Blueprint Specs Callouts */}
-          <div className="cf-blueprint-callout callout-moulding">
-            <span className="cf-blueprint-title">[01] MOULDING</span>
-            <span>{selected.mouldingSpec}</span>
-          </div>
-
-          <div className="cf-blueprint-callout callout-matting">
-            <span className="cf-blueprint-title">[02] MATBOARD</span>
-            <span>{selected.matSpec}</span>
-          </div>
-
-          <div className="cf-blueprint-callout callout-glazing">
-            <span className="cf-blueprint-title">[03] GLAZING</span>
-            <span>{selected.glazingSpec}</span>
-          </div>
-
-          {/* Interactive Beveled Frame */}
-          <div ref={frameRef} className={`cf-workbench-frame-wrapper ${selected.className}`}>
-            <div className="cf-frame-mat">
-              <div className="cf-frame-inner">
-                <div className="cf-frame-glaze" />
-                <img src={selected.image} alt={selected.name} />
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Dynamic spec note & Controls */}
-        <div className="cf-workbench-controls">
-          {(Object.keys(PROFILES) as ProfileKey[]).map((key) => {
-            const prof = PROFILES[key];
-            return (
-              <button
-                key={key}
-                className={`cf-workbench-btn ${selectedKey === key ? "active" : ""}`}
-                onClick={() => setSelectedKey(key)}
-              >
-                <span className={`cf-swatch-dot dot-${key}`} />
-                {prof.name}
-              </button>
-            );
-          })}
-        </div>
-
-      </div>
-    </section>
-  );
-};
-
-const HeroImage = () => {
-  return null;
-};
-
-const Showcase = () => {
-  return null;
-};
-
-const HeroHeader = () => {
-  return (
-    <section className="cf-header-centered">
-      <p className="cf-header-label">(Custom Framing)</p>
-      <h2 className="cf-header-title-centered">
-        Thoughtfully handcrafted frames, made to showcase and preserve the moments that matter most.
-      </h2>
-      <div className="cf-header-actions-centered">
-        <a href="#preview" className="cf-btn cf-btn-red">
-          Enter Studio
-        </a>
-        <a href="/contact" className="cf-btn cf-btn-outline">
-          Contact Workshop
-        </a>
-      </div>
-    </section>
-  );
-};
-
-
-
-const GalleryFrame = ({
-  src,
-  alt,
-  frameClass,
-  children,
-}: {
-  src: string;
-  alt: string;
-  frameClass: string;
-  children?: React.ReactNode;
-}) => {
-  const frameRef = useRef<HTMLDivElement>(null);
-  const glazeRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    const rect = frame.getBoundingClientRect();
-    const fx = rect.left + rect.width / 2;
-    const fy = rect.top + rect.height / 2;
-    const dx = e.clientX - fx;
-    const dy = e.clientY - fy;
-
-    // Organic offset movement
-    const moveX = (dx / rect.width) * 10;
-    const moveY = (dy / rect.height) * 10;
-
-    gsap.to(frame, {
-      x: moveX,
-      y: moveY,
-      duration: 0.35,
-      ease: "power2.out"
-    });
-
-    // Dynamic reflection glaze sheen shift
-    const glaze = glazeRef.current;
-    if (glaze) {
-      const intensity = 0.05 + (dy / rect.height) * 0.03;
-      gsap.to(glaze, {
-        background: `linear-gradient(${135 + (dx / rect.width) * 15}deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, ${intensity}) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.08) 100%)`,
-        duration: 0.3,
-        ease: "power1.out"
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    gsap.to(frame, {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: "power2.out"
-    });
-
-    const glaze = glazeRef.current;
-    if (glaze) {
-      gsap.to(glaze, {
-        background: `linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.05) 100%)`,
-        duration: 0.5,
-        ease: "power2.out"
-      });
-    }
-  };
-
-  return (
-    <div className="cf-exhibition-frame-wrapper" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      {children}
-      <div
-        ref={frameRef}
-        className={`cf-frame-mat-new ${frameClass}`}
+// Carousel images removed as requested
+const HeroImageBg = () => (
+  <section className="cf-hero-image-bg">
+    <Image 
+      src="/services/cf-hero-new.png" 
+      alt="CraftHive custom framing studio hero banner" 
+      fill 
+      priority
+      quality={90}
+      style={{ objectFit: 'cover', zIndex: 0 }} 
+    />
+    <div className="cf-hero-overlay"></div>
+    <div className="cf-hero-content reveal">
+      <h1>True Custom Framing</h1>
+      <p>Handcrafted for every piece, made with premium materials.<br/><br/>Custom framing made easy.</p>
+      <a 
+        href="#preview" 
+        className="cf-hero-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('preview')?.scrollIntoView({ behavior: 'smooth' });
+        }}
       >
-        <div className="cf-frame-inner-new">
-          <div
-            ref={glazeRef}
-            className="cf-frame-glaze-new"
-          />
-          <img src={src} alt={alt} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const CuratorialSpread = () => {
-  return (
-    <section className="cf-catalog-spread">
-      {/* Redesigned Intro Header */}
-      <div className="cf-spread-header">
-        <span className="cf-spread-subtitle">Curator's Journal</span>
-        <h2 className="cf-spread-title">The Architecture of Display</h2>
-        <p className="cf-spread-desc">
-          An editorial examination of archival science and traditional woodworking joinery.
-        </p>
-      </div>
-
-      {/* Staggered grid exhibition canvas */}
-      <div className="cf-exhibition-canvas">
-        {/* Left Column: Study 01 */}
-        <div className="cf-exhibition-col col-left">
-          <div className="cf-exhibition-item">
-            <GalleryFrame
-              src={curatorialArchival.src}
-              alt="Archival shadow box display"
-              frameClass="frame-walnut-shadowbox-new"
-            >
-              {/* Architectural Technical Lines */}
-              <div className="cf-leader-line-container">
-                <div className="cf-leader-line line-walnut-moulding">
-                  <div className="cf-leader-dot" />
-                  <div className="cf-leader-path" />
-                  <span className="cf-leader-label">2.0" Roasted Walnut</span>
-                </div>
-                <div className="cf-leader-line line-walnut-matting">
-                  <div className="cf-leader-dot" />
-                  <div className="cf-leader-path" />
-                  <span className="cf-leader-label">Beveled Silk Matboard</span>
-                </div>
-                <div className="cf-leader-line line-walnut-glazing">
-                  <div className="cf-leader-dot" />
-                  <div className="cf-leader-path" />
-                  <span className="cf-leader-label">Museum Glass (UV 99%)</span>
-                </div>
-              </div>
-            </GalleryFrame>
-
-            <div className="cf-editorial-text">
-              <span className="cf-editorial-tag">Study 01 // Conservation</span>
-              <h3 className="cf-editorial-title">Preserving Stories That Shape Us</h3>
-              <p className="cf-editorial-body">
-                Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved.
-              </p>
-              <blockquote className="cf-editorial-quote">
-                "A shadowbox is more than a frame; it is a microclimate of remembrance."
-              </blockquote>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Study 02 */}
-        <div className="cf-exhibition-col col-right">
-          <div className="cf-exhibition-item">
-            <GalleryFrame
-              src={curatorialWorkshop.src}
-              alt="Miter joint timber frame"
-              frameClass="frame-white-oak-mitered-new"
-            >
-              {/* Architectural Technical Lines */}
-              <div className="cf-leader-line-container">
-                <div className="cf-leader-line line-oak-moulding">
-                  <div className="cf-leader-dot" />
-                  <div className="cf-leader-path" />
-                  <span className="cf-leader-label">Solid White Oak</span>
-                </div>
-                <div className="cf-leader-line line-oak-joinery">
-                  <div className="cf-leader-dot" />
-                  <div className="cf-leader-path" />
-                  <span className="cf-leader-label">Miter Joint & Maple Spline</span>
-                </div>
-                <div className="cf-leader-line line-oak-glazing">
-                  <div className="cf-leader-dot" />
-                  <div className="cf-leader-path" />
-                  <span className="cf-leader-label">Danish Oil Finish</span>
-                </div>
-              </div>
-            </GalleryFrame>
-
-            <div className="cf-editorial-text">
-              <span className="cf-editorial-tag">Study 02 // Joinery</span>
-              <h3 className="cf-editorial-title">The Honesty of Solid Timber</h3>
-              <p className="cf-editorial-body">
-                We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents wrapping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision.
-              </p>
-              <blockquote className="cf-editorial-quote">
-                "Maple splines run perpendicular to the miter joint, locking the timber fibers into a permanent union."
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const WorkCarousel = () => {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!trackRef.current) return;
-
-    const track = trackRef.current;
-
-    const animation = gsap.to(track, {
-      xPercent: -50,
-      duration: 35,
-      ease: "none",
-      repeat: -1,
-    });
-
-    const pause = () => animation.pause();
-    const play = () => animation.resume();
-
-    track.addEventListener("mouseenter", pause);
-    track.addEventListener("mouseleave", play);
-
-    return () => {
-      track.removeEventListener("mouseenter", pause);
-      track.removeEventListener("mouseleave", play);
-      animation.kill();
-    };
-  }, []);
-
-  return (
-    <section className="cf-luxury-gallery">
-      <div className="cf-gallery-header reveal">
-        <span>Selected Works</span>
-        <h2>Crafted For Generations</h2>
-      </div>
-
-      <div className="cf-marquee-container">
-        <div ref={trackRef} className="cf-marquee-track">
-          {[...CAROUSEL_IMAGES, ...CAROUSEL_IMAGES].map(
-            (img, i) => (
-              <div
-                key={i}
-                className="cf-marquee-item"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                />
-              </div>
-            )
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const Testimonial = () => (
-  <section className="cf-testimonial">
-    <blockquote className="reveal">
-      "CraftHive transformed my family photos into stunning
-      pieces of art. Their attention to detail exceeded my
-      expectations."
-    </blockquote>
-
-    <div className="cf-testimonial__author reveal">
-      <strong>Ama Boateng</strong>
-      <span>Artist, Freelance</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        START FRAMING
+      </a>
     </div>
   </section>
 );
 
-const Process = () => (
-  <section className="cf-process">
-    <div className="cf-process__img reveal-left">
-      <img
-        src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=900&q=80"
-        alt="Framing process"
+const MadeForPieces = () => (
+  <section className="cf-text-section">
+    <div className="cf-text-container reveal">
+      <h2>Made For The Pieces That Matter</h2>
+      <p>
+        Great framing shouldn't mean expensive trips or complicated setups. We've made custom framing effortless, with everything you need delivered straight to your door.
+      </p>
+      <p>
+        Each frame is handcrafted to fit your artwork perfectly and includes all the hardware and easy-to-follow instructions for assembly. In just a few minutes, your artwork is ready to take center stage.
+      </p>
+    </div>
+  </section>
+);
+
+const ImageGrid = () => (
+  <section className="cf-image-grid-section">
+    <div className="cf-image-grid">
+      <div className="cf-grid-img reveal-left">
+        <Image src="/services/cf-image-3.png" alt="Custom picture framing workshop setup in Weija" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
+      </div>
+      <div className="cf-grid-img reveal">
+        <Image src="/services/cf-image-1.png" alt="Close up detail of museum-grade custom framing" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
+      </div>
+      <div className="cf-grid-img reveal-right">
+        <Image src="/services/cf-image-2.png" alt="Gallery wall featuring custom framed artwork" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
+      </div>
+    </div>
+  </section>
+);
+
+const FramingOriginText = () => (
+  <section className="cf-text-section-bottom">
+    <div className="cf-text-container reveal">
+      <p>
+        Handcrafted in Accra, Ghana with conservation-grade materials and careful attention to detail. Museum-quality framing, made closer and more accessible.
+      </p>
+    </div>
+  </section>
+);
+
+const Feature1 = () => (
+  <section className="cf-feature">
+    <div className="cf-feature-img reveal-left">
+      <Image
+        src="/services/framing-hero-1.jpg"
+        alt="Solid hardwood frame showing mitred joints with maple spline detail"
+        width={800} height={1000} style={{ width: '100%', height: 'auto' }}
       />
     </div>
-
-    <div className="cf-process__steps reveal-right">
-      <h2>Our Framing Process</h2>
-
-      <div className="cf-step">
-        <h3>Initial Consultation</h3>
-        <p>
-          We discuss your artwork and recommend the best
-          framing solution.
-        </p>
-      </div>
-
-      <div className="cf-step">
-        <h3>Design Selection</h3>
-        <p>
-          Choose moulding, matting and finishes that suit your
-          piece.
-        </p>
-      </div>
-
-      <div className="cf-step">
-        <h3>Craftsmanship</h3>
-        <p>
-          Every frame is handcrafted with precision and care.
-        </p>
+    <div className="cf-feature-copy reveal-right">
+      <span className="cf-sec-label">The Joinery</span>
+      <h2>Honest hardwoods, joined to endure</h2>
+      <p>
+        We construct our frames using solid hardwoods. Each corner is reinforced with maple splines—a traditional woodworking technique that locks the miter joint forever and prevents warping.
+      </p>
+      <div className="cf-feature-actions">
+        <a href="/contact" className="cf-btn cf-btn-red">
+          Request Timber Samples
+        </a>
       </div>
     </div>
   </section>
 );
 
-const CTABanner = () => (
-  <section className="cf-cta-banner">
-    <h2 className="reveal">
-      Ready to frame your memories?
-    </h2>
-
-    <p className="reveal">
-      Let our team transform your artwork into something
-      timeless.
-    </p>
-
-    <div className="cf-cta-banner-btns reveal">
-      <a href="#" className="cf-btn cf-btn-red">
-        Consult
-      </a>
-
-      <a href="/contact" className="cf-btn cf-btn-outline">
-        Contact
-      </a>
+const MaterialsOfPreservation = () => (
+  <section className="cf-materials-section">
+    <div className="cf-materials-head container reveal">
+      <span className="cf-sec-label">Materials</span>
+      <h2>Made for conservation, finished by hand</h2>
+      <p>
+        Every layer of our custom frames is acid-free and museum-grade, preserving the original beauty of your artwork for generations.
+      </p>
     </div>
+    <div className="cf-materials-grid container">
+      {[
+        {
+          n: "01",
+          title: "Timber Mouldings",
+          desc: "Solid hardwoods—Roasted Walnut, Chalky White Oak, and Honey Oak—sourced sustainably and hand-finished with organic wax."
+        },
+        {
+          n: "02",
+          title: "Conservation Matting",
+          desc: "Acid-free, alkaline-buffered cotton matboards that prevent acid burns and discoloration over time."
+        },
+        {
+          n: "03",
+          title: "Museum Glazing",
+          desc: "Virtually invisible glazing with 99% UV protection to block harmful light rays and eliminate glare."
+        },
+        {
+          n: "04",
+          title: "Archival Mounting",
+          desc: "Reversible mounting using acid-free Japanese hinging tissue, ensuring your prints remain undamaged."
+        }
+      ].map((m) => (
+        <div className="cf-mat-card reveal" key={m.n}>
+          <span className="cf-mat-card-num">{m.n}</span>
+          <h3>{m.title}</h3>
+          <p>{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+const Feature2 = () => (
+  <section className="cf-feature cf-feature-flip">
+    <div className="cf-feature-img reveal-right">
+      <Image
+        src="/services/framing-hero-3.jpg"
+        alt="Archival mounting of canvas print using conservation-grade materials"
+        width={800} height={1000} style={{ width: '100%', height: 'auto' }}
+      />
+    </div>
+    <div className="cf-feature-copy reveal-left">
+      <span className="cf-sec-label">Conservation</span>
+      <h2>Protecting your history from light and time</h2>
+      <p>
+        Every framing layer is acid-free. We use cotton matboards and 99% UV-filtering museum glass to ensure your photographs, relics, and canvases never fade or discolor.
+      </p>
+      <div className="cf-feature-actions">
+        <a href="/contact" className="cf-btn cf-btn-red">
+          Consult on Preservation
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+const CustomerPhotos = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const images = [
+    "/services/customer-1.png",
+    "/services/customer-2.png",
+    "/services/customer-3.png",
+    "/services/customer-4.png",
+    "/services/customer-5.png",
+    "/services/customer-6.png",
+    "/services/customer-7.png",
+  ];
+
+  const scroll = (dir: "left" | "right") => {
+    if (trackRef.current) {
+      const scrollAmount = 300;
+      trackRef.current.scrollBy({ left: dir === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="cf-customer-photos">
+      <div className="cf-customer-header reveal">
+        <span className="cf-sec-label">In The Wild</span>
+        <h2>Customer Photos</h2>
+        <p>Beautifully framed pieces living in our customers' homes and studios.</p>
+      </div>
+      
+      <div className="cf-customer-carousel-wrapper">
+        <button 
+          className="cf-carousel-btn cf-carousel-prev" 
+          onClick={() => scroll("left")}
+          aria-label="Previous photos"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div className="cf-customer-track" ref={trackRef}>
+          {images.map((src, i) => (
+            <div key={i} className={`cf-customer-item reveal delay-${(i % 3) + 1}`}>
+              <Image src={src} alt={`CraftHive custom framing example ${i + 1} installed in client home`} fill style={{ objectFit: 'cover' }} />
+            </div>
+          ))}
+        </div>
+
+        <button 
+          className="cf-carousel-btn cf-carousel-next" 
+          onClick={() => scroll("right")}
+          aria-label="Next photos"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+  );
+};
+
+
+const CTABanner = () => (
+  <section className="cf-cta-immersive">
+    <div className="cf-cta-content">
+      <span className="cf-cta-tag">CRAFT HIVE</span>
+      <h2>
+        Ready to frame
+        <br />
+        your memories?
+      </h2>
+      <p>
+        Whether it is a family photograph, a gallery-grade canvas, or a cherished heirloom—consult with our workshop to build something that lasts.
+      </p>
+      <div className="cf-cta-actions">
+        <a href="/contact" className="cf-cta-btn">
+          Consult Workshop
+        </a>
+        <a href="#preview" className="cf-cta-btn-outline">
+          Try Preview Tool
+        </a>
+      </div>
+    </div>
+    <div className="cf-cta-glow" />
   </section>
 );
 
@@ -533,84 +269,6 @@ export default function CustomFramingPage() {
   useEffect(() => {
     const root = pageRef.current;
     if (!root) return;
-
-    const bgTitle = root.querySelector<HTMLHeadingElement>(".cf-workbench-bg-title");
-    const frameWrapper = root.querySelector<HTMLElement>(".cf-workbench-frame-wrapper");
-    const callouts = root.querySelectorAll(".cf-blueprint-callout");
-    const controls = root.querySelector(".cf-workbench-controls");
-
-    let split: SplitText | null = null;
-
-    if (bgTitle) {
-      split = SplitText.create(bgTitle, {
-        type: "chars",
-        charsClass: "char++",
-      });
-
-      split.chars.forEach((char) => {
-        const wrapper = document.createElement("span");
-        wrapper.className = "char-mask";
-        wrapper.style.overflow = "hidden";
-        wrapper.style.display = "inline-block";
-
-        char.parentNode?.insertBefore(wrapper, char);
-        wrapper.appendChild(char);
-      });
-
-      gsap.set(split.chars, { y: "100%" });
-      gsap.to(split.chars, {
-        y: "0%",
-        duration: 0.8,
-        stagger: 0.1,
-        delay: 0.3,
-        ease: "power3.out",
-      });
-    }
-
-    if (frameWrapper) {
-      gsap.fromTo(
-        frameWrapper,
-        { opacity: 0, scale: 0.85, y: 50, rotateX: 15 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 1.4,
-          delay: 0.6,
-          ease: "power4.out",
-        }
-      );
-    }
-
-    if (callouts.length > 0) {
-      gsap.fromTo(
-        callouts,
-        { opacity: 0, x: (i) => (i % 2 === 0 ? -40 : 40) },
-        {
-          opacity: 0.85,
-          x: 0,
-          duration: 1.0,
-          stagger: 0.15,
-          delay: 1.0,
-          ease: "power3.out",
-        }
-      );
-    }
-
-    if (controls) {
-      gsap.fromTo(
-        controls,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: 1.2,
-          ease: "power3.out",
-        }
-      );
-    }
 
     gsap.utils.toArray(".reveal").forEach((el: any) => {
       gsap.fromTo(
@@ -671,25 +329,16 @@ export default function CustomFramingPage() {
         }
       );
     });
-
-    return () => {
-      split?.revert();
-    };
   }, []);
 
   return (
     <div className="custom-framing-wrapper" ref={pageRef}>
-      <Hero />
-      <HeroHeader />
-
-
-      <CuratorialSpread />
-
-      <WorkCarousel />
-
-      <Testimonial />
-
-      <Process />
+      <HeroImageBg />
+      <MadeForPieces />
+      <ImageGrid />
+      <FramingOriginText />
+      <CustomerPhotos />
+      <CategorySelector />
 
       <section id="preview" className="preview-tool">
       <FramePreview />

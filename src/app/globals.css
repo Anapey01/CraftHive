@@ -1,14 +1,14 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   /* Unified Font System */
-  --font-heading: var(--font-Manrope);
+  --font-heading: var(--font-manrope);
   --font-body: var(--font-inter);
+  --font-display: var(--font-heading);
+  --fd: var(--font-heading);
+  --fb: var(--font-body);
 
   /* Color palette */
   --background: #07060A;
@@ -28,12 +28,18 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  data-scroll-behavior: "smooth"
 }
 
 body {
   background-color: #000000ea;
   color:#1a1614; ;
   overflow-x: hidden;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .highlight {
