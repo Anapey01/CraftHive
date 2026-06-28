@@ -51,8 +51,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-    "CraftHive is Accra's home for bespoke Shadow Boxes, Custom Picture Framing, Laser Engraving, Personalised Gifts & Memory Boxes, Signs, and artisanal decor. Rooted in Ghanaian heritage. Crafted with intention.",
-icons: {
+  icons: {
     icon: [
       { url: "favicon/favicon.ico" },
       { url: "favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
