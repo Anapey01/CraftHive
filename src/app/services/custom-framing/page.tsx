@@ -11,6 +11,7 @@ import "./customframing.css";
 
 import FramePreview from "@/components/FramePreview/FramePreview";
 import Footer from "@/components/ui/Footer";
+import Image from "next/image";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -56,13 +57,13 @@ const ImageGrid = () => (
   <section className="cf-image-grid-section">
     <div className="cf-image-grid">
       <div className="cf-grid-img reveal-left">
-        <img src="/services/cf-image-3.png" alt="Custom framing setup" />
+        <Image src="/services/cf-image-3.png" alt="Custom picture framing workshop setup in Weija" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
       </div>
       <div className="cf-grid-img reveal">
-        <img src="/services/cf-image-1.png" alt="Custom framing artwork detail" />
+        <Image src="/services/cf-image-1.png" alt="Close up detail of museum-grade custom framing" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
       </div>
       <div className="cf-grid-img reveal-right">
-        <img src="/services/cf-image-2.png" alt="Custom framing wall setup" />
+        <Image src="/services/cf-image-2.png" alt="Gallery wall featuring custom framed artwork" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
       </div>
     </div>
   </section>
@@ -84,9 +85,10 @@ const FramingOriginText = () => (
 const Feature1 = () => (
   <section className="cf-feature">
     <div className="cf-feature-img reveal-left">
-      <img
+      <Image
         src="/services/framing-hero-1.jpg"
-        alt="Mitred frame joints with spline detail"
+        alt="Solid hardwood frame showing mitred joints with maple spline detail"
+        width={800} height={1000} style={{ width: '100%', height: 'auto' }}
       />
     </div>
     <div className="cf-feature-copy reveal-right">
@@ -149,9 +151,10 @@ const MaterialsOfPreservation = () => (
 const Feature2 = () => (
   <section className="cf-feature cf-feature-flip">
     <div className="cf-feature-img reveal-right">
-      <img
+      <Image
         src="/services/framing-hero-3.jpg"
-        alt="Archival mounting of canvas print"
+        alt="Archival mounting of canvas print using conservation-grade materials"
+        width={800} height={1000} style={{ width: '100%', height: 'auto' }}
       />
     </div>
     <div className="cf-feature-copy reveal-left">
@@ -169,27 +172,70 @@ const Feature2 = () => (
   </section>
 );
 
+const CustomerPhotos = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const images = [
+    "/services/customer-1.png",
+    "/services/customer-2.png",
+    "/services/customer-3.png",
+    "/services/customer-4.png",
+    "/services/customer-5.png",
+    "/services/customer-6.png",
+    "/services/customer-7.png",
+  ];
 
-const Testimonial = () => (
-  <section className="cf-testimonial-accent">
-    <div className="cf-testimonial-box reveal">
-      <div className="bracket bracket--tl" />
-      <div className="bracket bracket--br" />
-      <span className="cf-testimonial-quote-icon">“</span>
-      <blockquote>
-        \"CraftHive transformed my family photos into stunning pieces of art. The solid walnut frame and archival matting exceeded my expectations in every way.\"
-      </blockquote>
-      <div className="cf-testimonial-author">
-        <strong>Ama Boateng</strong>
-        <span>Artist & Curator</span>
+  const scroll = (dir: "left" | "right") => {
+    if (trackRef.current) {
+      const scrollAmount = 300;
+      trackRef.current.scrollBy({ left: dir === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="cf-customer-photos">
+      <div className="cf-customer-header reveal">
+        <span className="cf-sec-label">In The Wild</span>
+        <h2>Customer Photos</h2>
+        <p>Beautifully framed pieces living in our customers' homes and studios.</p>
       </div>
-    </div>
-  </section>
-);
+      
+      <div className="cf-customer-carousel-wrapper">
+        <button 
+          className="cf-carousel-btn cf-carousel-prev" 
+          onClick={() => scroll("left")}
+          aria-label="Previous photos"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div className="cf-customer-track" ref={trackRef}>
+          {images.map((src, i) => (
+            <div key={i} className={`cf-customer-item reveal delay-${(i % 3) + 1}`}>
+              <Image src={src} alt={`CraftHive custom framing example ${i + 1} installed in client home`} fill style={{ objectFit: 'cover' }} />
+            </div>
+          ))}
+        </div>
+
+        <button 
+          className="cf-carousel-btn cf-carousel-next" 
+          onClick={() => scroll("right")}
+          aria-label="Next photos"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+  );
+};
+
 
 const CTABanner = () => (
   <section className="cf-cta-immersive">
-    <div className="cf-cta-content reveal">
+    <div className="cf-cta-content">
       <span className="cf-cta-tag">CRAFT HIVE</span>
       <h2>
         Ready to frame
@@ -286,9 +332,8 @@ export default function CustomFramingPage() {
       <MadeForPieces />
       <ImageGrid />
       <FramingOriginText />
+      <CustomerPhotos />
       <CategorySelector />
-
-      <Testimonial />
 
       <section id="preview" className="preview-tool">
         <FramePreview />

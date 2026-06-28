@@ -90,6 +90,7 @@
   height: 6rem;
   border-radius: 0.25rem;
   overflow: hidden;
+  position: relative;
 }
 
 @media (max-width: 1000px) {

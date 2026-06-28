@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
+import Image from 'next/image';
 import './Reveal.css';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -249,43 +250,43 @@ export default function TextReveal() {
         <div className="marquee">
           <div className="marquee-track">
             <div className="marquee-item">
-              <img src="/handicrafts/handy.jpg" alt="" />
+              <Image src="/handicrafts/handy.jpg" alt="Artisan handcrafting custom frame" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/memory.jpg" alt="" />
+              <Image src="/handicrafts/memory.jpg" alt="Bespoke shadow box memory preservation" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/gifts.jpg" alt="" />
+              <Image src="/handicrafts/gifts.jpg" alt="Personalized laser engraved wooden gift" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/coffee.jpg" alt="" />
+              <Image src="/handicrafts/coffee.jpg" alt="Handcrafted wooden coffee table decor" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/diffuser.jpg" alt="" />
+              <Image src="/handicrafts/diffuser.jpg" alt="Artisanal wooden diffuser stand" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/gallery-4.jpg" alt="" />
+              <Image src="/handicrafts/gallery-4.jpg" alt="CraftHive framing studio gallery wall" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/purse.jpg" alt="" />
+              <Image src="/handicrafts/purse.jpg" alt="Handmade leather and wood purse" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/photography/gallery-3.jpg" alt="" />
+              <Image src="/photography/gallery-3.jpg" alt="Professional framed photography in studio" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/pensa.jpg" alt="" />
+              <Image src="/handicrafts/pensa.jpg" alt="Custom wooden signage and plaque" fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/nyanks.jpg" alt="" />
+              <Image src="/handicrafts/nyanks.jpg" alt="Laser engraved bespoke wooden sign" fill style={{ objectFit: 'cover' }} />
             </div>
           </div>
         </div>

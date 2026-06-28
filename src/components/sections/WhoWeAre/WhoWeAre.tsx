@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import "./WhoWeAre.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -140,19 +141,19 @@ const WhoWeAre: React.FC = () => {
           </div>
 
           <div className="whoweare-img" id="whoweare-img-1">
-            <img src="/who-we-are/team-1.jpg" alt="" />
+            <Image src="/who-we-are/team-1.jpg" alt="CraftHive artisan cutting hardwood for custom frame" width={600} height={800} style={{ width: '100%', height: 'auto' }} />
           </div>
           <div className="whoweare-img" id="whoweare-img-2">
-            <img src="/who-we-are/team-2.jpg" alt="" />
+            <Image src="/who-we-are/team-2.jpg" alt="Master framer assembling a bespoke shadow box" width={600} height={800} style={{ width: '100%', height: 'auto' }} />
           </div>
           <div className="whoweare-img" id="whoweare-img-3">
-            <img src="/who-we-are/team-3.jpg" alt="" />
+            <Image src="/who-we-are/team-3.jpg" alt="Precision laser engraving on custom wooden sign" width={600} height={800} style={{ width: '100%', height: 'auto' }} />
           </div>
           <div className="whoweare-img" id="whoweare-img-4">
-            <img src="/who-we-are/team-4.jpg" alt="" />
+            <Image src="/who-we-are/team-4.jpg" alt="Hand-sanding wooden frame for gallery artwork" width={600} height={800} style={{ width: '100%', height: 'auto' }} />
           </div>
           <div className="whoweare-img" id="whoweare-img-5">
-            <img src="/who-we-are/team-5.jpg" alt="" />
+            <Image src="/who-we-are/team-5.jpg" alt="CraftHive workshop interior with completed frames" width={600} height={800} style={{ width: '100%', height: 'auto' }} />
           </div>
         </div>
       </div>

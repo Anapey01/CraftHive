@@ -1,4 +1,5 @@
 import "./BrandTicker.css";
+import Image from "next/image";
 
 const pressLogos = [
   { src: "/logos/art-africa.png", alt: "Art Africa" },
@@ -26,7 +27,7 @@ export default function BrandTicker() {
             <div className="press-logos-row">
               {pressLogos.map((logo, i) => (
                 <div className="press-logo-placeholder has-image" key={i}>
-                  <img src={logo.src} alt={logo.alt} className="press-logo-img" />
+                  <Image src={logo.src} alt={logo.alt} width={300} height={100} className="press-logo-img" />
                 </div>
               ))}
             </div>

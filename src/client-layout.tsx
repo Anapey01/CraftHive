@@ -43,33 +43,33 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   const scrollSettings: LenisOptions = isMobile
     ? {
         duration: 1.2,
-        easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         direction: "vertical",
         gestureDirection: "vertical",
         smooth: true,
-        smoothTouch: true,
-        touchMultiplier: 1.5,
+        smoothTouch: false, // Prevents mobile touch breakages
+        touchMultiplier: 2,
         infinite: false,
-        lerp: 0.07,
-        wheelMultiplier: 0.9,
+        lerp: 0.08,
+        wheelMultiplier: 1,
         orientation: "vertical",
         smoothWheel: true,
-        syncTouch: true,
+        syncTouch: false,
       }
     : {
-        duration: 1.5,
-        easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         direction: "vertical",
         gestureDirection: "vertical",
         smooth: true,
         smoothTouch: false,
         touchMultiplier: 2,
         infinite: false,
-        lerp: 0.04,
-        wheelMultiplier: 0.85,
+        lerp: 0.08,
+        wheelMultiplier: 1,
         orientation: "vertical",
         smoothWheel: true,
-        syncTouch: true,
+        syncTouch: false,
       };
 
   return (

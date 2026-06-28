@@ -368,11 +368,11 @@
 }
 
 .cf-cta-immersive h2 {
-  font-size: clamp(3rem, 6.5vw, 6.5rem);
-  line-height: 1.0;
-  font-weight: 500;
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 400;
   margin-bottom: 2rem;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   font-family: var(--fd);
 }
 
@@ -437,6 +437,24 @@
   background: radial-gradient(circle, rgba(227, 34, 28, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .cf-cta-immersive {
+    padding: 6rem 1.5rem;
+  }
+  .cf-cta-immersive p {
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+  .cf-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cf-cta-actions a {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* ── Footer ── */
@@ -598,9 +616,9 @@
 }
 
 .cf-text-container h2 {
-  font-family: var(--font-heading), 'Outfit', sans-serif;
-  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
-  font-weight: 300;
+  font-family: var(--fd);
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
   text-transform: none;
   text-align: center;
   color: var(--black);
@@ -621,7 +639,7 @@
 }
 
 .cf-text-section-bottom {
-  padding: 2rem 2rem 8rem 2rem;
+  padding: 2rem 2rem 4rem 2rem;
   background-color: var(--white);
   display: flex;
   justify-content: center;
@@ -668,17 +686,147 @@
   }
 }
 
+/* ── Customer Photos Horizontal Carousel ───────────────────────── */
+.cf-customer-photos {
+  padding: 4rem 2rem 2rem 2rem;
+  background-color: var(--off);
+  border-top: 1px solid var(--border);
+}
+
+.cf-customer-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+}
+
+.cf-customer-header .cf-sec-label {
+  justify-content: center;
+}
+
+.cf-customer-header h2 {
+  font-family: var(--fd);
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--black);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cf-customer-header p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.cf-customer-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cf-customer-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 0;
+  width: 100%;
+}
+
+.cf-customer-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cf-customer-item {
+  flex: 0 0 calc(25% - 1.125rem); /* 4 items visible on desktop */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 0; /* No radius */
+  scroll-snap-align: start;
+}
+
+.cf-customer-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Arrows overlay */
+.cf-customer-carousel-wrapper .cf-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: white;
+  color: black;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 0; /* Square buttons like image */
+}
+
+.cf-customer-carousel-wrapper .cf-carousel-prev {
+  left: 1rem;
+}
+
+.cf-customer-carousel-wrapper .cf-carousel-next {
+  right: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .cf-customer-item {
+    flex: 0 0 calc(33.333% - 1rem); /* 3 items visible on tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .cf-customer-photos {
+    padding: 4rem 1rem;
+  }
+  .cf-customer-track {
+    gap: 1rem;
+  }
+  .cf-customer-item {
+    flex: 0 0 calc(50% - 0.5rem); /* 2 items visible on mobile */
+  }
+  .cf-customer-carousel-wrapper .cf-carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .cf-customer-carousel-wrapper .cf-carousel-prev {
+    left: 0.5rem;
+  }
+  .cf-customer-carousel-wrapper .cf-carousel-next {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cf-customer-item {
+    flex: 0 0 calc(100% - 2rem); /* 1 item visible on very small screens, with peeking next item */
+  }
+}
+
 /* ── Category Selector Carousel ───────────────────────── */
 .cf-category-section {
-  padding: 4rem 2rem 6rem 2rem;
+  padding: 2rem 2rem 6rem 2rem;
   background-color: var(--white);
   border-top: 1px solid #f0f0f0;
 }
 
 .cf-category-heading {
-  font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
-  font-weight: 500;
+  font-family: var(--fd);
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
   text-align: center;
   color: var(--black);
   margin-bottom: 3rem;
@@ -875,8 +1023,8 @@
 }
 .cf-feature-copy h2 {
   font-family: var(--fd);
-  font-size: clamp(1.8rem, 2.8vw, 3.2rem);
-  font-weight: 700;
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--black);
@@ -911,8 +1059,8 @@
 }
 .cf-materials-head h2 {
   font-family: var(--fd);
-  font-size: clamp(2rem, 3.2vw, 3.8rem);
-  font-weight: 700;
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
   line-height: 1.1;
   max-width: 400px;
   color: var(--black);

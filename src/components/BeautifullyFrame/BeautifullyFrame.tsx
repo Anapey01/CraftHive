@@ -1,6 +1,7 @@
 import React from "react";
 import "./BeautifullyFrame.css";
 import Animates from "@/components/Animates/Animate";
+import Image from "next/image";
 
 const BeautifullyFrame = () => {
   return (
@@ -18,7 +19,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.3}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-1.png" alt="Heart-shaped polaroids wall" className="beautifully-img" />
+                <Image src="/featured-work/work-1.png" alt="Custom framed gallery wall with heart-shaped polaroids" className="beautifully-img" width={800} height={1000} style={{ width: '100%', height: 'auto' }} />
               </div>
             </Animates>
           </div>
@@ -26,7 +27,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.45}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/girl-chickens.jpg" alt="Framed girl and chickens painting" className="beautifully-img" />
+                <Image src="/featured-work/girl-chickens.jpg" alt="Artistic painting of girl and chickens in premium custom frame" className="beautifully-img" width={800} height={1000} style={{ width: '100%', height: 'auto' }} />
               </div>
             </Animates>
           </div>
@@ -34,7 +35,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item landscape">
             <Animates animateOnScroll={true} delay={0.6}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-3.jpg" alt="Beautifully framed Adinkra symbols" className="beautifully-img" />
+                <Image src="/featured-work/work-3.jpg" alt="Beautifully framed traditional Ghanaian Adinkra symbols" className="beautifully-img" width={1000} height={800} style={{ width: '100%', height: 'auto' }} />
               </div>
             </Animates>
           </div>

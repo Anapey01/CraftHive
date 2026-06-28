@@ -257,7 +257,7 @@ export default function FramePreviewPage() {
                     {uploadedImage ? (
                       <img
                         src={uploadedImage}
-                        alt="Uploaded Artwork"
+                        alt="User uploaded custom artwork preview for framing"
                         className="uploaded-artwork"
                       />
                     ) : (

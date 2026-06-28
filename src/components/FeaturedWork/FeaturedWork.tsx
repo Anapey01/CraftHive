@@ -5,7 +5,7 @@ import { useRef, useEffect } from "react";
 import { projects } from "./project";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import gsap from "gsap";
-
+import Image from "next/image";
 
 
 type Project = {
@@ -25,7 +25,7 @@ function FeaturedWorkItem({ project }: FeaturedWorkItemProps) {
     <div className="featured-work-item">
       <a href={project.route} className="featured-work-item-link">
         <div className="featured-work-item-img-wrapper">
-          <img src={project.img} alt={project.name} className="featured-work-img" />
+          <Image src={project.img} alt={project.name} fill className="featured-work-img" />
         </div>
       </a>
     </div>

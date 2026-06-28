@@ -3,7 +3,7 @@
 import Footer from "@/components/ui/Footer";
 import "./shadow.css";
 import ArtGallery from "@/components/ArtGallery";
-
+import Image from "next/image";
 
 const ArtBoxesPage = () => (
   <div className="page">
@@ -23,9 +23,10 @@ const ArtBoxesPage = () => (
         </div>
       </div>
       <div className="ab-hero__img">
-        <img
+        <Image
           src="/shadow/art_4.jpg"
-          alt="Ornate African art box with decorative medallions"
+          alt="Ornate African shadow box with decorative medallions crafted in Ghana"
+          width={800} height={1000} style={{ width: '100%', height: 'auto' }} priority
         />
       </div>
     </section>
@@ -33,9 +34,10 @@ const ArtBoxesPage = () => (
     {/* ── Feature 1 ─────────────────────────────────────── */}
     <section className="feature" id="work">
       <div className="feature__img">
-        <img
+        <Image
           src="/shadow/art_5.jpg"
-          alt="Traditional African symbolic artwork detail"
+          alt="Traditional African symbolic artwork framed in deep shadow box"
+          width={800} height={1000} style={{ width: '100%', height: 'auto' }}
         />
       </div>
       <div className="feature__copy">
@@ -81,9 +83,10 @@ const ArtBoxesPage = () => (
     {/* ── Feature 2 ─────────────────────────────────────── */}
     <section className="feature flip">
       <div className="feature__img">
-        <img
+        <Image
           src="/shadow/setup.jpg"
-          alt="Close detail of an art box surface pattern"
+          alt="Close detail of a CraftHive art box surface pattern and texture"
+          width={800} height={1000} style={{ width: '100%', height: 'auto' }}
         />
       </div>
       <div className="feature__copy">

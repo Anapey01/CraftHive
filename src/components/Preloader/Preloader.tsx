@@ -7,6 +7,7 @@ import { SplitText } from "gsap/SplitText";
 import { CustomEase } from "gsap/CustomEase";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP, SplitText, CustomEase);
 
@@ -219,19 +220,19 @@ const Preloader = () => {
 
         <div className="preloader-images">
           <div className="img">
-            <img src="/featured-work/work-1.png" alt="Featured work 1" />
+            <Image src="/featured-work/work-1.png" alt="Custom framed abstract artwork" fill style={{ objectFit: 'cover' }} priority />
           </div>
 
           <div className="img">
-            <img src="/featured-work/carousel_7.jpg" alt="Featured work 2" />
+            <Image src="/featured-work/carousel_7.jpg" alt="Artisan assembling premium shadow box" fill style={{ objectFit: 'cover' }} priority />
           </div>
 
           <div className="img">
-            <img src="/shadow/setup.jpg" alt="Featured work 5" />
+            <Image src="/shadow/setup.jpg" alt="Laser engraved bespoke wooden decor" fill style={{ objectFit: 'cover' }} priority />
           </div>
 
           <div className="img">
-            <img src="/shadow/art_7.jpg" alt="Featured work 3" />
+            <Image src="/shadow/art_7.jpg" alt="Hand-sanded solid hardwood picture frame" fill style={{ objectFit: 'cover' }} priority />
           </div>
         </div>
       </div>
