@@ -18,6 +18,14 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 // Carousel images removed as requested
 const HeroImageBg = () => (
   <section className="cf-hero-image-bg">
+    <Image 
+      src="/services/cf-hero-new.png" 
+      alt="CraftHive custom framing studio hero banner" 
+      fill 
+      priority
+      quality={90}
+      style={{ objectFit: 'cover', zIndex: 0 }} 
+    />
     <div className="cf-hero-overlay"></div>
     <div className="cf-hero-content reveal">
       <h1>True Custom Framing</h1>

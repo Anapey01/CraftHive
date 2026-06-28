@@ -533,9 +533,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/services/cf-hero-new.png');
-  background-size: cover;
-  background-position: center;
+  background-color: var(--black);
 }
 
 .cf-hero-overlay {
