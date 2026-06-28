@@ -81,10 +81,7 @@ const FramingOriginText = () => (
   <section className="cf-text-section-bottom">
     <div className="cf-text-container reveal">
       <p>
-        Handcrafted in Kumasi, Ghana with conservation-grade materials and careful attention to detail. Museum-quality framing, made closer and more accessible.
-      </p>
-      <p>
-        Watch the video below to see how effortless it is to frame your artwork at home.
+        Handcrafted in Accra, Ghana with conservation-grade materials and careful attention to detail. Museum-quality framing, made closer and more accessible.
       </p>
     </div>
   </section>
