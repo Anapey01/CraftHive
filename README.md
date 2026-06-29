@@ -1,122 +1,91 @@
 <div align="center">
+
+  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/frame.svg" width="48" height="48" alt="Frame Icon"/>
+
+  # CraftHive 
   
-  # 🖼️ CraftHive 
-  
-  **Premium Custom Framing & Art Studio**
+  *Preserving what matters. Crafted for generations.*
   
   [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
   [![GSAP](https://img.shields.io/badge/GSAP-3.15-88CE02?style=for-the-badge&logo=greensock)](https://gsap.com/)
 
-  [View Live Site](https://crafthivegh.com) • [Report Bug](#-support) • [Request Feature](#-support)
+  [View Live Site](https://crafthivegh.com) 
 
 </div>
 
----
+<br/>
 
-## 🌟 About The Project
+Every photograph holds a memory. Every piece of art carries a story. At CraftHive, we built a digital home that honors the physical craft of picture framing, shadow boxes, and personalized gifts. 
 
-**CraftHive** is a premium, ultra-modern e-commerce platform and digital gallery for custom picture framing, Adinkra-inspired shadow boxes, personalized wooden gifts, and bespoke signage.
+We didn't just want an e-commerce store; we wanted a digital gallery. A space that feels as deliberate, textured, and carefully constructed as the wooden frames we build by hand in our Weija Tollbooth studio. 
 
-Built with performance and aesthetics in mind, this project utilizes **Next.js 16 App Router**, **GSAP** for buttery smooth scrolling animations, and **View Transitions** for a native app-like experience.
-
-### 📸 Showcase
-
-| Custom Framing | Dynamic Galleries |
-| :---: | :---: |
-| <img src="public/services/cf-hero.webp" alt="Custom Framing Hero" width="400"/> | <img src="public/CraftHive.png" alt="CraftHive Grid" width="400"/> |
-
----
-
-## 🚀 Key Features
-
-- **⚡ Blazing Fast Performance:** Heavy images are automatically optimized to modern formats (WEBP) and lazy-loaded. 
-- **✨ Immersive GSAP Animations:** Features complex scroll-triggered animations, split-text typography reveals, and parallax image galleries.
-- **📱 Responsive & Accessible:** Fully functional across all devices with native smooth scrolling powered by `lenis`.
-- **🖼️ View Transitions:** Seamless routing between pages with `next-view-transitions` for zero-flicker UI updates.
-- **📊 Real-time Analytics:** Integrated deeply with Vercel Web Analytics and Speed Insights to track Core Web Vitals (INP, LCP, etc.).
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS + Custom CSS modules
-- **Animations:** GSAP & Framer Motion
-- **Scrolling:** Lenis
-- **Hosting:** Vercel
-
----
-
-## 💻 Getting Started
-
-Follow these steps to run the CraftHive platform locally on your machine.
-
-### Prerequisites
-
-You will need **Node.js** (v18+) and **pnpm** installed on your system.
-
-```bash
-npm install -g pnpm
-```
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/davecodelab/CHDEMO.git
-   cd CHDEMO
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pnpm install
-   ```
-
-3. **Run the development server:**
-   ```bash
-   pnpm run dev
-   ```
-
-4. **Open your browser:**
-   Navigate to `http://localhost:3000` to see the site in action!
-
----
-
-## 🏗️ Project Structure
-
-```text
-src/
-├── app/                  # Next.js App Router (Pages & Layouts)
-│   ├── about/            # About page
-│   ├── gallery/          # Dynamic gallery showcase
-│   └── services/         # Custom Framing & Shadow Boxes
-├── components/           # Reusable React UI Components
-│   ├── Animates/         # GSAP SplitText wrappers
-│   ├── GalleryParallax/  # Scroll-driven image galleries
-│   └── Preloader/        # Initial site load animation
-└── ...
-```
-
----
-
-## 📈 Vercel Deployment
-
-This project is optimized for deployment on Vercel. 
-Ensure you have the Vercel CLI installed or link this repository to your Vercel dashboard.
-
-```bash
-pnpm install -g vercel
-vercel deploy
-```
-
-> **Note:** The `pnpm-lock.yaml` file is highly strict. Do not mix package managers (like `npm` or `yarn`) or Vercel builds will fail.
-
----
+<br/>
 
 <div align="center">
-  <p>Made with ❤️ by CraftHive.</p>
+  <img src="public/CraftHive.png" alt="CraftHive Showcase" width="800" style="border-radius: 8px;"/>
+</div>
+
+<br/>
+
+### The Experience
+
+We designed this platform to feel alive. When you scroll, the page breathes. 
+
+Rather than jumping from page to page, we implemented seamless view transitions that glide you through the galleries. We used GSAP to choreograph split-text reveals and parallax images that draw your eye to the details—just like a well-cut mat board draws your eye to a painting.
+
+<br/>
+
+<div align="center">
+  <img src="public/services/cf-hero.webp" alt="Custom Framing Details" width="800" style="border-radius: 8px;"/>
+</div>
+
+<br/>
+
+### Built for Speed
+
+A gallery is only beautiful if you can actually see it. Behind the smooth animations is an incredibly strict performance architecture. 
+
+We process and compress every high-resolution showcase image down to ultra-lightweight WEBP formats. We rely on Next.js 16 and Vercel's Edge Network to serve pages globally in milliseconds. We monitor our Core Web Vitals meticulously to ensure that no animation ever gets in the way of a perfect user experience.
+
+<br/>
+
+<div align="center">
+  <img src="public/about/about-hero.png" alt="About CraftHive" width="800" style="border-radius: 8px;"/>
+</div>
+
+<br/>
+
+### For Developers
+
+If you'd like to explore the code or run this gallery locally, you are welcome to step into our workshop.
+
+<br/>
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/davecodelab/CHDEMO.git
+cd CHDEMO
+```
+
+**2. Install our tools**  
+*We strictly use `pnpm` to keep our dependency tree clean.*
+```bash
+npm install -g pnpm
+pnpm install
+```
+
+**3. Open the studio**
+```bash
+pnpm run dev
+```
+
+Visit `http://localhost:3000` to see the digital workshop in action. 
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/hammer.svg" width="24" height="24" alt="Hammer"/>
+  <p><i>Made to last.</i></p>
 </div>
