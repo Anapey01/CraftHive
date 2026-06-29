@@ -29,7 +29,7 @@ const services: Service[] = [
     description:
       "Professional framing for photos, artworks, certificates, and collectibles. Your choice of style, mount colour, and size — tailored to your piece and your space.",
     image: "/assets/custom.jpg",
-    link: "gallery",
+    link: "/services/custom-framing",
     className: "md:col-span-2 md:row-span-2",
   },
   {
@@ -38,7 +38,7 @@ const services: Service[] = [
     description:
       "Our flagship. Handcrafted hollow frames arranged with brass Adinkra symbols into a bespoke, culturally rooted artwork. Ready-made or fully commissioned to your story.",
     image: "/assets/shadow.jpg",
-    link: "/gallery",
+    link: "/services/shadow-box",
     className: "md:col-span-2",
   },
   {
@@ -47,7 +47,7 @@ const services: Service[] = [
     description:
       "Curated handcrafted pieces — tabletop fountains, rustic furniture, diffusers, designer mirrors, cultural artefacts, and artisanal decor. Selected for quality and character.",
     image: "/assets/mirror.jpg",
-    link: "/gallery",
+    link: "/services/handicrafts",
     className: "md:col-span-2",
   },
   {

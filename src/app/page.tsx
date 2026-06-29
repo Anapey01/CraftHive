@@ -89,7 +89,7 @@ const Page = () => {
                 </p>
               </Animates>
 
-              <Button delay={isInitialLoad ? 6.35 : 1.55} href="/services#preview">
+              <Button delay={isInitialLoad ? 6.35 : 1.55} href="/services#frame-preview-tool">
                 See What We Do
               </Button>
             </div>

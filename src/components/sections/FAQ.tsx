@@ -89,7 +89,7 @@ export default function FAQ() {
             Everything you need to know before framing your first piece with us.
           </p>
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full border border-[#c31b07]/30 text-[#c31b07] font-body text-xs tracking-widest uppercase hover:bg-[#c31b07]/10 transition-all duration-300"
           >
             Ask us directly →
