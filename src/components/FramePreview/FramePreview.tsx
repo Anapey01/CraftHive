@@ -92,6 +92,7 @@ export default function FramePreviewPage() {
   const pageRef = useRef<HTMLDivElement | null>(null);
   const frameOuterRef = useRef<HTMLDivElement | null>(null);
   const matBoardRef = useRef<HTMLDivElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const frameRef = useRef<HTMLDivElement>(null);
 
@@ -101,7 +102,7 @@ export default function FramePreviewPage() {
   const [frame, setFrame] = useState(frameOptions[0]);
   const [matColor, setMatColor] = useState(matColors[0]);
   const [matMargin, setMatMargin] = useState(1.5);
-  const [artType, setArtType] = useState("Artwork on Paper");
+  const [artType, setArtType] = useState("digital-photo");
   const [savedFrame, setSavedFrame] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [containerWidth, setContainerWidth] = useState(420);
@@ -153,16 +154,30 @@ export default function FramePreviewPage() {
   };
 
   // Handle image upload and create object URL for preview
-  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  // const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
 
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setUploadedImage(imageUrl);
-    } else {
-      setUploadedImage(null);
-    }
-  };
+  //   if (file) {
+  //     const imageUrl = URL.createObjectURL(file);
+  //     setUploadedImage(imageUrl);
+  //   } else {
+  //     setUploadedImage(null);
+  //   }
+  // };
+
+  const handleImageUpload = (
+  e: ChangeEvent<HTMLInputElement>
+) => {
+  const file = e.target.files?.[0];
+
+  if (!file) {
+    setUploadedImage(null);
+    return;
+  }
+
+  const imageUrl = URL.createObjectURL(file);
+  setUploadedImage(imageUrl);
+};
 
 
   // Generate preview image using html2canvas and trigger download
@@ -263,7 +278,15 @@ export default function FramePreviewPage() {
                     ) : (
                       <div className="artwork-mark">
                         <ImageIcon size={34} />
-                        <span>{artType}</span>
+                        <span>
+                      {{
+                        "digital-photo": "Digital Photo",
+                        artwork: "Artwork on Paper",
+                        certificate: "Certificate",
+                        fabric: "Textile / Fabric",
+                        "memory-item": "Memory Item",
+                      }[artType]}
+</span>
                       </div>
                     )}
                   </div>
@@ -282,16 +305,19 @@ export default function FramePreviewPage() {
 
           <aside className="frame-controls">
             {/* Image upload control */}
-            {artType === "Digital Photo" && (
-              <div className="control-group">
-                <label htmlFor="artworkUpload">Upload Your Photo</label>
-                <input
-                  id="artworkUpload"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="image-upload-input"
-                />
+            {(artType === "digital-photo" || artType === "artwork") && (
+  <div className="control-group">
+    <label htmlFor="artworkUpload">
+      Upload {artType === "digital-photo" ? "Photo" : "Artwork"}
+    </label>
+      <input
+      ref={fileInputRef}
+      id="artworkUpload"
+      type="file"
+      accept="image/*"
+      onChange={handleImageUpload}
+      className="image-upload-input"
+/>
               </div>
             )}
             <div className="control-group">
@@ -299,16 +325,19 @@ export default function FramePreviewPage() {
               <select
                 id="artType"
                 value={artType}
-                onChange={(e) => setArtType(e.target.value)}
+               onChange={(e) => {
+                const value = e.target.value;
+                setArtType(value);
+                // Clear uploaded image if the selected type doesn't support uploads
+                if (value !== "digital-photo" && value !== "artwork") {
+                  setUploadedImage(null); }}}
                 required
               >
-                <option>Please Select</option>
-                <option>Artwork on Paper</option>
-                <option>Digital Photo</option>
-                <option>Certificate</option>
-                <option>Canvas Artwork</option>
-                <option>Textile / Fabric</option>
-                <option>Memory Item</option>
+               <option value="digital-photo">Digital Photo</option>
+                <option value="artwork">Artwork on Paper</option>
+                <option value="certificate">Certificate</option>
+                <option value="fabric">Textile / Fabric</option>
+                <option value="memory-item">Memory Item</option>
               </select>
             </div>
 
