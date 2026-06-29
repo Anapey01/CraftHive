@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/frame.svg" width="48" height="48" alt="Frame Icon"/>
+  <img src="public/CraftHive.png" width="80" height="80" alt="CraftHive Logo" style="border-radius: 12px;"/>
 
   # CraftHive 
   
