@@ -15,7 +15,7 @@ export const projects: FeaturedProject[] = [
   {
     name: "Chrome Saint",
     description: "A reflective figure sculpted in synthetic light.",
-    img: "/featured-work/carousel_2.png",
+    img: "/featured-work/carousel_2.PNG",
     route: "/gallery",
   },
   {
@@ -39,7 +39,7 @@ export const projects: FeaturedProject[] = [
   {
     name: "Blade true",
     description: "A delicate strike between art and motion.",
-    img: "/featured-work/carousel_5.png",
+    img: "/featured-work/carousel_5.PNG",
     route: "/gallery",
   },
    {
