@@ -40,8 +40,8 @@
   background: rgba(26, 22, 20, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(200, 162, 92, 0.5);
-  color: #c8a25c;
+  border: 1px solid rgba(195, 27, 7, 0.5);
+  color: #c31b07;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -54,9 +54,9 @@
 }
 
 .carousel-btn:hover {
-  background: #c8a25c;
-  color: #1a1614;
-  border-color: #c8a25c;
+  background: #c31b07;
+  color: #ffffff;
+  border-color: #c31b07;
   transform: scale(1.1);
 }
 
