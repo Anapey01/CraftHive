@@ -2,8 +2,8 @@
 
 import { Resend } from 'resend';
 
-// Please replace 're_xxxxxxxxx' with your real Resend API key
-const resend = new Resend('re_UpG28y4w_Fz13MnMzFKopeeCzejmDsHdF');
+// Retrieve API key from environment variables for security
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendContactEmail(formData: FormData) {
   try {
