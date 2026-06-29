@@ -33,7 +33,7 @@ export default function GalleryParallax() {
       <div 
         className="gallery-wall-parallax-image" 
         ref={imageRef}
-        style={{ backgroundImage: 'url(/gallery-wall.jpg)' }}
+        style={{ backgroundImage: 'url(/gallery-wall.jpeg)' }}
       ></div>
       <div className="gallery-wall-parallax-overlay"></div>
     </section>
