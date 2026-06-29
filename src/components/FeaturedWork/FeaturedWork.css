@@ -16,6 +16,7 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: auto !important; /* PREVENT CONFLICT WITH GSAP */
 }
 
 .featured-work-list.manual-scroll::-webkit-scrollbar {
