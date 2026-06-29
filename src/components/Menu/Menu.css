@@ -51,6 +51,12 @@ nav.scrolled {
   color: #1a1614;
   font-family: Inter, sans-serif;
   font-weight: 500;
+  outline: none;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid #c31b07;
+  outline-offset: 4px;
 }
 
 .nav-link::after {
