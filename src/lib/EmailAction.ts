@@ -2,11 +2,10 @@
 
 import { Resend } from 'resend';
 
-// Retrieve API key from environment variables for security
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendContactEmail(formData: FormData) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    
     const name = formData.get('name') as string;
     const phone = formData.get('phone') as string;
     const email = formData.get('email') as string;
