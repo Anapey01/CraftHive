@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
+  serverActions: {
+    bodySizeLimit: '10mb',
+  },
 };
 
 export default nextConfig;
